@@ -111,20 +111,20 @@ to prepare the appropriate format as follows.
 ``` r
 datapoints <- sample(0:7, 340, replace = TRUE) ## creating a set of raw BOD 
 head(datapoints)  ## first few observations of datapoints dataset
-# [1] 5 5 1 5 4 3
+# [1] 2 7 2 1 6 6
 
 ## extracting and printing BOD in a usable way for the package
 new_data <- BODextract(datapoints)
 matrix(c(new_data$RV, new_data$Freq), ncol=2, byrow = FALSE)
 #      [,1] [,2]
-# [1,]    0   41
-# [2,]    1   40
-# [3,]    2   47
-# [4,]    3   51
-# [5,]    4   37
-# [6,]    5   40
+# [1,]    0   46
+# [2,]    1   43
+# [3,]    2   40
+# [4,]    3   50
+# [5,]    4   41
+# [6,]    5   49
 # [7,]    6   41
-# [8,]    7   43
+# [8,]    7   30
 ```
 
 ### Step 2
@@ -674,19 +674,8 @@ flextable(data=BMD_flexed_Data,
                                EstFreq_McGBBD="McDonald Generalized Beta Binomial Distribution",
                                EstFreq_GammaBinD="Gamma Binomial Distribution",
                                EstFreq_GrassiaIIBinD="Grassia II Binomial Distribution")) |>
-  align(i=1,part = "header",align = "center")-> Final_Table 
-Final_Table |> 
+  align(i=1,part = "header",align = "center") |> 
   gen_grob(scaling = "fixed", fit = "width", just = "center")->Final_plot
-
-flextable_dim(Final_Table)
-# $widths
-# [1] 17.43758
-# 
-# $heights
-# [1] 6.444263
-# 
-# $aspect_ratio
-# [1] 0.3695618
 
 plot(Final_plot)
 ```

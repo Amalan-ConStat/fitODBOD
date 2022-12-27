@@ -401,11 +401,8 @@ flextable(data=BMD_flexed_Data,
                                EstFreq_McGBBD="McDonald Generalized Beta Binomial Distribution",
                                EstFreq_GammaBinD="Gamma Binomial Distribution",
                                EstFreq_GrassiaIIBinD="Grassia II Binomial Distribution")) |>
-  align(i=1,part = "header",align = "center")-> Final_Table 
-Final_Table |> 
+  align(i=1,part = "header",align = "center") |> 
   gen_grob(scaling = "fixed", fit = "width", just = "center")->Final_plot
-
-flextable_dim(Final_Table)
 
 plot(Final_plot)
 ```

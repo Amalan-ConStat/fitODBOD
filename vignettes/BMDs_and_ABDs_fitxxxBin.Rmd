@@ -284,8 +284,7 @@ flextable(data=ABD_flexed_Data,
                                EstFreq_CorrBinD="Correlated Binomial Distribution",
                                EstFreq_MultiBinD="Multiplicative Binomial Distribution",
                                EstFreq_LMBinD="Lovinson Multiplicative Binomial Distribution")) %>%
-  align(i=1,part = "header",align = "center") %>%
-  footnote(i=10,j=1,value = as_paragraph("Count of difference values = number of binomial random variables where abs(observed freq - estimated freq) <= 5"))
+  align(i=1,part = "header",align = "center")
 
 ```
 
@@ -554,8 +553,7 @@ flextable(data=BMD_flexed_Data,
                                EstFreq_McGBBD="McDonald Generalized Beta Binomial Distribution",
                                EstFreq_GammaBinD="Gamma Binomial Distribution",
                                EstFreq_GrassiaIIBinD="Grassia II Binomial Distribution")) %>%
-  align(i=1,part = "header",align = "center") %>%
-  footnote(i=10,j=1,value = as_paragraph("Count of difference values = number of binomial random variables where abs(observed freq - estimated freq) <= 5"))
+  align(i=1,part = "header",align = "center")
 
 ```
 

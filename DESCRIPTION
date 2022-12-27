@@ -13,7 +13,7 @@ Authors@R: c(
 Depends: R (>= 4.0.0)
 License: GPL-2
 LazyData: TRUE
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3
 Imports: hypergeo,
     stats,
     bbmle

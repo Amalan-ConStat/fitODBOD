@@ -7,7 +7,6 @@
 ^NEWS\.md$
 ^\.gitignore$
 ^README\.Rmd$
-^README_files$
 ^CONDUCT\.md$
 ^\.travis\.yml$
 ^codecov\.yml$
@@ -16,4 +15,4 @@
 ^pkgdown$
 ^appveyor\.yml$
 ^JOSSpaper$
-
+^vignettes

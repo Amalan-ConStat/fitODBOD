@@ -1,10 +1,10 @@
 ---
-title: "R-fitODBOD"
+title: "fitODBOD"
 output: github_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,comment = "#",collapse = TRUE, fig.retina=2, fig.path = "README_figs/README-")
+knitr::opts_chunk$set(echo = TRUE,comment = "#",collapse = TRUE, fig.retina=2, fig.path = "man/figures/")
 ```
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-last-release/fitODBOD)](https://cran.r-project.org/package=fitODBOD)
@@ -24,9 +24,7 @@ knitr::opts_chunk$set(echo = TRUE,comment = "#",collapse = TRUE, fig.retina=2, f
 [![status](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4/status.svg)](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3265356.svg)](https://doi.org/10.5281/zenodo.3265356)
 
-# fitODBOD <img src="man/figures/logo.png" align="right" alt="" width="150" />
-
-## How to engage with "fitODBOD" the first time ?
+## How to engage with "fitODBOD" the first time ? <img src="man/figures/logo.png" align="right" alt="" width="150" />
 
 ```{r fitODBOD from GitHub or CRAN,eval=FALSE}
 ## Installing the package from GitHub
@@ -321,7 +319,7 @@ The null hypothesis is not rejected  at $5%$ significance level (`p-value=` `r f
 
 Below table presents the expected frequencies, p-values, Negative Log Likelihood values, AIC values, Variance and Over-dispersion of the Binomial Mixture distributions obtained above for the Alcohol Consumption data.
 
-```{r Table 1,warning=FALSE,fig.width=18,fig.height=9}
+```{r Table,warning=FALSE,fig.width=16,fig.height=9}
 BMD_Data <- tibble::tibble(w=BinFreq$bin.ran.var,x=BinFreq$obs.freq,y=fitted(BinFreq),z=fitted(fTB),
                            a=fitted(fBB1),a1=fitted(fBB2),c=fitted(fGG),
                            d=fitted(fMB),e=fitted(fGB),f=fitted(fGB2))

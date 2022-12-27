@@ -1,4 +1,4 @@
-R-fitODBOD
+fitODBOD
 ================
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-last-release/fitODBOD)](https://cran.r-project.org/package=fitODBOD)
@@ -25,9 +25,7 @@ coverage](https://codecov.io/gh/Amalan-ConStat/R-fitODBOD/branch/master/graph/ba
 [![status](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4/status.svg)](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3265356.svg)](https://doi.org/10.5281/zenodo.3265356)
 
-# fitODBOD <img src="man/figures/logo.png" align="right" alt="" width="150" />
-
-## How to engage with “fitODBOD” the first time ?
+## How to engage with “fitODBOD” the first time ? <img src="man/figures/logo.png" align="right" alt="" width="150" />
 
 ``` r
 ## Installing the package from GitHub
@@ -111,20 +109,20 @@ to prepare the appropriate format as follows.
 ``` r
 datapoints <- sample(0:7, 340, replace = TRUE) ## creating a set of raw BOD 
 head(datapoints)  ## first few observations of datapoints dataset
-# [1] 2 7 2 1 6 6
+# [1] 0 5 0 6 7 3
 
 ## extracting and printing BOD in a usable way for the package
 new_data <- BODextract(datapoints)
 matrix(c(new_data$RV, new_data$Freq), ncol=2, byrow = FALSE)
 #      [,1] [,2]
-# [1,]    0   46
-# [2,]    1   43
-# [3,]    2   40
-# [4,]    3   50
-# [5,]    4   41
-# [6,]    5   49
-# [7,]    6   41
-# [8,]    7   30
+# [1,]    0   42
+# [2,]    1   47
+# [3,]    2   41
+# [4,]    3   42
+# [5,]    4   39
+# [6,]    5   43
+# [7,]    6   35
+# [8,]    7   51
 ```
 
 ### Step 2
@@ -680,7 +678,7 @@ flextable(data=BMD_flexed_Data,
 plot(Final_plot)
 ```
 
-<img src="README_figs/README-Table 1-1.png" width="1728" />
+<img src="man/figures/Table-1.png" width="1536" />
 
 ## Conclusion
 

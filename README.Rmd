@@ -65,16 +65,11 @@ You can understand BMD & ABD with PMF & CPMF. Further, BOD can be modeled using 
 
 ## Modelling
 
-To demonstrate the process the Alcohol Consumption Data, which is the most commonly used data-set by the researchers to explain 
-Over-dispersion will be taken {lemmens1988}. In this data-set, the number of alcohol consumption days in two reference weeks is separately
-self-reported by a randomly selected sample of 399 respondents from the Netherlands in 1983. Here, the number of days a given individual
-consumes alcohol out of seven days a week can be treated as a Binomial variable. The collection of all such variables from all respondents
-would be defined as "Binomial Outcome Data".
+To demonstrate the process the Alcohol Consumption Data, which is the most commonly used data-set by the researchers to explain  Over-dispersion will be taken {lemmens1988}. In this data-set, the number of alcohol consumption days in two reference weeks is separately self-reported by a randomly selected sample of $399$ respondents from the Netherlands in $1983$. Here, the number of days a given individual consumes alcohol out of seven days a week can be treated as a Binomial variable. The collection of all such variables from all respondents would be defined as "Binomial Outcome Data".
 
 ### Step 1
 
-The Alcohol consumption data is already in the necessary format to apply steps 2 to 5 and hence, step 1 can be avoided. The steps 
-2 to 5 can be applied only if the data-set is in the form of a frequency table as follows.
+The Alcohol consumption data is already in the necessary format to apply steps $2$ to $5$ and hence, step $1$ can be avoided. The steps $2$ to $5$ can be applied only if the data-set is in the form of a frequency table as follows.
 
 ```{r ,Step 1_0}
 library("fitODBOD"); library("flextable",quietly = TRUE)    ## Loading packages
@@ -83,8 +78,7 @@ sum(Alcohol_data$week1) ## No of respondents or N
 Alcohol_data$Days       ## Binomial random variables or x 
 ```
 
-Suppose your data-set is not a frequency table as shown in the following data-set called `datapoints`. Then the function `BODextract` 
-can be used to prepare the appropriate format as follows.
+Suppose your data-set is not a frequency table as shown in the following data-set called `datapoints`. Then the function `BODextract` can be used to prepare the appropriate format as follows.
 
 ```{r ,Step 1_1}
 datapoints <- sample(0:7, 340, replace = TRUE) ## creating a set of raw BOD 
@@ -103,17 +97,14 @@ Null Hypothesis : The data follows Binomial Distribution.
 
 Alternate Hypothesis : The data does not follow Binomial Distribution.						
 
-Alcohol Consumption data consists of frequency information for two weeks but only the first week is considered for computation. By doing 
-so the researcher can verify if the results acquired from the functions are similar to the results acquired from previous researchers work. 
+Alcohol Consumption data consists of frequency information for two weeks but only the first week is considered for computation. By doing so the researcher can verify if the results acquired from the functions are similar to the results acquired from previous researchers work. 
 
 ```{r,Step 2_1}
 BinFreq <- fitBin(x=Alcohol_data$Days,obs.fre=Alcohol_data$week1)
 print(BinFreq)
 ```
 
-Looking at the p-value it is clear that null hypothesis is rejected at 5% significance level. This indicates that data does not fit the 
-Binomial distribution. The reason for a warning message is that one of the expected frequencies in the results is less than five. Now we 
-compare the actual and the fitting Binomial variances.
+Looking at the p-value it is clear that null hypothesis is rejected at $5%$ significance level. This indicates that data does not fit the Binomial distribution. The reason for a warning message is that one of the expected frequencies in the results is less than five. Now we compare the actual and the fitting Binomial variances.
 
 ```{r, Step 2_2}
 ## Actual variance of observed frequencies
@@ -122,21 +113,15 @@ var(rep(Alcohol_data$Days, times = Alcohol_data$week1))
 var(rep(BinFreq$bin.ran.var, times = fitted(BinFreq)))
 ```
 
-The variance of observed frequencies and the variance of fitting frequencies are 6.253788 and 1.696035 respectively, which indicates
-Over-dispersion. 
+The variance of observed frequencies and the variance of fitting frequencies are `r var(rep(Alcohol_data$Days, times = Alcohol_data$week1))` and `r var(rep(BinFreq$bin.ran.var, times = fitted(BinFreq)))` respectively, which indicates Over-dispersion. 
 
 ### Step 3 and 4
 
-Since the Over-dispersion exists in the data now it is necessary to fit the Binomial Mixture distributions Triangular Binomial, Beta-Binomial,
-Kumaraswamy Binomial, Gamma Binomial, Grassia II Binomial, GHGBB and McGBB using the package, and select the best-fitting distribution using
-Negative Log likelihood value, p-value and by comparing observed and expected frequencies. Modelling these distributions are given in the next
-sub-sections.
+Since the Over-dispersion exists in the data now it is necessary to fit the Binomial Mixture distributions Triangular Binomial, Beta-Binomial, Kumaraswamy Binomial, Gamma Binomial, Grassia II Binomial, GHGBB and McGBB using the package, and select the best-fitting distribution using Negative Log likelihood value, p-value and by comparing observed and expected frequencies. Modelling these distributions are given in the next sub-sections.
 
 #### a) Triangular Binomial distribution.
 
-Maximizing the log likelihood value or in our case minimizing the negative log likelihood is used in the `EstMLExxx` functions.
-The estimation of the `mode` parameter can be done by using the `EstMLETriBin` function, and then the estimated value has to be 
-applied to `fitTriBin` function to check whether the data fit the Triangular Binomial distribution. 
+Maximizing the log likelihood value or in our case minimizing the negative log likelihood is used in the `EstMLExxx` functions. The estimation of the `mode` parameter can be done by using the `EstMLETriBin` function, and then the estimated value has to be applied to `fitTriBin` function to check whether the data fit the Triangular Binomial distribution. 
 
 ```{r,Step 3_a}
 ## estimating the mode
@@ -160,16 +145,11 @@ AIC(fTB)
 var(rep(fTB$bin.ran.var, times = fitted(fTB)))
 ```
 
-Since the `p-value` is 0 which is less than 0.05 it is clear that the null hypothesis is rejected, and the estimated `Over-dispersion` is
-0.2308269. Therefore, it is necessary to fit a better flexible distribution than the Triangular Binomial distribution. 
+Since the `p-value` is `r fTB$p.value` which is less than $0.05$ it is clear that the null hypothesis is rejected, and the estimated `Over-dispersion` is `r Overdispersion(fTB)`. Therefore, it is necessary to fit a better flexible distribution than the Triangular Binomial distribution. 
 
 #### b) Beta-Binomial distribution.
 
-To estimate the two shape parameters of the Beta-Binomial distribution  Methods of Moments or Maximum Likelihood estimation can be used.
-Using the function `EstMLEBetaBin`(wrapper function of `mle2` from package `bbmle`) the Negative Log likelihood value will be minimized. 
-In order to estimate the shape parameters `a` and `b`, initial shape parameter values have to be given by the user to this function. These
-initial values have to be in the domain of the shape parameters. Below given is the pair of estimates for initial values where `a=0.1` and
-`b=0.1`.
+To estimate the two shape parameters of the Beta-Binomial distribution  Methods of Moments or Maximum Likelihood estimation can be used. Using the function `EstMLEBetaBin`(wrapper function of `mle2` from package `bbmle`) the Negative Log likelihood value will be minimized. In order to estimate the shape parameters `a` and `b`, initial shape parameter values have to be given by the user to this function. These initial values have to be in the domain of the shape parameters. Below given is the pair of estimates for initial values where `a=0.1` and `b=0.1`.
 
 ```{r,step 3_b}
 ## estimating the shape parameters a, b
@@ -180,7 +160,7 @@ a1 <- bbmle::coef(estimate)[1] ; b1 <- bbmle::coef(estimate)[2]
 print(c(a1,b1))        ## printing the estimated shape parameters
 ```
 
-To fit the Beta-Binomial distribution for estimated (Maximum Likelihood Estimation method) shape parameters the following hypothesis is used 
+To fit the Beta-Binomial distribution for estimated (Maximum Likelihood Estimation method) shape parameters the following hypothesis is used
 
 Null Hypothesis : The data follows Beta-Binomial Distribution by the Maximum Likelihood Estimates.
 
@@ -194,8 +174,7 @@ AIC(fBB1)
 var(rep(fBB1$bin.ran.var, times = fitted(fBB1)))
 ```
 
-The `p-value` of 0.0901 > 0.05 indicates that the null hypothesis is not rejected. Current estimated shape parameters fit the
-Beta-Binomial distribution. Note that the estimated `Over-dispersion` parameter is 0.4340673.
+The `p-value` of `r fBB1$p.value` $> 0.05$ indicates that the null hypothesis is not rejected. Current estimated shape parameters fit the Beta-Binomial distribution. Note that the estimated `Over-dispersion` parameter is `r Overdispersion(fBB1)`.
 
 Function `EstMGFBetaBin` is used as below to estimate shape parameters `a` and `b` using Methods of Moments.
 
@@ -221,9 +200,7 @@ AIC(fBB2)
 var(rep(fBB2$bin.ran.var, times = fitted(fBB2)))
 ```
 
-Results from Method of Moments to estimate the parameters have led to a `p-value` of 0.0831 which is greater than 0.05 indicates that the 
-null hypothesis is not rejected. The parameters estimated through Method of Moments fit the Beta-Binomial distribution for an estimated
-`Over-dispersion` of 0.4324333.
+Results from Method of Moments to estimate the parameters have led to a `p-value` of `r fBB2$p.value` which is greater than $0.05$ indicates that the null hypothesis is not rejected. The parameters estimated through Method of Moments fit the Beta-Binomial distribution for an estimated `Over-dispersion` of `r Overdispersion(fBB2)`.
 
 #### c) Kumaraswamy Binomial distribution.
 
@@ -253,13 +230,11 @@ AIC(fKB)
 var(rep(fKB$bin.ran.var, times = fitted(fKB)))
 ```
 
-The null hypothesis is not rejected at 5% significance level (`p-value`=0.0732 )for the estimated parameters `it=20000`, `a=0.7231022`,
-`b=0.6099952` and the estimated `Over-dispersion` of 0.4252887.
+The null hypothesis is not rejected at 5% significance level (`p-value`= `r fKB$p.value`) for the estimated parameters `it=20000`, $a=$`r fKB$a`, $b=$`r fKB$b` and the estimated `Over-dispersion` of `r Overdispersion(fKB)`.
 
 #### d) Gamma Binomial distribution.
 
-The shape parameters `c` and `l` are estimated and fitted below. Suppose the selected input parameters are 
-`c=10.1` and `l=5.1`.
+The shape parameters `c` and `l` are estimated and fitted below. Suppose the selected input parameters are `c=10.1` and `l=5.1`.
 
 ```{r,step 3_d}
 ## estimating the shape parameters
@@ -284,13 +259,11 @@ AIC(fGB)
 var(rep(fGB$bin.ran.var, times = fitted(fGB)))
 ```
 
-The null hypothesis is not rejected at 5% significance level (`p-value`=0.0596)for the estimated parameters `c=0.6036061`,
-`l=0.6030777` and the estimated `Over-dispersion` of 0.4308113.
+The null hypothesis is not rejected at 5% significance level (`p-value=` `r fGB$p.value`) for the estimated parameters $c=$ `r fGB$c`, `r fGB$l` and the estimated `Over-dispersion` of `r Overdispersion(fGB)`.
 
 #### e) Grassia II Binomial distribution.
 
-The shape parameters `a` and `b`  are estimated and fitted below using the `EstMLEGammaBin` function. Suppose the selected input parameters
-are `a=1.1` and `b=5.1`.
+The shape parameters `a` and `b`  are estimated and fitted below using the `EstMLEGammaBin` function. Suppose the selected input parameters are `a=1.1` and `b=5.1`.
 
 ```{r,step 3_e}
 ## estimating the shape parameters
@@ -315,13 +288,11 @@ AIC(fGB2)
 var(rep(fGB2$bin.ran.var, times = fitted(fGB2)))
 ```
 
-The null hypothesis is not rejected at 5% significance level (`p-value`=0.0596)for the estimated parameters `a=0.7285039`,
-`b=2.0251513` and the estimated `Over-dispersion` of 0.259004.
+The null hypothesis is not rejected at 5% significance level (`p-value=` `r fGB2$p.value`) for the estimated parameters $a=$ `r fGB2$a`, $b=$ `r fGB2$b` and the estimated `Over-dispersion` `r Overdispersion(fGB2)`.
 
 #### f) GHGBB distribution.
 
-Now we estimate the shape parameters and fit the GHGBB distribution for the first set of randomly selected initial input shape parameters of 
-`a=10.1`, `b=1.1` and `c=5`.
+Now we estimate the shape parameters and fit the GHGBB distribution for the first set of randomly selected initial input shape parameters of `a=10.1`, `b=1.1` and `c=5`.
 
 ```{r, step 3_f}
 #estimating the shape parameters 
@@ -346,8 +317,7 @@ AIC(fGG)
 var(rep(fGG$bin.ran.var, times = fitted(fGG)))
 ```
 
-The null hypothesis is not rejected at 5% significance level (`p-value`=0.8642). The estimated shape parameters are `a=1.3506836`,
-`b=0.3245421` and `c=0.7005210`, where the estimated `Over-dispersion` of 0.4324874.
+The null hypothesis is not rejected at 5% significance level (`p-value=` `r fGG$p.value`). The estimated shape parameters are $a=$ `r fGG$a`, $b=$ `r fGG$b` and $c=$ `r fGG$c`, where the estimated `Over-dispersion` of `r Overdispersion(fGG)`.
 
 #### g) McGBB distribution.
 
@@ -376,13 +346,11 @@ AIC(fMB)
 var(rep(fMB$bin.ran.var, times = fitted(fMB)))
 ```
 
-The null hypothesis is not rejected  at 5% significance level (`p-value`=0.695 > 0.05). The estimated shape parameters are `a=0.04099005`
-`b=0.2108279` and `c=21.67349`, and the estimated `Over-dispersion` of 0.4359023.
+The null hypothesis is not rejected  at $5%$ significance level (`p-value=` `r fMB$p.value` $> 0.05$). The estimated shape parameters are $a=$ `r fMB$a`, $b=$ `r fMB$b` and $c=$ `r fMB$c`, and the estimated `Over-dispersion` of `r Overdispersion(fMB)`.
 
 ### Step 5
 
-Below table presents the expected frequencies, p-values, Negative Log Likelihood values, AIC values, Variance and 
-Over-dispersion of the Binomial Mixture distributions obtained above for the Alcohol Consumption data.
+Below table presents the expected frequencies, p-values, Negative Log Likelihood values, AIC values, Variance and Over-dispersion of the Binomial Mixture distributions obtained above for the Alcohol Consumption data.
 
 ```{r Table 1}
 BMD_Data <- tibble::tibble(w=BinFreq$bin.ran.var,
@@ -503,33 +471,21 @@ flextable(data=BMD_flexed_Data,
 
 ## Conclusion
 
-The best-fitting distribution is chosen by comparing five main measurements shown in the above table 
-which are p-value, Negative Log Likelihood value, the count of difference between expected and observed frequencies in the range of +/-5,
-absolute variance difference and AIC values.
+The best-fitting distribution is chosen by comparing five main measurements shown in the above table which are p-value, Negative Log Likelihood value, the count of difference between expected and observed frequencies in the range of $+/-5$, absolute variance difference and AIC values.
 
 Then the following five criteria will be considered for the selection procedure
 
-1. The `p-value` > 0.05 from the hypothesis test.
+1. The `p-value` $> 0.05$ from the hypothesis test.
 2. The Negative Log Likelihood value. 
 3. The AIC value.
-4. The number of difference values within the range of +/-5.  
+4. The number of difference values within the range of $+/-5$.  
 5. The absolute variance difference between expected and observed frequency.
 
-Triangular Binomial and Binomial distributions cannot be fitted since its p-value < 0.05. The Negative Log Likelihood values
-of GHGBB and McGBB distributions are the lowest and are quite similar. Similarly AIC values are lowest for GHGBB and McGBB,
-also highest AIC value is for Triangular Binomial distribution. Based on the count of difference values for the
-Beta-Binomial distribution it is four out of eight and similar for distributions Gamma Binomial, Grassia II Binomial, and
-Kumaraswamy Binomial. But for the McGBB distribution it is seven out of eight counts. 
+Triangular Binomial and Binomial distributions cannot be fitted since its p-value $< 0.05$. The Negative Log Likelihood values of GHGBB and McGBB distributions are the lowest and are quite similar. Similarly AIC values are lowest for GHGBB and McGBB, also highest AIC value is for Triangular Binomial distribution. Based on the count of difference values for the Beta-Binomial distribution it is four out of eight and similar for distributions Gamma Binomial, Grassia II Binomial, and Kumaraswamy Binomial. But for the McGBB distribution it is seven out of eight counts. 
 
-Further, Over-dispersion parameters of all four fitted distributions are same for the second decimal point 
-(Over-dispersion = 0.43) except Triangular Binomial and Grassia II Binomial distributions where they are similar for
-the first decimal point (Over-dispersion = 0.2). Clearly variance difference is highest for Binomial distribution and lowest
-for GHGBB distribution, while others are significant only from the second decimal point.
+Further, Over-dispersion parameters of all four fitted distributions are same for the second decimal point (Over-dispersion = $0.43$) except Triangular Binomial and Grassia II Binomial distributions where they are similar for the first decimal point (Over-dispersion = $0.2$). Clearly variance difference is highest for Binomial distribution and lowest for GHGBB distribution, while others are significant only from the second decimal point.
 
-The best-fitting distribution GHGBB has the highest p-value of 0.8642, the lowest Negative Log Likelihood value of 809.2767
-and AIC value of 1624.5534, the count of difference values is eight out of eight and indicates an estimated Over-dispersion
-of 0.4324875. The variance difference between observed and expected frequencies of GHGBB leads to the smallest value of
-0.0045.
+The best-fitting distribution GHGBB has the highest p-value of $0.8642$, the lowest Negative Log Likelihood value of $809.2767$ and AIC value of $1624.5534$, the count of difference values is eight out of eight and indicates an estimated Over-dispersion of $0.4324875$. The variance difference between observed and expected frequencies of GHGBB leads to the smallest value of $0.0045$.
 
 #### Thank You
 

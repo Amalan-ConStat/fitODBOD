@@ -11,7 +11,7 @@ Authors@R: c(
           person("Pushpakanthie", "Wijekoon", role = c("aut","ctb")
           ,comment=c(ORCID="0000-0003-4242-1017")))
 Depends: R (>= 4.0.0)
-License: GPL-2
+License: MIT + file LICENSE
 LazyData: TRUE
 RoxygenNote: 7.2.3
 Imports: hypergeo,

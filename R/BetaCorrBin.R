@@ -60,7 +60,7 @@
 #' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
 #' - Theory and Methods, 14(6), pp.1497-1506.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/abs/10.1080/03610928508828990} .
+#' Available at: \doi{10.1080/03610928508828990} .
 #'
 #'
 #' @examples
@@ -236,7 +236,7 @@ dBetaCorrBin<-function(x,n,cov,a,b)
 #' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
 #' - Theory and Methods, 14(6), pp.1497-1506.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/abs/10.1080/03610928508828990}.
+#' Available at: \doi{10.1080/03610928508828990}.
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -317,7 +317,7 @@ pBetaCorrBin<-function(x,n,cov,a,b)
 #' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
 #' - Theory and Methods, 14(6), pp.1497-1506.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/abs/10.1080/03610928508828990} .
+#' Available at: \doi{10.1080/03610928508828990} .
 #'
 #'
 #' @examples
@@ -445,7 +445,7 @@ NegLLBetaCorrBin<-function(x,freq,cov,a,b)
 #' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
 #' - Theory and Methods, 14(6), pp.1497-1506.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/abs/10.1080/03610928508828990} .
+#' Available at: \doi{10.1080/03610928508828990} .
 #'
 #' @seealso
 #' \code{\link[bbmle]{mle2}}
@@ -564,7 +564,7 @@ EstMLEBetaCorrBin<-function(x,freq,cov,a,b,...)
 #' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
 #' - Theory and Methods, 14(6), pp.1497-1506.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/abs/10.1080/03610928508828990} .
+#' Available at: \doi{10.1080/03610928508828990} .
 #'
 #' @examples
 #' No.D.D <- 0:7                    #assigning the random variables

@@ -51,16 +51,16 @@ EstMGFBetaBin(No.D.D,Obs.fre.1)
 Young-Xu, Y. & Chan, K.A., 2008. Pooling overdispersed binomial data to estimate event rate. BMC medical
 research methodology, 8(1), p.58.
 
-Available at: \url{http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=2538541&tool=pmcentrez&rendertype=abstract}.
+Available at: \doi{10.1186/1471-2288-8-58}.
 
 Trenkler, G., 1996. Continuous univariate distributions. Computational Statistics & Data Analysis, 21(1), p.119.
 
-Available at: \url{http://linkinghub.elsevier.com/retrieve/pii/0167947396900158}.
+Available at: \doi{10.1016/0167-9473(96)90015-8}.
 
 Hughes, G., 1993. Using the Beta-Binomial Distribution to Describe Aggregated Patterns of Disease
 Incidence. Phytopathology, 83(9), p.759.
 
-Available at: \url{http://www.apsnet.org/publications/phytopathology/backissues/Documents/1993Abstracts/Phyto_83_759.htm}
+Available at: \doi{10.1094/PHYTO-83-759}
 }
 \seealso{
 \code{\link[bbmle]{mle2}}

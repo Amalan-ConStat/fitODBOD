@@ -87,5 +87,5 @@ Borges, P., Rodrigues, J., Balakrishnan, N. and Bazan, J., 2014. A COM-Poisson t
 generalization of the binomial distribution and its properties and applications.
 Statistics & Probability Letters, 87, pp.158-166.
 
-Available at: \url{http://conteudo.icmc.usp.br/CMS/Arquivos/arquivos_enviados/BIBLIOTECA_113_NSE_90.pdf}
+Available at: \doi{10.1016/j.spl.2014.01.019}
 }

@@ -1,5 +1,7 @@
-fitODBOD
-================
+
+# fitODBOD <img src="man/figures/logo.png" align="right" alt="" width="150" />
+
+<!-- badges: start -->
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-last-release/fitODBOD)](https://cran.r-project.org/package=fitODBOD)
 [![packageversion](https://img.shields.io/badge/Package%20version-1.4.1-orange.svg?style=flat-square)](commits/master)
@@ -25,7 +27,9 @@ coverage](https://codecov.io/gh/Amalan-ConStat/R-fitODBOD/branch/master/graph/ba
 [![status](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4/status.svg)](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3265356.svg)](https://doi.org/10.5281/zenodo.3265356)
 
-## How to engage with “fitODBOD” the first time ? <img src="man/figures/logo.png" align="right" alt="" width="150" />
+<!-- badges: end -->
+
+## How to engage with “fitODBOD” the first time ?
 
 ``` r
 ## Installing the package from GitHub
@@ -84,22 +88,22 @@ table as follows.
 
 ``` r
 library("fitODBOD"); library("flextable",quietly = TRUE)    ## Loading packages
-# Hello, This is Amalan. For more details refer --> https://amalan-constat.github.io/R-fitODBOD/index.html
-# Warning: package 'flextable' was built under R version 4.1.3
+#> Hello, This is Amalan. For more details refer --> https://amalan-constat.github.io/R-fitODBOD/index.html
+#> Warning: package 'flextable' was built under R version 4.1.3
 print(Alcohol_data)     ## print the alcohol consumption data set
-#   Days week1 week2
-# 1    0    47    42
-# 2    1    54    47
-# 3    2    43    54
-# 4    3    40    40
-# 5    4    40    49
-# 6    5    41    40
-# 7    6    39    43
-# 8    7    95    84
+#>   Days week1 week2
+#> 1    0    47    42
+#> 2    1    54    47
+#> 3    2    43    54
+#> 4    3    40    40
+#> 5    4    40    49
+#> 6    5    41    40
+#> 7    6    39    43
+#> 8    7    95    84
 sum(Alcohol_data$week1) ## No of respondents or N
-# [1] 399
+#> [1] 399
 Alcohol_data$Days       ## Binomial random variables or x 
-# [1] 0 1 2 3 4 5 6 7
+#> [1] 0 1 2 3 4 5 6 7
 ```
 
 Suppose your data-set is not a frequency table as shown in the following
@@ -109,20 +113,20 @@ to prepare the appropriate format as follows.
 ``` r
 datapoints <- sample(0:7, 340, replace = TRUE) ## creating a set of raw BOD 
 head(datapoints)  ## first few observations of datapoints dataset
-# [1] 0 5 0 6 7 3
+#> [1] 7 3 1 6 2 0
 
 ## extracting and printing BOD in a usable way for the package
 new_data <- BODextract(datapoints)
 matrix(c(new_data$RV, new_data$Freq), ncol=2, byrow = FALSE)
-#      [,1] [,2]
-# [1,]    0   42
-# [2,]    1   47
-# [3,]    2   41
-# [4,]    3   42
-# [5,]    4   39
-# [6,]    5   43
-# [7,]    6   35
-# [8,]    7   51
+#>      [,1] [,2]
+#> [1,]    0   32
+#> [2,]    1   38
+#> [3,]    2   41
+#> [4,]    3   53
+#> [5,]    4   54
+#> [6,]    5   38
+#> [7,]    6   51
+#> [8,]    7   33
 ```
 
 ### Step 2
@@ -141,20 +145,20 @@ similar to the results acquired from previous researchers work.
 
 ``` r
 BinFreq <- fitBin(x=Alcohol_data$Days,obs.fre=Alcohol_data$week1)
-# Chi-squared approximation may be doubtful because expected frequency is less than 5
+#> Chi-squared approximation may be doubtful because expected frequency is less than 5
 print(BinFreq)
-# Call: 
-# fitBin(x = Alcohol_data$Days, obs.freq = Alcohol_data$week1)
-# 
-# Chi-squared test for Binomial Distribution 
-#   
-#       Observed Frequency :  47 54 43 40 40 41 39 95 
-#   
-#       expected Frequency :  1.59 13.41 48.3 96.68 116.11 83.66 33.49 5.75 
-#   
-#       estimated probability value : 0.5456498 
-#   
-#       X-squared : 2911.434   ,df : 6   ,p-value : 0
+#> Call: 
+#> fitBin(x = Alcohol_data$Days, obs.freq = Alcohol_data$week1)
+#> 
+#> Chi-squared test for Binomial Distribution 
+#>  
+#>       Observed Frequency :  47 54 43 40 40 41 39 95 
+#>  
+#>       expected Frequency :  1.59 13.41 48.3 96.68 116.11 83.66 33.49 5.75 
+#>  
+#>       estimated probability value : 0.5456498 
+#>  
+#>       X-squared : 2911.434   ,df : 6   ,p-value : 0
 ```
 
 Looking at the p-value it is clear that null hypothesis is rejected at
@@ -166,10 +170,10 @@ compare the actual and the fitting Binomial variances.
 ``` r
 ## Actual variance of observed frequencies
 var(rep(Alcohol_data$Days, times = Alcohol_data$week1))
-# [1] 6.253788
+#> [1] 6.253788
 ## Calculated variance for frequencies of  fitted Binomial distribution 
 var(rep(BinFreq$bin.ran.var, times = fitted(BinFreq)))
-# [1] 1.696035
+#> [1] 1.696035
 ```
 
 The variance of observed frequencies and the variance of fitting
@@ -199,11 +203,11 @@ Binomial distribution.
 ## estimating the mode
 modeTB <- EstMLETriBin(x=Alcohol_data$Days,freq=Alcohol_data$week1) 
 coef(modeTB)  ## printing the estimated mode
-#  mode 
-#  0.944444
+#>  mode 
+#>  0.944444
 ## printing the Negative log likelihood value which is minimized
 NegLLTriBin(x=Alcohol_data$Days,freq=Alcohol_data$week1,mode=modeTB$mode)
-# [1] 880.6167
+#> [1] 880.6167
 ```
 
 To fit the Triangular Binomial distribution for estimated mode parameter
@@ -218,25 +222,25 @@ Distribution.
 ## fitting the Triangular Binomial Distribution for the estimated mode value
 fTB <- fitTriBin(x=Alcohol_data$Days,obs.freq=Alcohol_data$week1,mode=modeTB$mode)
 print(fTB)
-# Call: 
-# fitTriBin(x = Alcohol_data$Days, obs.freq = Alcohol_data$week1, 
-#     mode = modeTB$mode)
-# 
-# Chi-squared test for Triangular Binomial Distribution 
-#   
-#       Observed Frequency :  47 54 43 40 40 41 39 95 
-#   
-#       expected Frequency :  11.74 23.47 35.21 46.94 58.66 70.2 79.57 73.21 
-#   
-#       estimated Mode value: 0.944444 
-#   
-#       X-squared : 193.6159   ,df : 6   ,p-value : 0 
-#   
-#       over dispersion : 0.2308269
+#> Call: 
+#> fitTriBin(x = Alcohol_data$Days, obs.freq = Alcohol_data$week1, 
+#>     mode = modeTB$mode)
+#> 
+#> Chi-squared test for Triangular Binomial Distribution 
+#>  
+#>       Observed Frequency :  47 54 43 40 40 41 39 95 
+#>  
+#>       expected Frequency :  11.74 23.47 35.21 46.94 58.66 70.2 79.57 73.21 
+#>  
+#>       estimated Mode value: 0.944444 
+#>  
+#>       X-squared : 193.6159   ,df : 6   ,p-value : 0 
+#>  
+#>       over dispersion : 0.2308269
 AIC(fTB) 
-# [1] 1763.233
+#> [1] 1763.233
 var(rep(fTB$bin.ran.var, times = fitted(fTB)))
-# [1] 3.786005
+#> [1] 3.786005
 ```
 
 Since the `p-value` is 0 which is less than $0.05$ it is clear that the
@@ -259,12 +263,12 @@ the pair of estimates for initial values where `a=0.1` and `b=0.1`.
 ## estimating the shape parameters a, b
 estimate <- EstMLEBetaBin(x=Alcohol_data$Days,freq = Alcohol_data$week1,a=0.1,b=0.1)
 estimate@min ## extracting the minimized Negative log likelihood value 
-# [1] 813.4571
+#> [1] 813.4571
 ## extracting the estimated shape parameter a, b
 a1 <- bbmle::coef(estimate)[1] ; b1 <- bbmle::coef(estimate)[2]  
 print(c(a1,b1))        ## printing the estimated shape parameters
-#         a         b 
-# 0.7229420 0.5808483
+#>         a         b 
+#> 0.7229420 0.5808483
 ```
 
 To fit the Beta-Binomial distribution for estimated (Maximum Likelihood
@@ -280,25 +284,25 @@ Distribution by the Maximum Likelihood Estimates.
 ## fitting Beta Binomial Distribution for estimated shape parameters
 fBB1 <- fitBetaBin(x=Alcohol_data$Days,obs.fre=Alcohol_data$week1,a=a1,b=b1)
 print(fBB1)
-# Call: 
-# fitBetaBin(x = Alcohol_data$Days, obs.freq = Alcohol_data$week1, 
-#     a = a1, b = b1)
-# 
-# Chi-squared test for Beta-Binomial Distribution 
-#   
-#           Observed Frequency :  47 54 43 40 40 41 39 95 
-#   
-#           expected Frequency :  54.62 42 38.9 38.54 40.07 44 53.09 87.78 
-#   
-#           estimated a parameter : 0.722942   ,estimated b parameter : 0.5808483 
-#   
-#           X-squared : 9.5171   ,df : 5   ,p-value : 0.0901 
-#   
-#           over dispersion : 0.4340673
+#> Call: 
+#> fitBetaBin(x = Alcohol_data$Days, obs.freq = Alcohol_data$week1, 
+#>     a = a1, b = b1)
+#> 
+#> Chi-squared test for Beta-Binomial Distribution 
+#>  
+#>           Observed Frequency :  47 54 43 40 40 41 39 95 
+#>  
+#>           expected Frequency :  54.62 42 38.9 38.54 40.07 44 53.09 87.78 
+#>  
+#>           estimated a parameter : 0.722942   ,estimated b parameter : 0.5808483 
+#>  
+#>           X-squared : 9.5171   ,df : 5   ,p-value : 0.0901 
+#>  
+#>           over dispersion : 0.4340673
 AIC(fBB1) 
-# [1] 1630.914
+#> [1] 1630.914
 var(rep(fBB1$bin.ran.var, times = fitted(fBB1)))
-# [1] 6.24275
+#> [1] 6.24275
 ```
 
 The `p-value` of 0.0901 $> 0.05$ indicates that the null hypothesis is
@@ -313,10 +317,10 @@ Function `EstMGFBetaBin` is used as below to estimate shape parameters
 ## estimating the shape parameter a, b
 estimate <- EstMGFBetaBin(Alcohol_data$Days, Alcohol_data$week1)
 print(c(estimate$a, estimate$b))  ## printing the estimated parameters a, b
-# [1] 0.7161628 0.5963324
+#> [1] 0.7161628 0.5963324
 ## finding the minimized negative log likelihood value 
 NegLLBetaBin(x=Alcohol_data$Days,freq=Alcohol_data$week1,a=estimate$a,b=estimate$b)
-# [1] 813.5872
+#> [1] 813.5872
 ```
 
 To fit the Beta-Binomial distribution for estimated (Method of Moments)
@@ -332,25 +336,25 @@ Distribution by the Method of Moments.
 ## fitting Beta-Binomial Distribution to estimated shape parameters
 fBB2 <- fitBetaBin(x=Alcohol_data$Days,obs.fre=Alcohol_data$week1,a=estimate$a,b=estimate$b)
 print(fBB2)
-# Call: 
-# fitBetaBin(x = Alcohol_data$Days, obs.freq = Alcohol_data$week1, 
-#     a = estimate$a, b = estimate$b)
-# 
-# Chi-squared test for Beta-Binomial Distribution 
-#   
-#           Observed Frequency :  47 54 43 40 40 41 39 95 
-#   
-#           expected Frequency :  56.6 43.01 39.57 38.97 40.27 43.89 52.39 84.29 
-#   
-#           estimated a parameter : 0.7161628   ,estimated b parameter : 0.5963324 
-#   
-#           X-squared : 9.7362   ,df : 5   ,p-value : 0.0831 
-#   
-#           over dispersion : 0.4324333
+#> Call: 
+#> fitBetaBin(x = Alcohol_data$Days, obs.freq = Alcohol_data$week1, 
+#>     a = estimate$a, b = estimate$b)
+#> 
+#> Chi-squared test for Beta-Binomial Distribution 
+#>  
+#>           Observed Frequency :  47 54 43 40 40 41 39 95 
+#>  
+#>           expected Frequency :  56.6 43.01 39.57 38.97 40.27 43.89 52.39 84.29 
+#>  
+#>           estimated a parameter : 0.7161628   ,estimated b parameter : 0.5963324 
+#>  
+#>           X-squared : 9.7362   ,df : 5   ,p-value : 0.0831 
+#>  
+#>           over dispersion : 0.4324333
 AIC(fBB2) 
-# [1] 1631.174
+#> [1] 1631.174
 var(rep(fBB2$bin.ran.var, times = fitted(fBB2)))
-# [1] 6.273084
+#> [1] 6.273084
 ```
 
 Results from Method of Moments to estimate the parameters have led to a
@@ -368,12 +372,12 @@ the selected input parameters are `c=10.1` and `l=5.1`.
 ## estimating the shape parameters
 estimate <- EstMLEGammaBin(x=Alcohol_data$Days,freq=Alcohol_data$week1,c=10.1,l=5.1)
 estimate@min ## extracting the minimized negative log likelihood value 
-# [1] 814.0045
+#> [1] 814.0045
 ## extracting the shape parameter c and l
 c1 <- bbmle::coef(estimate)[1] ; l1 <- bbmle::coef(estimate)[2]  
 print(c(c1, l1))   ## print shape parameters
-#         c         l 
-# 0.6036061 0.6030777
+#>         c         l 
+#> 0.6036061 0.6030777
 ```
 
 To fit the Gamma Binomial distribution for estimated shape parameters
@@ -388,25 +392,25 @@ Distribution.
 ## fitting Gamma Binomial Distribution to estimated shape parameters
 fGB <- fitGammaBin(x=Alcohol_data$Days,obs.fre=Alcohol_data$week1,c=c1,l=l1)
 print(fGB)
-# Call: 
-# fitGammaBin(x = Alcohol_data$Days, obs.freq = Alcohol_data$week1, 
-#     c = c1, l = l1)
-# 
-# Chi-squared test for Gamma Binomial Distribution 
-#   
-#       Observed Frequency :  47 54 43 40 40 41 39 95 
-#   
-#       expected Frequency :  54.59 41.39 38.7 38.71 40.54 44.69 53.79 86.58 
-#   
-#       estimated c parameter : 0.6036061   ,estimated l parameter : 0.6030777  
-#   
-#       X-squared : 10.6152   ,df : 5   ,p-value : 0.0596 
-#   
-#       over dispersion : 0.4308113
+#> Call: 
+#> fitGammaBin(x = Alcohol_data$Days, obs.freq = Alcohol_data$week1, 
+#>     c = c1, l = l1)
+#> 
+#> Chi-squared test for Gamma Binomial Distribution 
+#>  
+#>       Observed Frequency :  47 54 43 40 40 41 39 95 
+#>  
+#>       expected Frequency :  54.59 41.39 38.7 38.71 40.54 44.69 53.79 86.58 
+#>  
+#>       estimated c parameter : 0.6036061   ,estimated l parameter : 0.6030777  
+#>  
+#>       X-squared : 10.6152   ,df : 5   ,p-value : 0.0596 
+#>  
+#>       over dispersion : 0.4308113
 AIC(fGB) 
-# [1] 1632.009
+#> [1] 1632.009
 var(rep(fGB$bin.ran.var, times = fitted(fGB)))
-# [1] 6.228652
+#> [1] 6.228652
 ```
 
 The null hypothesis is not rejected at $5%$ significance level
@@ -423,12 +427,12 @@ the `EstMLEGammaBin` function. Suppose the selected input parameters are
 ## estimating the shape parameters
 estimate <- EstMLEGrassiaIIBin(x=Alcohol_data$Days,freq=Alcohol_data$week1,a=1.1,b=5.1)
 estimate@min ## extracting the minimized negative log likelihood value 
-# [1] 813.0395
+#> [1] 813.0395
 # extracting the shape parameter a and b
 a1 <- bbmle::coef(estimate)[1] ; b1 <- bbmle::coef(estimate)[2]  
 print(c(a1, b1))   #print shape parameters
-#         a         b 
-# 0.7285039 2.0251513
+#>         a         b 
+#> 0.7285039 2.0251513
 ```
 
 To fit the Grassia II Binomial distribution for estimated shape
@@ -443,25 +447,25 @@ Distribution.
 #fitting Grassia II Binomial Distribution to estimated shape parameters
 fGB2 <- fitGrassiaIIBin(x=Alcohol_data$Days,obs.fre=Alcohol_data$week1,a=a1,b=b1)
 print(fGB2)
-# Call: 
-# fitGrassiaIIBin(x = Alcohol_data$Days, obs.freq = Alcohol_data$week1, 
-#     a = a1, b = b1)
-# 
-# Chi-squared test for Grassia II Binomial Distribution 
-#   
-#       Observed Frequency :  47 54 43 40 40 41 39 95 
-#   
-#       expected Frequency :  55.02 42.36 39.08 38.51 39.78 43.39 52.13 88.74 
-#   
-#       estimated a parameter : 0.7285039   ,estimated b parameter : 2.025151  
-#   
-#       X-squared : 8.6999   ,df : 5   ,p-value : 0.1216 
-#   
-#       over dispersion : 0.259004
+#> Call: 
+#> fitGrassiaIIBin(x = Alcohol_data$Days, obs.freq = Alcohol_data$week1, 
+#>     a = a1, b = b1)
+#> 
+#> Chi-squared test for Grassia II Binomial Distribution 
+#>  
+#>       Observed Frequency :  47 54 43 40 40 41 39 95 
+#>  
+#>       expected Frequency :  55.02 42.36 39.08 38.51 39.78 43.39 52.13 88.74 
+#>  
+#>       estimated a parameter : 0.7285039   ,estimated b parameter : 2.025151  
+#>  
+#>       X-squared : 8.6999   ,df : 5   ,p-value : 0.1216 
+#>  
+#>       over dispersion : 0.259004
 AIC(fGB2) 
-# [1] 1630.079
+#> [1] 1630.079
 var(rep(fGB2$bin.ran.var, times = fitted(fGB2)))
-# [1] 6.299827
+#> [1] 6.299827
 ```
 
 The null hypothesis is not rejected at $5%$ significance level
@@ -478,12 +482,12 @@ the first set of randomly selected initial input shape parameters of
 #estimating the shape parameters 
 estimate <- EstMLEGHGBB(x=Alcohol_data$Days,freq=Alcohol_data$week1,a=10.1,b=1.1,c=5)
 estimate@min #extracting the minimized negative log likelihood value
-# [1] 809.2767
+#> [1] 809.2767
 #extracting the shape parameter a, b and c
 a1 <- bbmle::coef(estimate)[1] ; b1 <- bbmle::coef(estimate)[2] ; c1 <- bbmle::coef(estimate)[3]   
 print(c(a1, b1, c1))      #printing the shape parameters
-#         a         b         c 
-# 1.3506836 0.3245421 0.7005210
+#>         a         b         c 
+#> 1.3506836 0.3245421 0.7005210
 ```
 
 To fit the GHGBB distribution for estimated shape parameters the
@@ -499,27 +503,27 @@ Generalized Beta-Binomial Distribution.
 #fitting GHGBB distribution for estimated shape parameters
 fGG <- fitGHGBB(Alcohol_data$Days, Alcohol_data$week1, a1, b1, c1)
 print(fGG)
-# Call: 
-# fitGHGBB(x = Alcohol_data$Days, obs.freq = Alcohol_data$week1, 
-#     a = a1, b = b1, c = c1)
-# 
-# Chi-squared test for Gaussian Hypergeometric Generalized Beta-Binomial Distribution 
-#   
-#       Observed Frequency :  47 54 43 40 40 41 39 95 
-#   
-#       expected Frequency :  47.88 50.14 46.52 42.08 38.58 37.32 41.78 94.71 
-#   
-#       estimated a parameter : 1.350684   ,estimated b parameter : 0.3245421 ,
-#   
-#       estimated c parameter : 0.700521 
-#   
-#       X-squared : 1.2835   ,df : 4   ,p-value : 0.8642 
-#   
-#       over dispersion : 0.4324874
+#> Call: 
+#> fitGHGBB(x = Alcohol_data$Days, obs.freq = Alcohol_data$week1, 
+#>     a = a1, b = b1, c = c1)
+#> 
+#> Chi-squared test for Gaussian Hypergeometric Generalized Beta-Binomial Distribution 
+#>  
+#>       Observed Frequency :  47 54 43 40 40 41 39 95 
+#>  
+#>       expected Frequency :  47.88 50.14 46.52 42.08 38.58 37.32 41.78 94.71 
+#>  
+#>       estimated a parameter : 1.350684   ,estimated b parameter : 0.3245421 ,
+#>  
+#>       estimated c parameter : 0.700521 
+#>  
+#>       X-squared : 1.2835   ,df : 4   ,p-value : 0.8642 
+#>  
+#>       over dispersion : 0.4324874
 AIC(fGG) 
-# [1] 1624.553
+#> [1] 1624.553
 var(rep(fGG$bin.ran.var, times = fitted(fGG)))
-# [1] 6.249335
+#> [1] 6.249335
 ```
 
 The null hypothesis is not rejected at $5%$ significance level
@@ -536,12 +540,12 @@ input parameters where `a=1.1`, `b=5` and `c=10`.
 #estimating the shape parameters
 estimate <- EstMLEMcGBB(x = Alcohol_data$Days,freq = Alcohol_data$week1,a = 1.1, b = 5, c = 10)
 estimate@min  #extracting the negative log likelihood value which is minimized
-# [1] 809.7134
+#> [1] 809.7134
 #extracting the shape parameter a, b and c
 a1 <- bbmle::coef(estimate)[1] ; b1 <- bbmle::coef(estimate)[2] ; c1 <- bbmle::coef(estimate)[3] 
 print(c(a1, b1, c1))    #printing the shape parameters
-#           a           b           c 
-#  0.04099005  0.21082788 21.67349031
+#>           a           b           c 
+#>  0.04099005  0.21082788 21.67349031
 ```
 
 To fit the McGBB distribution for estimated shape parameters the
@@ -557,27 +561,27 @@ Beta-Binomial Distribution.
 #fitting the MCGBB distribution for estimated shape parameters
 fMB <- fitMcGBB(x=Alcohol_data$Days,obs.fre=Alcohol_data$week1,a=a1,b=b1,c=c1)
 print(fMB)
-# Call: 
-# fitMcGBB(x = Alcohol_data$Days, obs.freq = Alcohol_data$week1, 
-#     a = a1, b = b1, c = c1)
-# 
-# Chi-squared test for Mc-Donald Generalized Beta-Binomial Distribution 
-#   
-#       Observed Frequency :  47 54 43 40 40 41 39 95 
-#   
-#       expected Frequency :  51.37 45.63 43.09 41.5 40.42 39.97 42.11 94.91 
-#   
-#       estimated a parameter : 0.04099005   ,estimated b parameter : 0.2108279 ,
-#   
-#       estimated c parameter : 21.67349 
-#   
-#       X-squared : 2.2222   ,df : 4   ,p-value : 0.695 
-#   
-#       over dispersion : 0.4359023
+#> Call: 
+#> fitMcGBB(x = Alcohol_data$Days, obs.freq = Alcohol_data$week1, 
+#>     a = a1, b = b1, c = c1)
+#> 
+#> Chi-squared test for Mc-Donald Generalized Beta-Binomial Distribution 
+#>  
+#>       Observed Frequency :  47 54 43 40 40 41 39 95 
+#>  
+#>       expected Frequency :  51.37 45.63 43.09 41.5 40.42 39.97 42.11 94.91 
+#>  
+#>       estimated a parameter : 0.04099005   ,estimated b parameter : 0.2108279 ,
+#>  
+#>       estimated c parameter : 21.67349 
+#>  
+#>       X-squared : 2.2222   ,df : 4   ,p-value : 0.695 
+#>  
+#>       over dispersion : 0.4359023
 AIC(fMB) 
-# [1] 1625.427
+#> [1] 1625.427
 var(rep(fMB$bin.ran.var, times = fitted(fMB)))
-# [1] 6.288273
+#> [1] 6.288273
 ```
 
 The null hypothesis is not rejected at $5%$ significance level
@@ -678,7 +682,7 @@ flextable(data=BMD_flexed_Data,
 plot(Final_plot)
 ```
 
-<img src="man/figures/Table-1.png" width="1536" />
+<img src="man/figures/Table-1.png" width="100%" />
 
 ## Conclusion
 

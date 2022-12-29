@@ -19,7 +19,7 @@ Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomi
 Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
 Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
 
-Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491}
+Available at: \doi{10.5539/ijsp.v2n2p24}
 }
 \usage{
 Alcohol_data

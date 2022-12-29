@@ -352,7 +352,7 @@ mazUNI<-function(r)
 #' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of
 #' Mathematics & Computer Science, 4(24), pp.3497-3507.
 #'
-#' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427} .
+#' Available at: \doi{10.9734/BJMCS/2014/12299} .
 #'
 #' @examples
 #' #plotting the binomial random variables and probability values
@@ -421,7 +421,7 @@ dUniBin<-function(x,n)
 #' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of
 #' Mathematics & Computer Science, 4(24), pp.3497-3507.
 #'
-#' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427}.
+#' Available at: \doi{10.9734/BJMCS/2014/12299}.
 #'
 #' @examples
 #' #plotting the binomial random variables and probability values

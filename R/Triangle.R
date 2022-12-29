@@ -52,13 +52,13 @@
 #' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
 #' Modeling. Boston: Birkhuser Boston, pp. 21-33.
 #'
-#' Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2} .
+#' Available at: \doi{10.1007/978-0-8176-4626-4_2} .
 #'
 #' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
 #' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
 #' & Computer Science, 4(24), pp.3497-3507.
 #'
-#' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427} .
+#' Available at: \doi{10.9734/BJMCS/2014/12299} .
 #'
 #'
 #' @examples
@@ -184,13 +184,13 @@ dTRI<-function(p,mode)
 #' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
 #' Modeling. Boston: Birkhuser Boston, pp. 21-33.
 #'
-#' Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2} .
+#' Available at: \doi{10.1007/978-0-8176-4626-4_2} .
 #'
 #' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
 #' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
 #' & Computer Science, 4(24), pp.3497-3507.
 #'
-#' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427} .
+#' Available at: \doi{10.9734/BJMCS/2014/12299} .
 #'
 #'
 #' @examples
@@ -316,13 +316,13 @@ pTRI<-function(p,mode)
 #' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
 #' Modeling. Boston: Birkhuser Boston, pp. 21-33.
 #'
-#' Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2}.
+#' Available at: \doi{10.1007/978-0-8176-4626-4_2}.
 #'
 #' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
 #' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
 #' & Computer Science, 4(24), pp.3497-3507.
 #'
-#' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427} .
+#' Available at: \doi{10.9734/BJMCS/2014/12299} .
 #'
 #'
 #' @examples
@@ -453,13 +453,13 @@ mazTRI<-function(r,mode)
 #' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
 #' Modeling. Boston: Birkhuser Boston, pp. 21-33.
 #'
-#' Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2} .
+#' Available at: \doi{10.1007/978-0-8176-4626-4_2} .
 #'
 #' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
 #' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
 #' & Computer Science, 4(24), pp.3497-3507.
 #'
-#' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427}.
+#' Available at: \doi{10.9734/BJMCS/2014/12299}.
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -602,13 +602,13 @@ dTriBin<-function(x,n,mode)
 #' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
 #' Modeling. Boston: Birkhuser Boston, pp. 21-33.
 #'
-#' Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2}.
+#' Available at: \doi{10.1007/978-0-8176-4626-4_2}.
 #'
 #' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
 #' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
 #' & Computer Science, 4(24), pp.3497-3507.
 #'
-#' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427}.
+#' Available at: \doi{10.9734/BJMCS/2014/12299}.
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -684,13 +684,13 @@ pTriBin<-function(x,n,mode)
 #' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
 #' Modeling. Boston: Birkhuser Boston, pp. 21-33.
 #'
-#' Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2}.
+#' Available at: \doi{10.1007/978-0-8176-4626-4_2}.
 #'
 #' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
 #' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
 #' & Computer Science, 4(24), pp.3497-3507.
 #'
-#' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427}.
+#' Available at: \doi{10.9734/BJMCS/2014/12299}.
 #'
 #' @examples
 #' No.D.D <- 0:7    #assigning the Random variables
@@ -798,13 +798,13 @@ NegLLTriBin<-function(x,freq,mode)
 #' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
 #' Modeling. Boston: Birkhuser Boston, pp. 21-33.
 #'
-#' Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2}.
+#' Available at: \doi{10.1007/978-0-8176-4626-4_2}.
 #'
 #' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
 #' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
 #' & Computer Science, 4(24), pp.3497-3507.
 #'
-#' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427}.
+#' Available at: \doi{10.9734/BJMCS/2014/12299}.
 #'
 #' @examples
 #' No.D.D <- 0:7   #assigning the random variables
@@ -1005,13 +1005,13 @@ coef.mlTRI<-function(object,...)
 #' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
 #' Modeling. Boston: Birkhuser Boston, pp. 21-33.
 #'
-#' Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2}.
+#' Available at: \doi{10.1007/978-0-8176-4626-4_2}.
 #'
 #' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
 #' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
 #' & Computer Science, 4(24), pp.3497-3507.
 #'
-#' Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427}.
+#' Available at: \doi{10.9734/BJMCS/2014/12299}.
 #'
 #' @examples
 #' No.D.D <- 0:7      #assigning the random variables

@@ -72,5 +72,5 @@ Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangula
 Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of
 Mathematics & Computer Science, 4(24), pp.3497-3507.
 
-Available at: \url{http://www.sciencedomain.org/abstract.php?iid=699&id=6&aid=6427} .
+Available at: \doi{10.9734/BJMCS/2014/12299} .
 }

@@ -83,7 +83,7 @@ Wiley Series in Probability and Mathematical Statistics, Wiley.
 Trenkler, G., 1996. Continuous univariate distributions. Computational Statistics & Data Analysis,
 21(1), p.119.
 
-Available at: \url{http://linkinghub.elsevier.com/retrieve/pii/0167947396900158}.
+Available at: \doi{10.1016/0167-9473(96)90015-8}.
 }
 \seealso{
 \code{\link[stats]{Beta}}

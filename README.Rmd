@@ -1,11 +1,15 @@
 ---
-title: "fitODBOD"
 output: github_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,comment = "#",collapse = TRUE, fig.retina=2, fig.path = "man/figures/")
+knitr::opts_chunk$set(echo = TRUE,comment = "#>",collapse = TRUE, fig.retina=2, fig.path = "man/figures/",
+                      out.width = "100%")
 ```
+
+# fitODBOD <img src="man/figures/logo.png" align="right" alt="" width="150" />
+
+<!-- badges: start -->
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-last-release/fitODBOD)](https://cran.r-project.org/package=fitODBOD)
 [![packageversion](https://img.shields.io/badge/Package%20version-1.4.1-orange.svg?style=flat-square)](commits/master)
@@ -24,7 +28,9 @@ knitr::opts_chunk$set(echo = TRUE,comment = "#",collapse = TRUE, fig.retina=2, f
 [![status](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4/status.svg)](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3265356.svg)](https://doi.org/10.5281/zenodo.3265356)
 
-## How to engage with "fitODBOD" the first time ? <img src="man/figures/logo.png" align="right" alt="" width="150" />
+<!-- badges: end -->
+
+## How to engage with "fitODBOD" the first time ? 
 
 ```{r fitODBOD from GitHub or CRAN,eval=FALSE}
 ## Installing the package from GitHub

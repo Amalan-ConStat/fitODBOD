@@ -51,7 +51,7 @@
 #' Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
 #' of the beta-binomial distribution. Journal of the Royal Statistical Society. Series C (Applied Statistics), 56(1), 51-61.
 #'
-#' Available at : \url{http://dx.doi.org/10.1111/j.1467-9876.2007.00564.x}
+#' Available at : \doi{10.1111/j.1467-9876.2007.00564.x}
 #'
 #' Pearson, J., 2009. Computation of Hypergeometric Functions. Transformation, (September), p.1--123.
 #'
@@ -206,7 +206,7 @@
 #' Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
 #' of the beta-binomial distribution. Journal of the Royal Statistical Society. Series C (Applied Statistics), 56(1), 51-61.
 #'
-#' Available at : \url{http://dx.doi.org/10.1111/j.1467-9876.2007.00564.x}
+#' Available at : \doi{10.1111/j.1467-9876.2007.00564.x}
 #'
 #' Pearson, J., 2009. Computation of Hypergeometric Functions. Transformation, (September), p.1--123.
 #'
@@ -360,7 +360,7 @@ pGHGBeta<-function(p,n,a,b,c)
 #' Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
 #' of the beta-binomial distribution. Journal of the Royal Statistical Society. Series C (Applied Statistics), 56(1), 51-61.
 #'
-#' Available at : \url{http://dx.doi.org/10.1111/j.1467-9876.2007.00564.x}
+#' Available at : \doi{10.1111/j.1467-9876.2007.00564.x}
 #'
 #' Pearson, J., 2009. Computation of Hypergeometric Functions. Transformation, (September), p.1--123.
 #'
@@ -525,7 +525,7 @@ mazGHGBeta<-function(r,n,a,b,c)
 #' Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
 #' of the beta-binomial distribution. Journal of the Royal Statistical Society. Series C (Applied Statistics), 56(1), 51-61.
 #'
-#' Available at : \url{http://dx.doi.org/10.1111/j.1467-9876.2007.00564.x}.
+#' Available at : \doi{10.1111/j.1467-9876.2007.00564.x}.
 #'
 #' Pearson, J., 2009. Computation of Hypergeometric Functions. Transformation, (September), p.1--123.
 #'
@@ -668,7 +668,7 @@ dGHGBB<-function(x,n,a,b,c)
 #' Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
 #' of the beta-binomial distribution. Journal of the Royal Statistical Society. Series C (Applied Statistics), 56(1), 51-61.
 #'
-#' Available at : \url{http://dx.doi.org/10.1111/j.1467-9876.2007.00564.x}
+#' Available at : \doi{10.1111/j.1467-9876.2007.00564.x}
 #'
 #' Pearson, J., 2009. Computation of Hypergeometric Functions. Transformation, (September), p.1--123.
 #'
@@ -748,7 +748,7 @@ pGHGBB<-function(x,n,a,b,c)
 #' Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
 #' of the beta-binomial distribution. Journal of the Royal Statistical Society. Series C (Applied Statistics), 56(1), 51-61.
 #'
-#' Available at : \url{http://dx.doi.org/10.1111/j.1467-9876.2007.00564.x}
+#' Available at : \doi{10.1111/j.1467-9876.2007.00564.x}
 #'
 #' Pearson, J., 2009. Computation of Hypergeometric Functions. Transformation, (September), p.1--123.
 #'
@@ -841,7 +841,7 @@ NegLLGHGBB<-function(x,freq,a,b,c)
 #' Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
 #' of the beta-binomial distribution. Journal of the Royal Statistical Society. Series C (Applied Statistics), 56(1), 51-61.
 #'
-#' Available at : \url{http://dx.doi.org/10.1111/j.1467-9876.2007.00564.x}
+#' Available at : \doi{10.1111/j.1467-9876.2007.00564.x}
 #'
 #' Pearson, J., 2009. Computation of Hypergeometric Functions. Transformation, (September), p.1--123.
 #'
@@ -955,7 +955,7 @@ EstMLEGHGBB<-function(x,freq,a,b,c,...)
 #' Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
 #' of the beta-binomial distribution. Journal of the Royal Statistical Society. Series C (Applied Statistics), 56(1), 51-61.
 #'
-#' Available at : \url{http://dx.doi.org/10.1111/j.1467-9876.2007.00564.x}
+#' Available at : \doi{10.1111/j.1467-9876.2007.00564.x}
 #'
 #' Pearson, J., 2009. Computation of Hypergeometric Functions. Transformation, (September), p.1--123.
 #'

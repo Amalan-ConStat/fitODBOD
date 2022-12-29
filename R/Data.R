@@ -25,7 +25,7 @@
 #' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
 #' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
 #'
-#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491}
+#' Available at: \doi{10.5539/ijsp.v2n2p24}
 #'
  "Alcohol_data"
 
@@ -53,7 +53,7 @@
 #' generalization of the binomial distribution and its properties and applications.
 #' Statistics & Probability Letters, 87, pp.158-166.
 #'
-#' Available at: \url{http://conteudo.icmc.usp.br/CMS/Arquivos/arquivos_enviados/BIBLIOTECA_113_NSE_90.pdf}
+#' Available at: \doi{10.1016/j.spl.2014.01.019}
 #'
  "Male_Children"
 
@@ -88,7 +88,7 @@
 #' Hughes, G., 1993. Using the Beta-Binomial Distribution to Describe Aggregated Patterns of Disease Incidence.
 #' Phytopathology, 83(9), p.759.
 #'
-#' Available at: \url{http://www.apsnet.org/publications/phytopathology/backissues/Documents/1993Abstracts/Phyto_83_759.htm}.
+#' Available at: \doi{10.1094/Phyto-83-759}.
 #'
 "Plant_DiseaseData"
 
@@ -116,7 +116,7 @@
 #' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
 #' Modeling. Boston: Birkhuser Boston, pp. 21-33.
 #'
-#' Available at: \url{http://dx.doi.org/10.1007/978-0-8176-4626-4_2}.
+#' Available at: \doi{10.1007/978-0-8176-4626-4_2}.
 #'
 "Course_data"
 
@@ -143,7 +143,7 @@
 #' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in
 #' Statistics - Theory and Methods, 14(6), pp.1497-1506.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/abs/10.1080/03610928508828990}.
+#' Available at: \doi{10.1080/03610928508828990}
 "Chromosome_data"
 
 
@@ -176,7 +176,7 @@
 #' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in
 #' Statistics - Theory and Methods, 14(6), pp.1497-1506.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/abs/10.1080/03610928508828990}
+#' Available at: \doi{10.1080/03610928508828990}
 #'
 "Exam_data"
 
@@ -273,7 +273,7 @@
 #' @export
 .onAttach<-function(libname,pkgname)
 {
-  packageStartupMessage("Hello, This is Amalan. For more details refer --> https://amalan-constat.github.io/R-fitODBOD/index.html")
+  packageStartupMessage("Hello, This is Amalan. For more details refer --> https://amalan-constat.github.io/fitODBOD/index.html")
 }
 
 #' Binomial Data Extraction from Raw data

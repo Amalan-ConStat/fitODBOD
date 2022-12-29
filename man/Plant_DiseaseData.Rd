@@ -17,7 +17,7 @@ Extracted from
 Hughes, G., 1993. Using the Beta-Binomial Distribution to Describe Aggregated Patterns of Disease Incidence.
 Phytopathology, 83(9), p.759.
 
-Available at: \url{http://www.apsnet.org/publications/phytopathology/backissues/Documents/1993Abstracts/Phyto_83_759.htm}.
+Available at: \doi{10.1094/Phyto-83-759}.
 }
 \usage{
 Plant_DiseaseData

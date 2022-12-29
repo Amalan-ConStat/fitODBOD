@@ -48,7 +48,7 @@
 #' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
 #' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
 #'
-#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491} .
+#' Available at: \doi{10.5539/ijsp.v2n2p24} .
 #'
 #' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
 #' Beta - Binomial Parameters. , (October), pp.702-709.
@@ -56,7 +56,7 @@
 #' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
 #' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024}.
+#' Available at: \doi{10.5539/ijsp.v2n2p24}.
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -163,7 +163,7 @@ dGBeta1<-function(p,a,b,c)
 #' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
 #' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
 #'
-#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491}.
+#' Available at: \doi{10.5539/ijsp.v2n2p24}.
 #'
 #' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
 #' Beta - Binomial Parameters. , (October), pp.702-709.
@@ -171,7 +171,7 @@ dGBeta1<-function(p,a,b,c)
 #' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
 #' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024}.
+#' Available at: \doi{10.1080/03610918.2015.1088024}.
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -289,7 +289,7 @@ pGBeta1<-function(p,a,b,c)
 #' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
 #' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
 #'
-#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491}.
+#' Available at: \doi{10.5539/ijsp.v2n2p24}.
 #'
 #' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
 #' Beta - Binomial Parameters. , (October), pp.702-709.
@@ -297,7 +297,7 @@ pGBeta1<-function(p,a,b,c)
 #' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
 #' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024}.
+#' Available at: \doi{10.1080/03610918.2015.1088024}.
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -412,7 +412,7 @@ mazGBeta1<-function(r,a,b,c)
 #' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
 #' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
 #'
-#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491}.
+#' Available at: \doi{10.5539/ijsp.v2n2p24}.
 #'
 #' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
 #' Beta - Binomial Parameters. , (October), pp.702-709.
@@ -420,7 +420,7 @@ mazGBeta1<-function(r,a,b,c)
 #' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
 #' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024}.
+#' Available at: \doi{10.1080/03610918.2015.1088024}.
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -545,7 +545,7 @@ dMcGBB<-function(x,n,a,b,c)
 #' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
 #' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
 #'
-#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491}.
+#' Available at: \doi{10.5539/ijsp.v2n2p24}.
 #'
 #' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
 #' Beta - Binomial Parameters. , (October), pp.702-709.
@@ -553,7 +553,7 @@ dMcGBB<-function(x,n,a,b,c)
 #' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
 #' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024}.
+#' Available at: \doi{10.1080/03610918.2015.1088024}.
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -626,7 +626,7 @@ pMcGBB<-function(x,n,a,b,c)
 #' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
 #' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
 #'
-#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491}.
+#' Available at: \doi{10.5539/ijsp.v2n2p24}.
 #'
 #' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
 #' Beta - Binomial Parameters. , (October), pp.702-709.
@@ -634,7 +634,7 @@ pMcGBB<-function(x,n,a,b,c)
 #' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
 #' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024}.
+#' Available at: \doi{10.1080/03610918.2015.1088024}.
 #'
 #' @examples
 #' No.D.D <- 0:7            #assigning the random variables
@@ -719,7 +719,7 @@ NegLLMcGBB<-function(x,freq,a,b,c)
 #' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
 #' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
 #'
-#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491}.
+#' Available at: \doi{10.5539/ijsp.v2n2p24}.
 #'
 #' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
 #' Beta - Binomial Parameters. , (October), pp.702-709.
@@ -727,7 +727,7 @@ NegLLMcGBB<-function(x,freq,a,b,c)
 #' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
 #' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024}.
+#' Available at: \doi{10.1080/03610918.2015.1088024}.
 #'
 #' @seealso
 #' \code{\link[bbmle]{mle2}}
@@ -843,7 +843,7 @@ EstMLEMcGBB<-function(x,freq,a,b,c,...)
 #' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
 #' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
 #'
-#' Available at: \url{http://www.ccsenet.org/journal/index.php/ijsp/article/view/23491}.
+#' Available at: \doi{10.5539/ijsp.v2n2p24}.
 #'
 #' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
 #' Beta - Binomial Parameters. , (October), pp.702-709.
@@ -851,7 +851,7 @@ EstMLEMcGBB<-function(x,freq,a,b,c,...)
 #' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
 #' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
 #'
-#' Available at: \url{http://www.tandfonline.com/doi/full/10.1080/03610918.2015.1088024}.
+#' Available at: \doi{10.1080/03610918.2015.1088024}.
 #'
 #' @seealso
 #' \code{\link[bbmle]{mle2}}

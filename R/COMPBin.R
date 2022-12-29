@@ -41,7 +41,7 @@
 #' generalization of the binomial distribution and its properties and applications.
 #' Statistics & Probability Letters, 87, pp.158-166.
 #'
-#' Available at: \url{http://conteudo.icmc.usp.br/CMS/Arquivos/arquivos_enviados/BIBLIOTECA_113_NSE_90.pdf}
+#' Available at: \doi{10.1016/j.spl.2014.01.019}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -178,7 +178,7 @@ dCOMPBin<-function(x,n,p,v)
 #' generalization of the binomial distribution and its properties and applications.
 #' Statistics & Probability Letters, 87, pp.158-166.
 #'
-#' Available at: \url{http://conteudo.icmc.usp.br/CMS/Arquivos/arquivos_enviados/BIBLIOTECA_113_NSE_90.pdf}
+#' Available at: \doi{10.1016/j.spl.2014.01.019}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -255,7 +255,7 @@ pCOMPBin<-function(x,n,p,v)
 #' generalization of the binomial distribution and its properties and applications.
 #' Statistics & Probability Letters, 87, pp.158-166.
 #'
-#' Available at: \url{http://conteudo.icmc.usp.br/CMS/Arquivos/arquivos_enviados/BIBLIOTECA_113_NSE_90.pdf}
+#' Available at: \doi{10.1016/j.spl.2014.01.019}
 #'
 #' @examples
 #' No.D.D <- 0:7         #assigning the random variables
@@ -354,7 +354,7 @@ NegLLCOMPBin<-function(x,freq,p,v)
 #' generalization of the binomial distribution and its properties and applications.
 #' Statistics & Probability Letters, 87, pp.158-166.
 #'
-#' Available at: \url{http://conteudo.icmc.usp.br/CMS/Arquivos/arquivos_enviados/BIBLIOTECA_113_NSE_90.pdf}
+#' Available at: \doi{10.1016/j.spl.2014.01.019}
 #'
 #' @examples
 #' No.D.D <- 0:7               #assigning the random variables
@@ -457,7 +457,7 @@ EstMLECOMPBin<-function(x,freq,p,v,...)
 #' generalization of the binomial distribution and its properties and applications.
 #' Statistics & Probability Letters, 87, pp.158-166.
 #'
-#' Available at: \url{http://conteudo.icmc.usp.br/CMS/Arquivos/arquivos_enviados/BIBLIOTECA_113_NSE_90.pdf}
+#' Available at: \doi{10.1016/j.spl.2014.01.019}
 #'
 #' @examples
 #' No.D.D <- 0:7                    #assigning the random variables

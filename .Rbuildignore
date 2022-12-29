@@ -2,9 +2,9 @@
 ^renv\.lock$
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^LICENSE$
 ^README\.md$
 ^NEWS\.md$
+^LICENSE\.md$
 ^\.gitignore$
 ^README\.Rmd$
 ^CONDUCT\.md$

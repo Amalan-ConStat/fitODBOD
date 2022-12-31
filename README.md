@@ -4,26 +4,23 @@
 <!-- badges: start -->
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-last-release/fitODBOD)](https://cran.r-project.org/package=fitODBOD)
-[![packageversion](https://img.shields.io/badge/Package%20version-1.4.1-orange.svg?style=flat-square)](commits/master)
+[![packageversion](https://img.shields.io/badge/Package%20version-1.4.1-orange.svg?style=flat-square)](commits/main)
 [![GitHub
-license](https://img.shields.io/github/license/Amalan-ConStat/R-fitODBOD.svg?style=popout)](https://github.com/Amalan-ConStat/R-fitODBOD/blob/master/LICENSE)
-
+license](https://img.shields.io/github/license/Amalan-ConStat/R-fitODBOD.svg?style=popout)](https://github.com/Amalan-ConStat/R-fitODBOD/blob/main/LICENSE)
 ![downloads](http://cranlogs.r-pkg.org/badges/grand-total/fitODBOD)
 ![downloads](https://cranlogs.r-pkg.org/badges/fitODBOD)
 ![downloads](http://cranlogs.r-pkg.org/badges/last-week/fitODBOD)
-
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![GitHub
 issues](https://img.shields.io/github/issues/Amalan-ConStat/R-fitODBOD.svg?style=popout)](https://github.com/Amalan-ConStat/R-fitODBOD/issues)
 [![Travis build
-status](https://travis-ci.org/Amalan-ConStat/R-fitODBOD.svg?branch=master)](https://travis-ci.org/Amalan-ConStat/R-fitODBOD)
+status](https://travis-ci.org/Amalan-ConStat/R-fitODBOD.svg?branch=main)](https://travis-ci.org/Amalan-ConStat/R-fitODBOD)
 [![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/Amalan-ConStat/R-fitODBOD?branch=master&svg=true)](https://ci.appveyor.com/project/Amalan-ConStat/R-fitODBOD)
+status](https://ci.appveyor.com/api/projects/status/github/Amalan-ConStat/R-fitODBOD?branch=main&svg=true)](https://ci.appveyor.com/project/Amalan-ConStat/R-fitODBOD)
 [![Codecov test
-coverage](https://codecov.io/gh/Amalan-ConStat/R-fitODBOD/branch/master/graph/badge.svg)](https://codecov.io/gh/Amalan-ConStat/R-fitODBOD?branch=master)
-
+coverage](https://codecov.io/gh/Amalan-ConStat/fitODBOD/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Amalan-ConStat/fitODBOD?branch=main)
 [![status](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4/status.svg)](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3265356.svg)](https://doi.org/10.5281/zenodo.3265356)
 
@@ -88,7 +85,7 @@ table as follows.
 
 ``` r
 library("fitODBOD"); library("flextable",quietly = TRUE)    ## Loading packages
-#> Hello, This is Amalan. For more details refer --> https://amalan-constat.github.io/R-fitODBOD/index.html
+#> Hello, This is Amalan. For more details refer --> https://amalan-constat.github.io/fitODBOD/index.html
 #> Warning: package 'flextable' was built under R version 4.1.3
 print(Alcohol_data)     ## print the alcohol consumption data set
 #>   Days week1 week2
@@ -113,20 +110,20 @@ to prepare the appropriate format as follows.
 ``` r
 datapoints <- sample(0:7, 340, replace = TRUE) ## creating a set of raw BOD 
 head(datapoints)  ## first few observations of datapoints dataset
-#> [1] 7 3 1 6 2 0
+#> [1] 3 4 2 1 7 4
 
 ## extracting and printing BOD in a usable way for the package
 new_data <- BODextract(datapoints)
 matrix(c(new_data$RV, new_data$Freq), ncol=2, byrow = FALSE)
 #>      [,1] [,2]
-#> [1,]    0   32
-#> [2,]    1   38
-#> [3,]    2   41
-#> [4,]    3   53
-#> [5,]    4   54
-#> [6,]    5   38
-#> [7,]    6   51
-#> [8,]    7   33
+#> [1,]    0   38
+#> [2,]    1   45
+#> [3,]    2   55
+#> [4,]    3   50
+#> [5,]    4   33
+#> [6,]    5   44
+#> [7,]    6   37
+#> [8,]    7   38
 ```
 
 ### Step 2

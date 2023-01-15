@@ -143,11 +143,10 @@
 </div>
 <!-- badges: start -->
 
-
-
-
-
-<!-- badges: end -->
+<p><a href="https://cran.r-project.org/package=fitODBOD" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/grand-total/fitODBOD?color=green"></a> <a href="https://cran.r-project.org/package=fitODBOD" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/last-month/fitODBOD?color=green"></a> <a href="https://cran.r-project.org/package=fitODBOD" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/last-week/fitODBOD?color=green"></a></p>
+<p><a href="https://www.repostatus.org/#active" class="external-link"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active - The project has reached a stable, usable state and is being actively developed."></a> <a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg"></a> <a href="https://github.com/Amalan-ConStat/fitODBOD/issues" class="external-link"><img src="https://img.shields.io/github/issues/Amalan-ConStat/fitODBOD.svg?style=popout" alt="GitHub issues"></a></p>
+<p><a href="https://app.codecov.io/gh/Amalan-ConStat/fitODBOD?branch=main" class="external-link"><img src="https://codecov.io/gh/Amalan-ConStat/fitODBOD/branch/main/graph/badge.svg" alt="Codecov test coverage"></a> <a href="https://www.codefactor.io/repository/github/Amalan-ConStat/fitODBOD" class="external-link"><img src="https://www.codefactor.io/repository/github/Amalan-ConStat/fitODBOD/badge" alt="CodeFactor"></a> <a href="https://github.com/Amalan-ConStat/fitODBOD" class="external-link"><img src="https://img.shields.io/github/languages/code-size/Amalan-ConStat/fitODBOD.svg"></a></p>
+<p><a href="http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4" class="external-link"><img src="http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4/status.svg" alt="status"></a> <a href="https://doi.org/10.5281/zenodo.3265356" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.3265356.svg" alt="DOI"></a> <!-- badges: end --></p>
 <div class="section level2">
 <h2 id="how-to-engage-with-fitodbod-the-first-time-">How to engage with “fitODBOD” the first time ?<a class="anchor" aria-label="anchor" href="#how-to-engage-with-fitodbod-the-first-time-"></a>
 </h2>
@@ -255,20 +254,20 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">datapoints</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">7</span>, <span class="fl">340</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">## creating a set of raw BOD </span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">datapoints</span><span class="op">)</span>  <span class="co">## first few observations of datapoints dataset</span></span>
-<span><span class="co">#&gt; [1] 1 2 0 3 7 1</span></span>
+<span><span class="co">#&gt; [1] 7 5 3 4 7 2</span></span>
 <span></span>
 <span><span class="co">## extracting and printing BOD in a usable way for the package</span></span>
 <span><span class="va">new_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/BODextract.html">BODextract</a></span><span class="op">(</span><span class="va">datapoints</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">new_data</span><span class="op">$</span><span class="va">RV</span>, <span class="va">new_data</span><span class="op">$</span><span class="va">Freq</span><span class="op">)</span>, ncol<span class="op">=</span><span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      [,1] [,2]</span></span>
-<span><span class="co">#&gt; [1,]    0   48</span></span>
-<span><span class="co">#&gt; [2,]    1   48</span></span>
-<span><span class="co">#&gt; [3,]    2   34</span></span>
-<span><span class="co">#&gt; [4,]    3   49</span></span>
-<span><span class="co">#&gt; [5,]    4   40</span></span>
-<span><span class="co">#&gt; [6,]    5   35</span></span>
-<span><span class="co">#&gt; [7,]    6   44</span></span>
-<span><span class="co">#&gt; [8,]    7   42</span></span></code></pre></div>
+<span><span class="co">#&gt; [1,]    0   45</span></span>
+<span><span class="co">#&gt; [2,]    1   45</span></span>
+<span><span class="co">#&gt; [3,]    2   43</span></span>
+<span><span class="co">#&gt; [4,]    3   47</span></span>
+<span><span class="co">#&gt; [5,]    4   37</span></span>
+<span><span class="co">#&gt; [6,]    5   38</span></span>
+<span><span class="co">#&gt; [7,]    6   48</span></span>
+<span><span class="co">#&gt; [8,]    7   37</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="step-2">Step 2<a class="anchor" aria-label="anchor" href="#step-2"></a>

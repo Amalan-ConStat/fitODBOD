@@ -29,7 +29,6 @@ coverage](https://codecov.io/gh/Amalan-ConStat/fitODBOD/branch/main/graph/badge.
 
 [![status](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4/status.svg)](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3265356.svg)](https://doi.org/10.5281/zenodo.3265356)
-
 <!-- badges: end -->
 
 ## How to engage with “fitODBOD” the first time ?
@@ -120,20 +119,20 @@ to prepare the appropriate format as follows.
 ``` r
 datapoints <- sample(0:7, 340, replace = TRUE) ## creating a set of raw BOD 
 head(datapoints)  ## first few observations of datapoints dataset
-#> [1] 1 2 0 3 7 1
+#> [1] 7 5 3 4 7 2
 
 ## extracting and printing BOD in a usable way for the package
 new_data <- BODextract(datapoints)
 matrix(c(new_data$RV, new_data$Freq), ncol=2, byrow = FALSE)
 #>      [,1] [,2]
-#> [1,]    0   48
-#> [2,]    1   48
-#> [3,]    2   34
-#> [4,]    3   49
-#> [5,]    4   40
-#> [6,]    5   35
-#> [7,]    6   44
-#> [8,]    7   42
+#> [1,]    0   45
+#> [2,]    1   45
+#> [3,]    2   43
+#> [4,]    3   47
+#> [5,]    4   37
+#> [6,]    5   38
+#> [7,]    6   48
+#> [8,]    7   37
 ```
 
 ### Step 2

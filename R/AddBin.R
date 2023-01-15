@@ -432,7 +432,7 @@ NegLLAddBin<-function(x,freq,p,alpha)
 #'
 #' #extracting the estimated parameters
 #' coef(results)
-#'          }
+#' }
 #' @export
 EstMLEAddBin<-function(x,freq)
 {
@@ -674,7 +674,7 @@ coef.mlAB<-function(object,...)
 #'
 #' #extract fitted values
 #' fitted(results)
-#'        }
+#' }
 #'
 #' @export
 fitAddBin<-function(x,obs.freq,p,alpha)

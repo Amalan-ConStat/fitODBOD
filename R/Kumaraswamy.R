@@ -437,10 +437,10 @@ mazKUM<-function(r,a,b)
 #' a <- c(1,2,5,10,.85)
 #' plot(0,0,main="Kumaraswamy binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
-#' for (i in 1:5)
-#' {
+#' for (i in 1:5) {
 #' lines(0:10,dKumBin(0:10,10,a[i],a[i])$pdf,col = col[i],lwd=2.85)
 #' points(0:10,dKumBin(0:10,10,a[i],a[i])$pdf,col = col[i],pch=16)
+#'   }
 #' }
 #'
 #' dKumBin(0:10,10,4,2)$pdf  #extracting the pdf values
@@ -448,19 +448,19 @@ mazKUM<-function(r,a,b)
 #' dKumBin(0:10,10,4,2)$var  #extracting the variance
 #' dKumBin(0:10,10,4,2)$over.dis.para #extracting the over dispersion value
 #'
+#' \dontrun{
 #' #plotting the random variables and cumulative probability values
 #' col <- rainbow(5)
 #' a <- c(1,2,5,10,.85)
 #' plot(0,0,main="Cumulative probability function graph",xlab="Binomial random variable",
 #' ylab="Cumulative probability function values",xlim = c(0,10),ylim = c(0,1))
-#' for (i in 1:5)
-#' {
+#' for (i in 1:5) {
 #' lines(0:10,pKumBin(0:10,10,a[i],a[i]),col = col[i])
 #' points(0:10,pKumBin(0:10,10,a[i],a[i]),col = col[i])
+#'   }
 #' }
 #'
 #' pKumBin(0:10,10,4,2)    #acquiring the cumulative probability values
-#'          }
 #'
 #' @export
 dKumBin<-function(x,n,a,b,it=25000)
@@ -591,10 +591,10 @@ dKumBin<-function(x,n,a,b,it=25000)
 #' a <- c(1,2,5,10,.85)
 #' plot(0,0,main="Kumaraswamy binomial probability function graph",xlab="Binomial random variable",
 #' ylab="Probability function values",xlim = c(0,10),ylim = c(0,0.5))
-#' for (i in 1:5)
-#' {
+#' for (i in 1:5) {
 #' lines(0:10,dKumBin(0:10,10,a[i],a[i])$pdf,col = col[i],lwd=2.85)
 #' points(0:10,dKumBin(0:10,10,a[i],a[i])$pdf,col = col[i],pch=16)
+#'   }
 #' }
 #'
 #' dKumBin(0:10,10,4,2)$pdf  #extracting the pdf values
@@ -602,19 +602,18 @@ dKumBin<-function(x,n,a,b,it=25000)
 #' dKumBin(0:10,10,4,2)$var  #extracting the variance
 #' dKumBin(0:10,10,4,2)$over.dis.para #extracting the over dispersion value
 #'
+#' \dontrun{
 #' #plotting the random variables and cumulative probability values
 #' col <- rainbow(5)
 #' a <- c(1,2,5,10,.85)
 #' plot(0,0,main="Cumulative probability function graph",xlab="Binomial random variable",
 #' ylab="Cumulative probability function values",xlim = c(0,10),ylim = c(0,1))
-#' for (i in 1:5)
-#' {
+#' for (i in 1:5) {
 #' lines(0:10,pKumBin(0:10,10,a[i],a[i]),col = col[i])
 #' points(0:10,pKumBin(0:10,10,a[i],a[i]),col = col[i])
+#'   }
 #' }
-#'
 #' pKumBin(0:10,10,4,2)    #acquiring the cumulative probability values
-#'         }
 #'
 #' @export
 pKumBin<-function(x,n,a,b,it=25000)
@@ -668,7 +667,7 @@ pKumBin<-function(x,n,a,b,it=25000)
 #'
 #' \dontrun{
 #' NegLLKumBin(No.D.D,Obs.fre.1,1.3,4.4) #acquiring the negative log likelihood value
-#'         }
+#' }
 #'
 #' @export
 NegLLKumBin<-function(x,freq,a,b,it=25000)
@@ -781,7 +780,7 @@ NegLLKumBin<-function(x,freq,a,b,it=25000)
 #' parameters1 <- EstMLEKumBin(x=No.D.D,freq=Obs.fre.1,a=10.1,b=1.1,it=10000)
 #'
 #' bbmle::coef(parameters1)   #extracting the parameters
-#'         }
+#' }
 #' @export
 EstMLEKumBin<-function(x,freq,a,b,it,...)
 {
@@ -907,7 +906,7 @@ EstMLEKumBin<-function(x,freq,a,b,it,...)
 #'
 #' #extracting the residuals
 #' residuals(results)
-#'          }
+#' }
 #'
 #' @export
 fitKumBin<-function(x,obs.freq,a,b,it)

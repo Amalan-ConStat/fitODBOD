@@ -41,7 +41,7 @@ Obs.fre.1 <- c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencie
 
 \dontrun{
 NegLLKumBin(No.D.D,Obs.fre.1,1.3,4.4) #acquiring the negative log likelihood value
-        }
+}
 
 }
 \references{

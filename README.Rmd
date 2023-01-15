@@ -79,7 +79,7 @@ To demonstrate the process the Alcohol Consumption Data, which is the most commo
 
 The Alcohol consumption data is already in the necessary format to apply steps $2$ to $5$ and hence, step $1$ can be avoided. The steps $2$ to $5$ can be applied only if the data-set is in the form of a frequency table as follows.
 
-```{r ,Step 1_0}
+```{r Step_1_0}
 library("fitODBOD"); library("flextable",quietly = TRUE)    ## Loading packages
 print(Alcohol_data)     ## print the alcohol consumption data set
 sum(Alcohol_data$week1) ## No of respondents or N
@@ -88,7 +88,7 @@ Alcohol_data$Days       ## Binomial random variables or x
 
 Suppose your data-set is not a frequency table as shown in the following data-set called `datapoints`. Then the function `BODextract` can be used to prepare the appropriate format as follows.
 
-```{r ,Step 1_1}
+```{r Step_1_1}
 datapoints <- sample(0:7, 340, replace = TRUE) ## creating a set of raw BOD 
 head(datapoints)  ## first few observations of datapoints dataset
 
@@ -107,14 +107,14 @@ Alternate Hypothesis : The data does not follow Binomial Distribution.
 
 Alcohol Consumption data consists of frequency information for two weeks but only the first week is considered for computation. By doing so the researcher can verify if the results acquired from the functions are similar to the results acquired from previous researchers work. 
 
-```{r,Step 2_1}
+```{r Step_2_1}
 BinFreq <- fitBin(x=Alcohol_data$Days,obs.fre=Alcohol_data$week1)
 print(BinFreq)
 ```
 
 Looking at the p-value it is clear that null hypothesis is rejected at $5%$ significance level. This indicates that data does not fit the Binomial distribution. The reason for a warning message is that one of the expected frequencies in the results is less than five. Now we compare the actual and the fitting Binomial variances.
 
-```{r, Step 2_2}
+```{r Step_2_2}
 ## Actual variance of observed frequencies
 var(rep(Alcohol_data$Days, times = Alcohol_data$week1))
 ## Calculated variance for frequencies of  fitted Binomial distribution 
@@ -131,7 +131,7 @@ Since the Over-dispersion exists in the data now it is necessary to fit the Bino
 
 Maximizing the log likelihood value or in our case minimizing the negative log likelihood is used in the `EstMLExxx` functions. The estimation of the `mode` parameter can be done by using the `EstMLETriBin` function, and then the estimated value has to be applied to `fitTriBin` function to check whether the data fit the Triangular Binomial distribution. 
 
-```{r,Step 3_a}
+```{r Step_3_a}
 ## estimating the mode
 modeTB <- EstMLETriBin(x=Alcohol_data$Days,freq=Alcohol_data$week1) 
 coef(modeTB)  ## printing the estimated mode
@@ -145,7 +145,7 @@ Null Hypothesis : The data follows Triangular Binomial Distribution.
 
 Alternate Hypothesis : The data does not follow Triangular Binomial Distribution.				
 
-```{r,Step 4_a}
+```{r Step_4_a}
 ## fitting the Triangular Binomial Distribution for the estimated mode value
 fTB <- fitTriBin(x=Alcohol_data$Days,obs.freq=Alcohol_data$week1,mode=modeTB$mode)
 print(fTB)
@@ -159,7 +159,7 @@ Since the `p-value` is `r fTB$p.value` which is less than $0.05$ it is clear tha
 
 To estimate the two shape parameters of the Beta-Binomial distribution  Methods of Moments or Maximum Likelihood estimation can be used. Using the function `EstMLEBetaBin`(wrapper function of `mle2` from package `bbmle`) the Negative Log likelihood value will be minimized. In order to estimate the shape parameters `a` and `b`, initial shape parameter values have to be given by the user to this function. These initial values have to be in the domain of the shape parameters. Below given is the pair of estimates for initial values where `a=0.1` and `b=0.1`.
 
-```{r,step 3_b}
+```{r Step_3_b}
 ## estimating the shape parameters a, b
 estimate <- EstMLEBetaBin(x=Alcohol_data$Days,freq = Alcohol_data$week1,a=0.1,b=0.1)
 estimate@min ## extracting the minimized Negative log likelihood value 
@@ -174,7 +174,7 @@ Null Hypothesis : The data follows Beta-Binomial Distribution by the Maximum Lik
 
 Alternate Hypothesis: The data does not follow Beta-Binomial Distribution by the Maximum Likelihood Estimates.							
 
-```{r,step 4_b}
+```{r Step_4_b}
 ## fitting Beta Binomial Distribution for estimated shape parameters
 fBB1 <- fitBetaBin(x=Alcohol_data$Days,obs.fre=Alcohol_data$week1,a=a1,b=b1)
 print(fBB1)
@@ -186,7 +186,7 @@ The `p-value` of `r fBB1$p.value` $> 0.05$ indicates that the null hypothesis is
 
 Function `EstMGFBetaBin` is used as below to estimate shape parameters `a` and `b` using Methods of Moments.
 
-```{r,step 3_aa}
+```{r Step_3_aa}
 ## estimating the shape parameter a, b
 estimate <- EstMGFBetaBin(Alcohol_data$Days, Alcohol_data$week1)
 print(c(estimate$a, estimate$b))  ## printing the estimated parameters a, b
@@ -200,7 +200,7 @@ Null Hypothesis : The data follows Beta-Binomial Distribution by the Method of M
 
 Alternate Hypothesis: The data does not follow Beta-Binomial Distribution by the Method of Moments.							
 
-```{r,step_3_bb}
+```{r Step_3_bb}
 ## fitting Beta-Binomial Distribution to estimated shape parameters
 fBB2 <- fitBetaBin(x=Alcohol_data$Days,obs.fre=Alcohol_data$week1,a=estimate$a,b=estimate$b)
 print(fBB2)
@@ -214,7 +214,7 @@ Results from Method of Moments to estimate the parameters have led to a `p-value
 
 The shape parameters `c` and `l` are estimated and fitted below. Suppose the selected input parameters are `c=10.1` and `l=5.1`.
 
-```{r,step 3_c}
+```{r Step_3_c}
 ## estimating the shape parameters
 estimate <- EstMLEGammaBin(x=Alcohol_data$Days,freq=Alcohol_data$week1,c=10.1,l=5.1)
 estimate@min ## extracting the minimized negative log likelihood value 
@@ -229,7 +229,7 @@ Null Hypothesis : The data follows Gamma Binomial Distribution.
 
 Alternate Hypothesis : The data does not follow Gamma Binomial Distribution.
 
-```{r,step 4_c}
+```{r Step_4_c}
 ## fitting Gamma Binomial Distribution to estimated shape parameters
 fGB <- fitGammaBin(x=Alcohol_data$Days,obs.fre=Alcohol_data$week1,c=c1,l=l1)
 print(fGB)
@@ -243,7 +243,7 @@ The null hypothesis is not rejected at $5%$ significance level (`p-value=` `r fG
 
 The shape parameters `a` and `b`  are estimated and fitted below using the `EstMLEGammaBin` function. Suppose the selected input parameters are `a=1.1` and `b=5.1`.
 
-```{r,step 3_d}
+```{r Step_3_d}
 ## estimating the shape parameters
 estimate <- EstMLEGrassiaIIBin(x=Alcohol_data$Days,freq=Alcohol_data$week1,a=1.1,b=5.1)
 estimate@min ## extracting the minimized negative log likelihood value 
@@ -258,7 +258,7 @@ Null Hypothesis : The data follows Grassia II Binomial Distribution.
 
 Alternate Hypothesis : The data does not follow Grassia II Binomial Distribution.
 
-```{r,step 4_d}
+```{r Step_4_d}
 #fitting Grassia II Binomial Distribution to estimated shape parameters
 fGB2 <- fitGrassiaIIBin(x=Alcohol_data$Days,obs.fre=Alcohol_data$week1,a=a1,b=b1)
 print(fGB2)
@@ -272,7 +272,7 @@ The null hypothesis is not rejected at $5%$ significance level (`p-value=` `r fG
 
 Now we estimate the shape parameters and fit the GHGBB distribution for the first set of randomly selected initial input shape parameters of `a=10.1`, `b=1.1` and `c=5`.
 
-```{r, step 3_e}
+```{r Step_3_e}
 #estimating the shape parameters 
 estimate <- EstMLEGHGBB(x=Alcohol_data$Days,freq=Alcohol_data$week1,a=10.1,b=1.1,c=5)
 estimate@min #extracting the minimized negative log likelihood value
@@ -287,7 +287,7 @@ Null Hypothesis : The data follows Gaussian Hypergeometric Generalized  Beta-Bin
 
 Alternate Hypothesis : The data does not follow Gaussian Hypergeometric Generalized Beta-Binomial Distribution.							
 
-```{r, step 4_e}
+```{r Step_4_e}
 #fitting GHGBB distribution for estimated shape parameters
 fGG <- fitGHGBB(Alcohol_data$Days, Alcohol_data$week1, a1, b1, c1)
 print(fGG)
@@ -301,7 +301,7 @@ The null hypothesis is not rejected at $5%$ significance level (`p-value=` `r fG
 
 Given below is the results generated for the randomly selected initial input parameters where `a=1.1`, `b=5` and `c=10`. 
 
-```{r,step 3_f}
+```{r Step_3_f}
 #estimating the shape parameters
 estimate <- EstMLEMcGBB(x = Alcohol_data$Days,freq = Alcohol_data$week1,a = 1.1, b = 5, c = 10)
 estimate@min  #extracting the negative log likelihood value which is minimized
@@ -316,7 +316,7 @@ Null Hypothesis : The data follows McDonald Generalized Beta-Binomial Distributi
 
 Alternate Hypothesis : The data does not follow McDonald Generalized Beta-Binomial Distribution.			
 
-```{r,step 4_f}
+```{r Step_4_f}
 #fitting the MCGBB distribution for estimated shape parameters
 fMB <- fitMcGBB(x=Alcohol_data$Days,obs.fre=Alcohol_data$week1,a=a1,b=b1,c=c1)
 print(fMB)

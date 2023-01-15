@@ -78,7 +78,7 @@ AIC(results)
 
 #extract fitted values
 fitted(results)
-       }
+}
 
 }
 \references{

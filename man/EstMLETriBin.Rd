@@ -52,7 +52,7 @@ coef(results)
 summary(results)
 
 AIC(results)  #show the AIC value
-        }
+}
 
 }
 \references{

@@ -47,7 +47,7 @@ Obs.fre.1 <- c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencie
 parameters1 <- EstMLEKumBin(x=No.D.D,freq=Obs.fre.1,a=10.1,b=1.1,it=10000)
 
 bbmle::coef(parameters1)   #extracting the parameters
-        }
+}
 }
 \references{
 Li, X. H., Huang, Y. Y., & Zhao, X. Y. (2011). The Kumaraswamy Binomial Distribution. Chinese Journal

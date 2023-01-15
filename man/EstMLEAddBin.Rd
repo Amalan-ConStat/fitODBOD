@@ -52,7 +52,7 @@ summary(results)
 
 #extracting the estimated parameters
 coef(results)
-         }
+}
 }
 \references{
 Johnson, N. L., Kemp, A. W., & Kotz, S. (2005). Univariate discrete distributions (Vol. 444).

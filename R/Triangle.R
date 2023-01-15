@@ -819,7 +819,7 @@ NegLLTriBin<-function(x,freq,mode)
 #' summary(results)
 #'
 #' AIC(results)  #show the AIC value
-#'         }
+#' }
 #'
 #' @export
 EstMLETriBin<-function(x,freq)

@@ -90,7 +90,7 @@ fitted(results)
 
 #extracting the residuals
 residuals(results)
-         }
+}
 
 }
 \references{

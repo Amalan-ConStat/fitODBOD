@@ -741,7 +741,7 @@ NegLLMcGBB<-function(x,freq,a,b,c)
 #' parameters <- EstMLEMcGBB(x=No.D.D,freq=Obs.fre.1,a=0.1,b=0.1,c=0.2)
 #'
 #' bbmle::coef(parameters)         #extracting the parameters
-#'         }
+#' }
 #' @export
 EstMLEMcGBB<-function(x,freq,a,b,c,...)
 {
@@ -877,7 +877,7 @@ EstMLEMcGBB<-function(x,freq,a,b,c,...)
 #'
 #' #extracting the residuals
 #' residuals(results)
-#'      }
+#' }
 #'
 #' @export
  fitMcGBB<-function(x,obs.freq,a,b,c)

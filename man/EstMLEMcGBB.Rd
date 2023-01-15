@@ -46,7 +46,7 @@ Obs.fre.1 <- c(47,54,43,40,40,41,39,95)  #assigning the corresponding frequencie
 parameters <- EstMLEMcGBB(x=No.D.D,freq=Obs.fre.1,a=0.1,b=0.1,c=0.2)
 
 bbmle::coef(parameters)         #extracting the parameters
-        }
+}
 }
 \references{
 Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomial Distribution: A New

@@ -18,3 +18,4 @@
 ^pkgdown$
 ^JOSSpaper$
 ^vignettes
+^cran-comments\.md$

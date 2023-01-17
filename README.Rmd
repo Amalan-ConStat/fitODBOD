@@ -11,7 +11,7 @@ library(badger)
 # fitODBOD <img src="man/figures/logo.png" align="right" alt="" width="150" />
 
 <!-- badges: start -->
-`r badge_cran_checks("fitODBOD")`
+
 `r badge_cran_release("fitODBOD")`
 [![packageversion](https://img.shields.io/badge/Package%20version-1.5.0-orange.svg?style=flat-square)](commits/main)
 `r badge_dependencies("fitODBOD")`

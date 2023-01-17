@@ -3,8 +3,6 @@
 
 <!-- badges: start -->
 
-[![CRAN
-checks](https://badges.cranchecks.info/summary/fitODBOD.svg)](https://cran.r-project.org/web/checks/check_results_fitODBOD.html)
 [![](https://www.r-pkg.org/badges/version/fitODBOD)](https://cran.r-project.org/package=fitODBOD)
 [![packageversion](https://img.shields.io/badge/Package%20version-1.5.0-orange.svg?style=flat-square)](commits/main)
 [![Dependencies](https://tinyverse.netlify.com/badge/fitODBOD)](https://cran.r-project.org/package=fitODBOD)
@@ -119,20 +117,20 @@ to prepare the appropriate format as follows.
 ``` r
 datapoints <- sample(0:7, 340, replace = TRUE) ## creating a set of raw BOD 
 head(datapoints)  ## first few observations of datapoints dataset
-#> [1] 6 1 2 2 3 6
+#> [1] 3 0 0 6 1 7
 
 ## extracting and printing BOD in a usable way for the package
 new_data <- BODextract(datapoints)
 matrix(c(new_data$RV, new_data$Freq), ncol=2, byrow = FALSE)
 #>      [,1] [,2]
-#> [1,]    0   43
-#> [2,]    1   43
+#> [1,]    0   42
+#> [2,]    1   46
 #> [3,]    2   41
 #> [4,]    3   37
-#> [5,]    4   41
-#> [6,]    5   45
-#> [7,]    6   41
-#> [8,]    7   49
+#> [5,]    4   40
+#> [6,]    5   42
+#> [7,]    6   47
+#> [8,]    7   45
 ```
 
 ### Step 2

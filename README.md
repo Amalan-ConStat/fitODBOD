@@ -83,6 +83,13 @@ consumes alcohol out of seven days a week can be treated as a Binomial
 variable. The collection of all such variables from all respondents
 would be defined as “Binomial Outcome Data”.
 
+## fitODBODRshiny
+
+An Rshiny application and package named
+[*fitODBODRshiny*](https://amalan-con-stat.shinyapps.io/fitODBODRshiny/)
+is available to fit a few selected Binomial Outcome data through
+Binomial Mixture and Alternate Binomial distributions.
+
 ### Step 1
 
 The Alcohol consumption data is already in the necessary format to apply
@@ -93,7 +100,6 @@ table as follows.
 ``` r
 library("fitODBOD"); library("flextable",quietly = TRUE)    ## Loading packages
 #> Hello, This is Amalan. For more details refer --> https://amalan-constat.github.io/fitODBOD/index.html
-#> Warning: package 'flextable' was built under R version 4.1.3
 print(Alcohol_data)     ## print the alcohol consumption data set
 #>   Days week1 week2
 #> 1    0    47    42
@@ -117,20 +123,20 @@ to prepare the appropriate format as follows.
 ``` r
 datapoints <- sample(0:7, 340, replace = TRUE) ## creating a set of raw BOD 
 head(datapoints)  ## first few observations of datapoints dataset
-#> [1] 3 0 0 6 1 7
+#> [1] 1 1 0 6 5 0
 
 ## extracting and printing BOD in a usable way for the package
 new_data <- BODextract(datapoints)
 matrix(c(new_data$RV, new_data$Freq), ncol=2, byrow = FALSE)
 #>      [,1] [,2]
-#> [1,]    0   42
-#> [2,]    1   46
-#> [3,]    2   41
-#> [4,]    3   37
-#> [5,]    4   40
-#> [6,]    5   42
-#> [7,]    6   47
-#> [8,]    7   45
+#> [1,]    0   45
+#> [2,]    1   52
+#> [3,]    2   40
+#> [4,]    3   46
+#> [5,]    4   37
+#> [6,]    5   40
+#> [7,]    6   39
+#> [8,]    7   41
 ```
 
 ### Step 2

@@ -50,3 +50,8 @@
 # Version 1.5.0
 
 - Updated the AIC values and fixed name inheritance when the functions AIC and overdispersion are used.
+
+# Version 1.5.1
+
+- Updated the package with GenerateBOD function to generate overdispersed Binomial Outcome data. 
+- A small introduction to fitODBODRshiny package and Rshiny application.

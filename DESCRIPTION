@@ -1,7 +1,7 @@
 Type: Package
 Package: fitODBOD
 Title: Modeling Over Dispersed Binomial Outcome Data Using BMD and ABD
-Version: 1.5.0
+Version: 1.5.1
 Authors@R: c(
     person("Amalan", "Mahendran", , "amalan0595@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-0643-9052")),
@@ -16,13 +16,15 @@ Description: Contains Probability Mass Functions, Cumulative Mass
     also Journal article to use the package(<doi:10.21105/joss.01505>).
 License: MIT + file LICENSE
 URL: 
-    https://github.com/Amalan-ConStat/fitODBOD,https://amalan-constat.github.io/fitODBOD/index.html
+    https://github.com/Amalan-ConStat/fitODBOD,https://amalan-constat.github.io/fitODBOD/index.html,https://amalan-con-stat.shinyapps.io/fitODBODRshiny/
 BugReports: https://github.com/Amalan-ConStat/fitODBOD/issues
 Depends: 
     R (>= 4.0.0)
 Imports: 
     bbmle,
     hypergeo,
+    MASS,
+    mvtnorm,
     stats
 Suggests: 
     flextable,
@@ -40,4 +42,4 @@ Suggests:
 Encoding: UTF-8
 Language: en-US
 LazyData: TRUE
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1

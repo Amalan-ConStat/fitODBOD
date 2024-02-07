@@ -273,20 +273,20 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">datapoints</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">7</span>, <span class="fl">340</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">## creating a set of raw BOD </span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">datapoints</span><span class="op">)</span>  <span class="co">## first few observations of datapoints dataset</span></span>
-<span><span class="co">#&gt; [1] 1 1 0 6 5 0</span></span>
+<span><span class="co">#&gt; [1] 5 1 2 5 7 5</span></span>
 <span></span>
 <span><span class="co">## extracting and printing BOD in a usable way for the package</span></span>
 <span><span class="va">new_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/BODextract.html">BODextract</a></span><span class="op">(</span><span class="va">datapoints</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">new_data</span><span class="op">$</span><span class="va">RV</span>, <span class="va">new_data</span><span class="op">$</span><span class="va">Freq</span><span class="op">)</span>, ncol<span class="op">=</span><span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      [,1] [,2]</span></span>
-<span><span class="co">#&gt; [1,]    0   45</span></span>
-<span><span class="co">#&gt; [2,]    1   52</span></span>
+<span><span class="co">#&gt; [1,]    0   48</span></span>
+<span><span class="co">#&gt; [2,]    1   42</span></span>
 <span><span class="co">#&gt; [3,]    2   40</span></span>
-<span><span class="co">#&gt; [4,]    3   46</span></span>
-<span><span class="co">#&gt; [5,]    4   37</span></span>
-<span><span class="co">#&gt; [6,]    5   40</span></span>
-<span><span class="co">#&gt; [7,]    6   39</span></span>
-<span><span class="co">#&gt; [8,]    7   41</span></span></code></pre></div>
+<span><span class="co">#&gt; [4,]    3   41</span></span>
+<span><span class="co">#&gt; [5,]    4   48</span></span>
+<span><span class="co">#&gt; [6,]    5   43</span></span>
+<span><span class="co">#&gt; [7,]    6   43</span></span>
+<span><span class="co">#&gt; [8,]    7   35</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="step-2">Step 2<a class="anchor" aria-label="anchor" href="#step-2"></a>
@@ -727,7 +727,7 @@
 <div class="section level4">
 <h4 id="thank-you">Thank You<a class="anchor" aria-label="anchor" href="#thank-you"></a>
 </h4>
-<p><a href="https://twitter.com/intent/tweet?text=Wow:&amp;url=https%3A%2F%2Fgithub.com%2FAmalan-ConStat%2FR-fitODBOD" class="external-link"><img src="https://img.shields.io/twitter/url/https/github.com/Amalan-ConStat/R-fitODBOD.svg?style=social" alt="Twitter"></a></p>
+<p><a href="https://twitter.com/intent/tweet?text=Wow:&amp;url=https%3A%2F%2Fgithub.com%2FAmalan-ConStat%2FfitODBOD" class="external-link"><img src="https://img.shields.io/twitter/url/https/github.com/Amalan-ConStat/fitODBOD.svg?style=social" alt="Twitter"></a></p>
 <p><a href="https://www.linkedin.com/in/amalan-mahendran-72b86b37/" class="external-link"><img src="https://img.shields.io/badge/LinkedIn-Amalan%20Mahendran-black.svg?style=flat"></a> <a href="https://www.researchgate.net/profile/Amalan_Mahendran" class="external-link"><img src="https://img.shields.io/badge/Research%20Gate-Amalan%20Mahendran-black.svg?style=flat"></a></p>
 </div>
 </div>

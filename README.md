@@ -123,20 +123,20 @@ to prepare the appropriate format as follows.
 ``` r
 datapoints <- sample(0:7, 340, replace = TRUE) ## creating a set of raw BOD 
 head(datapoints)  ## first few observations of datapoints dataset
-#> [1] 1 1 0 6 5 0
+#> [1] 5 1 2 5 7 5
 
 ## extracting and printing BOD in a usable way for the package
 new_data <- BODextract(datapoints)
 matrix(c(new_data$RV, new_data$Freq), ncol=2, byrow = FALSE)
 #>      [,1] [,2]
-#> [1,]    0   45
-#> [2,]    1   52
+#> [1,]    0   48
+#> [2,]    1   42
 #> [3,]    2   40
-#> [4,]    3   46
-#> [5,]    4   37
-#> [6,]    5   40
-#> [7,]    6   39
-#> [8,]    7   41
+#> [4,]    3   41
+#> [5,]    4   48
+#> [6,]    5   43
+#> [7,]    6   43
+#> [8,]    7   35
 ```
 
 ### Step 2
@@ -738,7 +738,7 @@ the smallest value of $0.0045$.
 
 #### Thank You
 
-[![Twitter](https://img.shields.io/twitter/url/https/github.com/Amalan-ConStat/R-fitODBOD.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FAmalan-ConStat%2FR-fitODBOD)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/Amalan-ConStat/fitODBOD.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FAmalan-ConStat%2FfitODBOD)
 
 [![](https://img.shields.io/badge/LinkedIn-Amalan%20Mahendran-black.svg?style=flat)](https://www.linkedin.com/in/amalan-mahendran-72b86b37/)
 [![](https://img.shields.io/badge/Research%20Gate-Amalan%20Mahendran-black.svg?style=flat)](https://www.researchgate.net/profile/Amalan_Mahendran)

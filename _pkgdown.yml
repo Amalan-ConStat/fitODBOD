@@ -34,15 +34,21 @@ navbar:
           href: articles/BMDs_and_ABDs_fitxxxBin.html
     - text: "Version News"
       href: news/index.html
+    - text: "fitODBODRshiny"
+      href: https://amalan-con-stat.shinyapps.io/fitODBODRshiny/
   right:
     - icon: fa-user-circle
-      href: https://amalan-con-stat.netlify.com
-    - icon: fa-twitter
+      href: http://www.amalan-mahendran.com
+    - icon: fa-hashtag
       href: https://twitter.com/Amalan_Con_Stat
+    - icon: fa-twitter
+      href: https://bsky.app/profile/amalanconstat.bsky.social
     - icon: fa-github
       href: https://github.com/Amalan-ConStat
     - icon: fa-linkedin
       href: https://www.linkedin.com/in/amalan-mahendran-72b86b37/
+    - icon: fa-google
+      href: https://scholar.google.com/citations?user=fj4E-GMAAAAJ&hl=en
 
 authors:
   Amalan Mahendran:
@@ -70,6 +76,7 @@ reference:
         - fitBin
         - BODextract
         - Overdispersion
+        - GenerateBOD
   - title: Uniform Distribution
     desc: Unit Bounded Uniform Distribution
     contents:

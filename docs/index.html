@@ -60,7 +60,7 @@
     
     <a class="navbar-brand me-2" href="index.html">fitODBOD</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -95,6 +95,9 @@
 <li class="nav-item">
   <a class="nav-link" href="news/index.html">Version News</a>
 </li>
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://amalan-con-stat.shinyapps.io/fitODBODRshiny/">fitODBODRshiny</a>
+</li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="search.json" id="search-input" placeholder="Search for" autocomplete="off">
@@ -102,13 +105,19 @@
 
       <ul class="navbar-nav">
 <li class="nav-item">
-  <a class="external-link nav-link" href="https://amalan-con-stat.netlify.com">
+  <a class="external-link nav-link" href="http://www.amalan-mahendran.com">
     <span class="fa fa-user-circle"></span>
      
   </a>
 </li>
 <li class="nav-item">
   <a class="external-link nav-link" href="https://twitter.com/Amalan_Con_Stat">
+    <span class="fa fa-hashtag"></span>
+     
+  </a>
+</li>
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://bsky.app/profile/amalanconstat.bsky.social">
     <span class="fa fa-twitter"></span>
      
   </a>
@@ -122,6 +131,12 @@
 <li class="nav-item">
   <a class="external-link nav-link" href="https://www.linkedin.com/in/amalan-mahendran-72b86b37/">
     <span class="fa fa-linkedin"></span>
+     
+  </a>
+</li>
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://scholar.google.com/citations?user=fj4E-GMAAAAJ&amp;hl=en">
+    <span class="fa fa-google"></span>
      
   </a>
 </li>
@@ -152,7 +167,7 @@
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Installing the package from GitHub</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"Amalan-ConStat/fitODBOD"</span><span class="op">)</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"Amalan-ConStat/fitODBOD"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## Installing the package from CRAN</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"fitODBOD"</span><span class="op">)</span></span></code></pre></div>
@@ -228,6 +243,11 @@
 <h2 id="modelling">Modelling<a class="anchor" aria-label="anchor" href="#modelling"></a>
 </h2>
 <p>To demonstrate the process the Alcohol Consumption Data, which is the most commonly used data-set by the researchers to explain Over-dispersion will be taken {lemmens1988}. In this data-set, the number of alcohol consumption days in two reference weeks is separately self-reported by a randomly selected sample of <span class="math inline">399</span> respondents from the Netherlands in <span class="math inline">1983</span>. Here, the number of days a given individual consumes alcohol out of seven days a week can be treated as a Binomial variable. The collection of all such variables from all respondents would be defined as “Binomial Outcome Data”.</p>
+</div>
+<div class="section level2">
+<h2 id="fitodbodrshiny">fitODBODRshiny<a class="anchor" aria-label="anchor" href="#fitodbodrshiny"></a>
+</h2>
+<p>An Rshiny application and package named <a href="https://amalan-con-stat.shinyapps.io/fitODBODRshiny/" class="external-link"><em>fitODBODRshiny</em></a> is available to fit a few selected Binomial Outcome data through Binomial Mixture and Alternate Binomial distributions.</p>
 <div class="section level3">
 <h3 id="step-1">Step 1<a class="anchor" aria-label="anchor" href="#step-1"></a>
 </h3>
@@ -235,7 +255,6 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/Amalan-ConStat/fitODBOD" class="external-link">"fitODBOD"</a></span><span class="op">)</span>; <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://ardata-fr.github.io/flextable-book/" class="external-link">"flextable"</a></span>,quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>    <span class="co">## Loading packages</span></span>
 <span><span class="co">#&gt; Hello, This is Amalan. For more details refer --&gt; https://amalan-constat.github.io/fitODBOD/index.html</span></span>
-<span><span class="co">#&gt; Warning: package 'flextable' was built under R version 4.1.3</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">Alcohol_data</span><span class="op">)</span>     <span class="co">## print the alcohol consumption data set</span></span>
 <span><span class="co">#&gt;   Days week1 week2</span></span>
 <span><span class="co">#&gt; 1    0    47    42</span></span>
@@ -254,20 +273,20 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">datapoints</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">7</span>, <span class="fl">340</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co">## creating a set of raw BOD </span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">datapoints</span><span class="op">)</span>  <span class="co">## first few observations of datapoints dataset</span></span>
-<span><span class="co">#&gt; [1] 3 0 0 6 1 7</span></span>
+<span><span class="co">#&gt; [1] 1 1 0 6 5 0</span></span>
 <span></span>
 <span><span class="co">## extracting and printing BOD in a usable way for the package</span></span>
 <span><span class="va">new_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/BODextract.html">BODextract</a></span><span class="op">(</span><span class="va">datapoints</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">new_data</span><span class="op">$</span><span class="va">RV</span>, <span class="va">new_data</span><span class="op">$</span><span class="va">Freq</span><span class="op">)</span>, ncol<span class="op">=</span><span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      [,1] [,2]</span></span>
-<span><span class="co">#&gt; [1,]    0   42</span></span>
-<span><span class="co">#&gt; [2,]    1   46</span></span>
-<span><span class="co">#&gt; [3,]    2   41</span></span>
-<span><span class="co">#&gt; [4,]    3   37</span></span>
-<span><span class="co">#&gt; [5,]    4   40</span></span>
-<span><span class="co">#&gt; [6,]    5   42</span></span>
-<span><span class="co">#&gt; [7,]    6   47</span></span>
-<span><span class="co">#&gt; [8,]    7   45</span></span></code></pre></div>
+<span><span class="co">#&gt; [1,]    0   45</span></span>
+<span><span class="co">#&gt; [2,]    1   52</span></span>
+<span><span class="co">#&gt; [3,]    2   40</span></span>
+<span><span class="co">#&gt; [4,]    3   46</span></span>
+<span><span class="co">#&gt; [5,]    4   37</span></span>
+<span><span class="co">#&gt; [6,]    5   40</span></span>
+<span><span class="co">#&gt; [7,]    6   39</span></span>
+<span><span class="co">#&gt; [8,]    7   41</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="step-2">Step 2<a class="anchor" aria-label="anchor" href="#step-2"></a>

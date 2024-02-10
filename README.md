@@ -123,20 +123,20 @@ to prepare the appropriate format as follows.
 ``` r
 datapoints <- sample(0:7, 340, replace = TRUE) ## creating a set of raw BOD 
 head(datapoints)  ## first few observations of datapoints dataset
-#> [1] 5 1 2 5 7 5
+#> [1] 6 4 4 0 4 4
 
 ## extracting and printing BOD in a usable way for the package
 new_data <- BODextract(datapoints)
 matrix(c(new_data$RV, new_data$Freq), ncol=2, byrow = FALSE)
 #>      [,1] [,2]
-#> [1,]    0   48
-#> [2,]    1   42
-#> [3,]    2   40
-#> [4,]    3   41
-#> [5,]    4   48
-#> [6,]    5   43
-#> [7,]    6   43
-#> [8,]    7   35
+#> [1,]    0   42
+#> [2,]    1   36
+#> [3,]    2   44
+#> [4,]    3   48
+#> [5,]    4   51
+#> [6,]    5   38
+#> [7,]    6   44
+#> [8,]    7   37
 ```
 
 ### Step 2

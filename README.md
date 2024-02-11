@@ -4,7 +4,7 @@
 <!-- badges: start -->
 
 [![](https://www.r-pkg.org/badges/version/fitODBOD)](https://cran.r-project.org/package=fitODBOD)
-[![packageversion](https://img.shields.io/badge/Package%20version-1.5.0-orange.svg?style=flat-square)](commits/main)
+[![packageversion](https://img.shields.io/badge/Package%20version-1.5.1-orange.svg?style=flat-square)](commits/main)
 [![Dependencies](https://tinyverse.netlify.com/badge/fitODBOD)](https://cran.r-project.org/package=fitODBOD)
 [![MIT
 license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
@@ -123,20 +123,20 @@ to prepare the appropriate format as follows.
 ``` r
 datapoints <- sample(0:7, 340, replace = TRUE) ## creating a set of raw BOD 
 head(datapoints)  ## first few observations of datapoints dataset
-#> [1] 6 4 4 0 4 4
+#> [1] 6 1 2 1 3 5
 
 ## extracting and printing BOD in a usable way for the package
 new_data <- BODextract(datapoints)
 matrix(c(new_data$RV, new_data$Freq), ncol=2, byrow = FALSE)
 #>      [,1] [,2]
 #> [1,]    0   42
-#> [2,]    1   36
-#> [3,]    2   44
-#> [4,]    3   48
-#> [5,]    4   51
-#> [6,]    5   38
+#> [2,]    1   38
+#> [3,]    2   43
+#> [4,]    3   46
+#> [5,]    4   40
+#> [6,]    5   48
 #> [7,]    6   44
-#> [8,]    7   37
+#> [8,]    7   39
 ```
 
 ### Step 2

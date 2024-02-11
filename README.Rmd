@@ -13,7 +13,7 @@ library(badger)
 <!-- badges: start -->
 
 `r badge_cran_release("fitODBOD")`
-[![packageversion](https://img.shields.io/badge/Package%20version-1.5.0-orange.svg?style=flat-square)](commits/main)
+[![packageversion](https://img.shields.io/badge/Package%20version-1.5.1-orange.svg?style=flat-square)](commits/main)
 `r badge_dependencies("fitODBOD")`
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 

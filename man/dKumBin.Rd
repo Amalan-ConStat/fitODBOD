@@ -93,6 +93,5 @@ pKumBin(0:10,10,4,2)    #acquiring the cumulative probability values
 
 }
 \references{
-Li, X. H., Huang, Y. Y., & Zhao, X. Y. (2011). The Kumaraswamy Binomial Distribution. Chinese Journal
-of Applied Probability and Statistics, 27(5), 511-521.
+\insertRef{xiaohu2011kumaraswamy}{fitODBOD}
 }

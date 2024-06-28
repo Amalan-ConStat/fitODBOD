@@ -39,11 +39,8 @@
 #' \code{var}              variance of unit bounded uniform distribution.
 #'
 #' @references
-#' Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,
-#' Series A, 120:148-191.
-#'
-#' Johnson, N. L., Kotz, S. and Balakrishnan, N. (1994) Continuous Univariate Distributions,
-#' Vol. 2, Wiley Series in Probability and Mathematical Statistics, Wiley.
+#' \insertRef{horsnell1957economical}{fitODBOD}
+#' \insertRef{johnson1995continuous}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[stats]{Uniform}}
@@ -72,6 +69,7 @@
 #' #only the integer value of moments is taken here because moments cannot be decimal
 #' mazUNI(1.9)
 #'
+#' @importFrom Rdpack reprompt
 #' @export
 dUNI<-function(p)
 {
@@ -138,11 +136,8 @@ dUNI<-function(p)
 #' The output of \code{pUNI} gives the cumulative density values in vector form.
 #'
 #' @references
-#' Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,
-#' Series A, 120:148-191.
-#'
-#' Johnson, N. L., Kotz, S. and Balakrishnan, N. (1994) Continuous Univariate Distributions,
-#' Vol. 2, Wiley Series in Probability and Mathematical Statistics, Wiley.
+#' \insertRef{horsnell1957economical}{fitODBOD}
+#' \insertRef{johnson1995continuous}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[stats]{Uniform}}
@@ -237,11 +232,8 @@ pUNI<-function(p)
 #' The output of \code{mazUNI} gives the moments about zero in vector form.
 #'
 #' @references
-#' Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,
-#' Series A, 120:148-191.
-#'
-#' Johnson, N. L., Kotz, S. and Balakrishnan, N. (1994) Continuous Univariate Distributions,
-#' Vol. 2, Wiley Series in Probability and Mathematical Statistics, Wiley
+#' \insertRef{horsnell1957economical}{fitODBOD}
+#' \insertRef{johnson1995continuous}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[stats]{Uniform}}
@@ -345,14 +337,8 @@ mazUNI<-function(r)
 #' \code{ove.dis.para}   over dispersion value of Uniform Binomial Distribution.
 #'
 #' @references
-#' Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,
-#' Series A, 120:148-191.
-#'
-#' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
-#' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of
-#' Mathematics & Computer Science, 4(24), pp.3497-3507.
-#'
-#' Available at: \doi{10.9734/BJMCS/2014/12299} .
+#' \insertRef{horsnell1957economical}{fitODBOD}
+#' \insertRef{okagbue2014using}{fitODBOD}
 #'
 #' @examples
 #' #plotting the binomial random variables and probability values
@@ -414,14 +400,8 @@ dUniBin<-function(x,n)
 #' The output of \code{pUniBin} gives cumulative probability function values in vector form.
 #'
 #' @references
-#' Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,
-#' Series A, 120:148-191.
-#'
-#' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
-#' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of
-#' Mathematics & Computer Science, 4(24), pp.3497-3507.
-#'
-#' Available at: \doi{10.9734/BJMCS/2014/12299}.
+#' \insertRef{horsnell1957economical}{fitODBOD}
+#' \insertRef{okagbue2014using}{fitODBOD}
 #'
 #' @examples
 #' #plotting the binomial random variables and probability values

@@ -40,16 +40,9 @@
 #' \code{var}        variance of Multiplicative Binomial Distribution.
 #'
 #' @references
-#' Johnson, N. L., Kemp, A. W., & Kotz, S. (2005). Univariate discrete distributions (Vol. 444).
-#' Hoboken, NJ: Wiley-Interscience.
-#'
-#' L. L. Kupper, J.K.H., 1978. The Use of a Correlated Binomial Model for the Analysis of Certain Toxicological
-#' Experiments. Biometrics, 34(1), pp.69-76.
-#'
-#' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
-#' - Theory and Methods, 14(6), pp.1497-1506.
-#'
-#' Available at: \doi{10.1080/03610928508828990}.
+#' \insertRef{johnson2005univariate}{fitODBOD}
+#' \insertRef{kupper1978use}{fitODBOD}
+#' \insertRef{paul1985three}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -83,6 +76,7 @@
 #'
 #' pMultiBin(0:10,10,.58,10.022)     #acquiring the cumulative probability values
 #'
+#' @importFrom Rdpack reprompt
 #' @export
 dMultiBin<-function(x,n,p,theta)
 {
@@ -194,16 +188,9 @@ dMultiBin<-function(x,n,p,theta)
 #' The output of \code{pMultiBin} gives cumulative probability values in vector form.
 #'
 #' @references
-#' Johnson, N. L., Kemp, A. W., & Kotz, S. (2005). Univariate discrete distributions (Vol. 444).
-#' Hoboken, NJ: Wiley-Interscience.
-#'
-#' L. L. Kupper, J.K.H., 1978. The Use of a Correlated Binomial Model for the Analysis of Certain Toxicological
-#' Experiments. Biometrics, 34(1), pp.69-76.
-#'
-#' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
-#' - Theory and Methods, 14(6), pp.1497-1506.
-#'
-#' Available at: \doi{10.1080/03610928508828990}.
+#' \insertRef{johnson2005univariate}{fitODBOD}
+#' \insertRef{kupper1978use}{fitODBOD}
+#' \insertRef{paul1985three}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -273,16 +260,9 @@ pMultiBin<-function(x,n,p,theta)
 #' The output of \code{NegLLMultiBin} will produce a single numeric value.
 #'
 #' @references
-#' Johnson, N. L., Kemp, A. W., & Kotz, S. (2005). Univariate discrete distributions (Vol. 444).
-#' Hoboken, NJ: Wiley-Interscience.
-#'
-#' L. L. Kupper, J.K.H., 1978. The Use of a Correlated Binomial Model for the Analysis of Certain Toxicological
-#' Experiments. Biometrics, 34(1), pp.69-76.
-#'
-#' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
-#' - Theory and Methods, 14(6), pp.1497-1506.
-#'
-#' Available at: \doi{10.1080/03610928508828990}.
+#' \insertRef{johnson2005univariate}{fitODBOD}
+#' \insertRef{kupper1978use}{fitODBOD}
+#' \insertRef{paul1985three}{fitODBOD}
 #'
 #' @examples
 #' No.D.D <- 0:7       #assigning the random variables
@@ -374,16 +354,9 @@ NegLLMultiBin<-function(x,freq,p,theta)
 #' \pkg{bbmle} package therefore output is of class of mle2.
 #'
 #' @references
-#' Johnson, N. L., Kemp, A. W., & Kotz, S. (2005). Univariate discrete distributions (Vol. 444).
-#' Hoboken, NJ: Wiley-Interscience.
-#'
-#' L. L. Kupper, J.K.H., 1978. The Use of a Correlated Binomial Model for the Analysis of Certain Toxicological
-#' Experiments. Biometrics, 34(1), pp.69-76.
-#'
-#' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
-#' - Theory and Methods, 14(6), pp.1497-1506.
-#'
-#' Available at: \doi{10.1080/03610928508828990} .
+#' \insertRef{johnson2005univariate}{fitODBOD}
+#' \insertRef{kupper1978use}{fitODBOD}
+#' \insertRef{paul1985three}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[bbmle]{mle2}}
@@ -483,16 +456,9 @@ EstMLEMultiBin<-function(x,freq,p,theta,...)
 #' can be used to extract specific outputs.
 #'
 #' @references
-#' Johnson, N. L., Kemp, A. W., & Kotz, S. (2005). Univariate discrete distributions (Vol. 444).
-#' Hoboken, NJ: Wiley-Interscience.
-#'
-#' L. L. Kupper, J.K.H., 1978. The Use of a Correlated Binomial Model for the Analysis of Certain Toxicological
-#' Experiments. Biometrics, 34(1), pp.69-76.
-#'
-#' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
-#' - Theory and Methods, 14(6), pp.1497-1506.
-#'
-#' Available at: \doi{10.1080/03610928508828990}.
+#' \insertRef{johnson2005univariate}{fitODBOD}
+#' \insertRef{kupper1978use}{fitODBOD}
+#' \insertRef{paul1985three}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[bbmle]{mle2}}

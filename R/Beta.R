@@ -43,13 +43,8 @@
 #' \code{var}            variance of the Beta distribution.
 #'
 #' @references
-#' Johnson, N. L., Kotz, S. and Balakrishnan, N. (1994) Continuous Univariate Distributions, Vol. 2,
-#' Wiley Series in Probability and Mathematical Statistics, Wiley.
-#'
-#' Trenkler, G., 1996. Continuous univariate distributions. Computational Statistics & Data Analysis,
-#' 21(1), p.119.
-#'
-#' Available at: \doi{10.1016/0167-9473(96)90015-8}.
+#' \insertRef{johnson1995continuous}{fitODBOD}
+#' \insertRef{trenkler1996continuous}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[stats]{Beta}}
@@ -90,6 +85,7 @@
 #' #only the integer value of moments is taken here because moments cannot be decimal
 #' mazBETA(1.9,5.5,6)
 #'
+#' @importFrom Rdpack reprompt
 #' @export
 dBETA<-function(p,a,b)
 {
@@ -167,13 +163,8 @@ dBETA<-function(p,a,b)
 #' The output of \code{pBETA} gives the cumulative density values in vector form.
 #'
 #' @references
-#' Johnson, N. L., Kotz, S. and Balakrishnan, N. (1994) Continuous Univariate Distributions, Vol. 2,
-#' Wiley Series in Probability and Mathematical Statistics, Wiley.
-#'
-#' Trenkler, G., 1996. Continuous univariate distributions. Computational Statistics & Data Analysis,
-#' 21(1), p.119.
-#'
-#' Available at: \doi{10.1016/0167-9473(96)90015-8}.
+#' \insertRef{johnson1995continuous}{fitODBOD}
+#' \insertRef{trenkler1996continuous}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[stats]{Beta}}
@@ -296,13 +287,8 @@ pBETA<-function(p,a,b)
 #' The output of \code{mazBETA} gives the moments about zero in vector form.
 #'
 #' @references
-#' Johnson, N. L., Kotz, S. and Balakrishnan, N. (1994) Continuous Univariate Distributions, Vol. 2,
-#' Wiley Series in Probability and Mathematical Statistics, Wiley.
-#'
-#' Trenkler, G., 1996. Continuous univariate distributions. Computational Statistics & Data Analysis,
-#' 21(1), p.119.
-#'
-#' Available at: \doi{10.1016/0167-9473(96)90015-8}.
+#' \insertRef{johnson1995continuous}{fitODBOD}
+#' \insertRef{trenkler1996continuous}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[stats]{Beta}}
@@ -429,18 +415,9 @@ mazBETA<-function(r,a,b)
 #' \code{over.dis.para}    over dispersion value of the Beta-Binomial Distribution.
 #'
 #' @references
-#' Young-Xu, Y. & Chan, K.A., 2008. Pooling overdispersed binomial data to estimate event rate. BMC medical
-#' research methodology, 8(1), p.58.
-#'
-#' Available at: \doi{10.1186/1471-2288-8-58}.
-#'
-#' Trenkler, G., 1996. Continuous univariate distributions. Computational Statistics & Data Analysis, 21(1), p.119.
-#'
-#' Available at: \doi{10.1016/0167-9473(96)90015-8}.
-#'
-#' Hughes, G., 1993. Using the Beta-Binomial Distribution to Describe Aggregated Patterns of Disease
-#' Incidence. Phytopathology, 83(9), p.759.
-#'
+#' \insertRef{young2008pooling}{fitODBOD}
+#' \insertRef{trenkler1996continuous}{fitODBOD}
+#' \insertRef{hughes1993using}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -554,19 +531,9 @@ dBetaBin<-function(x,n,a,b)
 #' The output of \code{pBetaBin} gives cumulative probability  values in vector form.
 #'
 #' @references
-#' Young-Xu, Y. & Chan, K.A., 2008. Pooling overdispersed binomial data to estimate event rate. BMC medical
-#' research methodology, 8(1), p.58.
-#'
-#' Available at: \doi{10.1186/1471-2288-8-58}.
-#'
-#' Trenkler, G., 1996. Continuous univariate distributions. Computational Statistics & Data Analysis, 21(1), p.119.
-#'
-#' Available at: \doi{10.1016/0167-9473(96)90015-8}.
-#'
-#' Hughes, G., 1993. Using the Beta-Binomial Distribution to Describe Aggregated Patterns of Disease
-#' Incidence. Phytopathology, 83(9), p.759.
-#'
-#' Available at: \doi{10.1094/PHYTO-83-759}
+#' \insertRef{young2008pooling}{fitODBOD}
+#' \insertRef{trenkler1996continuous}{fitODBOD}
+#' \insertRef{hughes1993using}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -637,19 +604,9 @@ pBetaBin<-function(x,n,a,b)
 #' The output of \code{NegLLBetaBin} will produce a single numeric value.
 #'
 #' @references
-#' Young-Xu, Y. & Chan, K.A., 2008. Pooling overdispersed binomial data to estimate event rate. BMC medical
-#' research methodology, 8(1), p.58.
-#'
-#' Available at: \doi{10.1186/1471-2288-8-58}.
-#'
-#' Trenkler, G., 1996. Continuous univariate distributions. Computational Statistics & Data Analysis, 21(1), p.119.
-#'
-#' Available at: \doi{10.1016/0167-9473(96)90015-8}.
-#'
-#' Hughes, G., 1993. Using the Beta-Binomial Distribution to Describe Aggregated Patterns of Disease
-#' Incidence. Phytopathology, 83(9), p.759.
-#'
-#' Available at: \doi{10.1094/PHYTO-83-759}
+#' \insertRef{young2008pooling}{fitODBOD}
+#' \insertRef{trenkler1996continuous}{fitODBOD}
+#' \insertRef{hughes1993using}{fitODBOD}
 #'
 #' @examples
 #' No.D.D <- 0:7       #assigning the random variables
@@ -724,19 +681,9 @@ NegLLBetaBin<-function(x,freq,a,b)
 #' therefore output is of class of mle2.
 #'
 #' @references
-#' Young-Xu, Y. & Chan, K.A., 2008. Pooling overdispersed binomial data to estimate event rate. BMC medical
-#' research methodology, 8(1), p.58.
-#'
-#' Available at: \doi{10.1186/1471-2288-8-58}.
-#'
-#' Trenkler, G., 1996. Continuous univariate distributions. Computational Statistics & Data Analysis, 21(1), p.119.
-#'
-#' Available at: \doi{10.1016/0167-9473(96)90015-8}.
-#'
-#' Hughes, G., 1993. Using the Beta-Binomial Distribution to Describe Aggregated Patterns of Disease
-#' Incidence. Phytopathology, 83(9), p.759.
-#'
-#' Available at: \doi{10.1094/PHYTO-83-759}
+#' \insertRef{young2008pooling}{fitODBOD}
+#' \insertRef{trenkler1996continuous}{fitODBOD}
+#' \insertRef{hughes1993using}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[bbmle]{mle2}}
@@ -819,19 +766,9 @@ EstMLEBetaBin<-function(x,freq,a,b,...)
 #' specific outputs.
 #'
 #' @references
-#' Young-Xu, Y. & Chan, K.A., 2008. Pooling overdispersed binomial data to estimate event rate. BMC medical
-#' research methodology, 8(1), p.58.
-#'
-#' Available at: \doi{10.1186/1471-2288-8-58}.
-#'
-#' Trenkler, G., 1996. Continuous univariate distributions. Computational Statistics & Data Analysis, 21(1), p.119.
-#'
-#' Available at: \doi{10.1016/0167-9473(96)90015-8}.
-#'
-#' Hughes, G., 1993. Using the Beta-Binomial Distribution to Describe Aggregated Patterns of Disease
-#' Incidence. Phytopathology, 83(9), p.759.
-#'
-#' Available at: \doi{10.1094/PHYTO-83-759}
+#' \insertRef{young2008pooling}{fitODBOD}
+#' \insertRef{trenkler1996continuous}{fitODBOD}
+#' \insertRef{hughes1993using}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[bbmle]{mle2}}
@@ -981,17 +918,9 @@ AIC.mgf<-function(object,...)
 #' used to extract specific outputs.
 #'
 #' @references
-#' Young-Xu, Y. & Chan, K.A., 2008. Pooling overdispersed binomial data to estimate event rate. BMC medical
-#' research methodology, 8(1), p.58.
-#'
-#' Available at: \doi{10.1186/1471-2288-8-58}.
-#'
-#' Trenkler, G., 1996. Continuous univariate distributions. Computational Statistics & Data Analysis, 21(1), p.119.
-#'
-#' Hughes, G., 1993. Using the Beta-Binomial Distribution to Describe Aggregated Patterns of Disease
-#' Incidence. Phytopathology, 83(9), p.759.
-#'
-#' Available at: \doi{10.1094/PHYTO-83-759}
+#' \insertRef{young2008pooling}{fitODBOD}
+#' \insertRef{trenkler1996continuous}{fitODBOD}
+#' \insertRef{hughes1993using}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[bbmle]{mle2}}

@@ -57,7 +57,5 @@ table(New_overdispersed_data)
 
 }
 \references{
-Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomial Distribution: A New
-Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
-Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
+\insertRef{manoj2013mcdonald}{fitODBOD}
 }

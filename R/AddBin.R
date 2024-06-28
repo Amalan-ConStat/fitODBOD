@@ -43,18 +43,10 @@
 #' \code{var} variance of Additive Binomial Distribution.
 #'
 #' @references
-#' Johnson, N. L., Kemp, A. W., & Kotz, S. (2005). Univariate discrete distributions (Vol. 444).
-#' Hoboken, NJ: Wiley-Interscience.
-#'
-#' L. L. Kupper, J.K.H., 1978. The Use of a Correlated Binomial Model for the Analysis of Certain Toxicological
-#' Experiments. Biometrics, 34(1), pp.69-76.
-#'
-#' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
-#' - Theory and Methods, 14(6), pp.1497-1506.
-#'
-#' Available at: \doi{10.1080/03610928508828990}
-#'
-#' Jorge G. Morel and Nagaraj K. Neerchal. Overdispersion Models in SAS. SAS Institute, 2012.
+#' \insertRef{johnson2005univariate}{fitODBOD}
+#' \insertRef{kupper1978use}{fitODBOD}
+#' \insertRef{paul1985three}{fitODBOD}
+#' \insertRef{morel2012overdispersion}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -87,6 +79,7 @@
 #'
 #' pAddBin(0:10,10,0.58,0.022)       #acquiring the cumulative probability values
 #'
+#' @importFrom Rdpack reprompt
 #' @export
 dAddBin<-function(x,n,p,alpha)
 {
@@ -201,18 +194,10 @@ dAddBin<-function(x,n,p,alpha)
 #' The output of \code{pAddBin} gives  cumulative probability  values in vector form.
 #'
 #' @references
-#' Johnson, N. L., Kemp, A. W., & Kotz, S. (2005). Univariate discrete distributions (Vol. 444).
-#' Hoboken, NJ: Wiley-Interscience.
-#'
-#' L. L. Kupper, J.K.H., 1978. The Use of a Correlated Binomial Model for the Analysis of Certain Toxicological
-#' Experiments. Biometrics, 34(1), pp.69-76.
-#'
-#' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
-#' - Theory and Methods, 14(6), pp.1497-1506.
-#'
-#' Available at: \doi{10.1080/03610928508828990}
-#'
-#' Jorge G. Morel and Nagaraj K. Neerchal. Overdispersion Models in SAS. SAS Institute, 2012.
+#' \insertRef{johnson2005univariate}{fitODBOD}
+#' \insertRef{kupper1978use}{fitODBOD}
+#' \insertRef{paul1985three}{fitODBOD}
+#' \insertRef{morel2012overdispersion}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -282,18 +267,10 @@ pAddBin<-function(x,n,p,alpha)
 #' The output of \code{NegLLAddBin} will produce a single  numeric value.
 #'
 #' @references
-#' Johnson, N. L., Kemp, A. W., & Kotz, S. (2005). Univariate discrete distributions (Vol. 444).
-#' Hoboken, NJ: Wiley-Interscience.
-#'
-#' L. L. Kupper, J.K.H., 1978. The Use of a Correlated Binomial Model for the Analysis of Certain Toxicological
-#' Experiments. Biometrics, 34(1), pp.69-76.
-#'
-#' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
-#' - Theory and Methods, 14(6), pp.1497-1506.
-#'
-#' Available at: \doi{10.1080/03610928508828990}
-#'
-#' Jorge G. Morel and Nagaraj K. Neerchal. Overdispersion Models in SAS. SAS Institute, 2012.
+#' \insertRef{johnson2005univariate}{fitODBOD}
+#' \insertRef{kupper1978use}{fitODBOD}
+#' \insertRef{paul1985three}{fitODBOD}
+#' \insertRef{morel2012overdispersion}{fitODBOD}
 #'
 #' @examples
 #' No.D.D <- 0:7          #assigning the random variables
@@ -406,18 +383,10 @@ NegLLAddBin<-function(x,freq,p,alpha)
 #' Methods \code{print}, \code{summary}, \code{coef} and \code{AIC} can be used to extract specific outputs.
 #'
 #' @references
-#' Johnson, N. L., Kemp, A. W., & Kotz, S. (2005). Univariate discrete distributions (Vol. 444).
-#' Hoboken, NJ: Wiley-Interscience.
-#'
-#' L. L. Kupper, J.K.H., 1978. The Use of a Correlated Binomial Model for the Analysis of Certain Toxicological
-#' Experiments. Biometrics, 34(1), pp.69-76.
-#'
-#' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
-#' - Theory and Methods, 14(6), pp.1497-1506.
-#'
-#' Available at: \doi{10.1080/03610928508828990}
-#'
-#' Jorge G. Morel and Nagaraj K. Neerchal. Overdispersion Models in SAS. SAS Institute, 2012.
+#' \insertRef{johnson2005univariate}{fitODBOD}
+#' \insertRef{kupper1978use}{fitODBOD}
+#' \insertRef{paul1985three}{fitODBOD}
+#' \insertRef{morel2012overdispersion}{fitODBOD}
 #'
 #' @examples
 #' No.D.D <- 0:7         #assigning the random variables
@@ -641,18 +610,10 @@ coef.mlAB<-function(object,...)
 #' can be used to extract specific outputs.
 #'
 #' @references
-#' Johnson, N. L., Kemp, A. W., & Kotz, S. (2005). Univariate discrete distributions (Vol. 444).
-#' Hoboken, NJ: Wiley-Interscience.
-#'
-#' L. L. Kupper, J.K.H., 1978. The Use of a Correlated Binomial Model for the Analysis of Certain Toxicological
-#' Experiments. Biometrics, 34(1), pp.69-76.
-#'
-#' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
-#' - Theory and Methods, 14(6), pp.1497-1506.
-#'
-#' Available at: \doi{10.1080/03610928508828990}
-#'
-#' Jorge G. Morel and Nagaraj K. Neerchal. Overdispersion Models in SAS. SAS Institute, 2012.
+#' \insertRef{johnson2005univariate}{fitODBOD}
+#' \insertRef{kupper1978use}{fitODBOD}
+#' \insertRef{paul1985three}{fitODBOD}
+#' \insertRef{morel2012overdispersion}{fitODBOD}
 #'
 #' @examples
 #' No.D.D <- 0:7         #assigning the random variables

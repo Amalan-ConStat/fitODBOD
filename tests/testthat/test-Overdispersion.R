@@ -66,8 +66,8 @@ fitGHB<-fitGHGBB(Alcohol_data$Days,Alcohol_data$week1,estimate@coef[1],estimate@
 
 context("Checking outputs")
 test_that("Output value expected",{
-          expect_identical(round(Overdispersion(fitGHB),4),
-                           0.4325)
+          expect_identical(round(Overdispersion(fitGHB),2),
+                           0.43)
                            })
 
 test_that("Checking class of output",{

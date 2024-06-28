@@ -43,23 +43,10 @@
 #' \code{variance}        variance of the unit bounded Triangular distribution
 #'
 #' @references
-#' Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,
-#' Series A, 120:148-191.
-#'
-#' Johnson, N. L., Kotz, S. and Balakrishnan, N. (1994) Continuous Univariate Distributions, Vol. 2,
-#' Wiley Series in Probability and Mathematical Statistics, Wiley.
-#'
-#' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
-#' Modeling. Boston: Birkhuser Boston, pp. 21-33.
-#'
-#' Available at: \doi{10.1007/978-0-8176-4626-4_2} .
-#'
-#' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
-#' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
-#' & Computer Science, 4(24), pp.3497-3507.
-#'
-#' Available at: \doi{10.9734/BJMCS/2014/12299} .
-#'
+#' \insertRef{horsnell1957economical}{fitODBOD}
+#' \insertRef{johnson1995continuous}{fitODBOD}
+#' \insertRef{karlis2008polygonal}{fitODBOD}
+#' \insertRef{okagbue2014using}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -93,6 +80,7 @@
 #' #only the integer value of moments is taken here because moments cannot be decimal
 #' mazTRI(1.9,0.5)
 #'
+#' @importFrom Rdpack reprompt
 #' @export
 dTRI<-function(p,mode)
 {
@@ -175,23 +163,10 @@ dTRI<-function(p,mode)
 #' The output of \code{pTRI} gives the cumulative density values in vector form.
 #'
 #' @references
-#' Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,
-#' Series A, 120:148-191.
-#'
-#' Johnson, N. L., Kotz, S. and Balakrishnan, N. (1994) Continuous Univariate Distributions, Vol. 2,
-#' Wiley Series in Probability and Mathematical Statistics, Wiley.
-#'
-#' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
-#' Modeling. Boston: Birkhuser Boston, pp. 21-33.
-#'
-#' Available at: \doi{10.1007/978-0-8176-4626-4_2} .
-#'
-#' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
-#' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
-#' & Computer Science, 4(24), pp.3497-3507.
-#'
-#' Available at: \doi{10.9734/BJMCS/2014/12299} .
-#'
+#' \insertRef{horsnell1957economical}{fitODBOD}
+#' \insertRef{johnson1995continuous}{fitODBOD}
+#' \insertRef{karlis2008polygonal}{fitODBOD}
+#' \insertRef{okagbue2014using}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -307,23 +282,10 @@ pTRI<-function(p,mode)
 #' The output of \code{mazTRI} give the moments about zero in vector form.
 #'
 #' @references
-#' Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,
-#' Series A, 120:148-191.
-#'
-#' Johnson, N. L., Kotz, S. and Balakrishnan, N. (1994) Continuous Univariate Distributions, Vol. 2,
-#' Wiley Series in Probability and Mathematical Statistics, Wiley.
-#'
-#' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
-#' Modeling. Boston: Birkhuser Boston, pp. 21-33.
-#'
-#' Available at: \doi{10.1007/978-0-8176-4626-4_2}.
-#'
-#' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
-#' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
-#' & Computer Science, 4(24), pp.3497-3507.
-#'
-#' Available at: \doi{10.9734/BJMCS/2014/12299} .
-#'
+#' \insertRef{horsnell1957economical}{fitODBOD}
+#' \insertRef{johnson1995continuous}{fitODBOD}
+#' \insertRef{karlis2008polygonal}{fitODBOD}
+#' \insertRef{okagbue2014using}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -447,19 +409,9 @@ mazTRI<-function(r,mode)
 #' \code{over.dis.para}   over dispersion value of the Triangular Binomial Distribution.
 #'
 #' @references
-#' Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,
-#' Series A, 120:148-191.
-#'
-#' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
-#' Modeling. Boston: Birkhuser Boston, pp. 21-33.
-#'
-#' Available at: \doi{10.1007/978-0-8176-4626-4_2} .
-#'
-#' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
-#' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
-#' & Computer Science, 4(24), pp.3497-3507.
-#'
-#' Available at: \doi{10.9734/BJMCS/2014/12299}.
+#' \insertRef{horsnell1957economical}{fitODBOD}
+#' \insertRef{karlis2008polygonal}{fitODBOD}
+#' \insertRef{okagbue2014using}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -596,19 +548,9 @@ dTriBin<-function(x,n,mode)
 #' The output of \code{pTriBin} gives cumulative probability function values in vector form.
 #'
 #' @references
-#' Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,
-#' Series A, 120:148-191.
-#'
-#' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
-#' Modeling. Boston: Birkhuser Boston, pp. 21-33.
-#'
-#' Available at: \doi{10.1007/978-0-8176-4626-4_2}.
-#'
-#' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
-#' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
-#' & Computer Science, 4(24), pp.3497-3507.
-#'
-#' Available at: \doi{10.9734/BJMCS/2014/12299}.
+#' \insertRef{horsnell1957economical}{fitODBOD}
+#' \insertRef{karlis2008polygonal}{fitODBOD}
+#' \insertRef{okagbue2014using}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -678,19 +620,9 @@ pTriBin<-function(x,n,mode)
 #' The output of \code{NegLLTriBin} will produce a single numeric value.
 #'
 #' @references
-#' Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,
-#' Series A, 120:148-191.
-#'
-#' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
-#' Modeling. Boston: Birkhuser Boston, pp. 21-33.
-#'
-#' Available at: \doi{10.1007/978-0-8176-4626-4_2}.
-#'
-#' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
-#' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
-#' & Computer Science, 4(24), pp.3497-3507.
-#'
-#' Available at: \doi{10.9734/BJMCS/2014/12299}.
+#' \insertRef{horsnell1957economical}{fitODBOD}
+#' \insertRef{karlis2008polygonal}{fitODBOD}
+#' \insertRef{okagbue2014using}{fitODBOD}
 #'
 #' @examples
 #' No.D.D <- 0:7    #assigning the Random variables
@@ -792,19 +724,9 @@ NegLLTriBin<-function(x,freq,mode)
 #' extract specific outputs.
 #'
 #' @references
-#' Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,
-#' Series A, 120:148-191.
-#'
-#' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
-#' Modeling. Boston: Birkhuser Boston, pp. 21-33.
-#'
-#' Available at: \doi{10.1007/978-0-8176-4626-4_2}.
-#'
-#' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
-#' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
-#' & Computer Science, 4(24), pp.3497-3507.
-#'
-#' Available at: \doi{10.9734/BJMCS/2014/12299}.
+#' \insertRef{horsnell1957economical}{fitODBOD}
+#' \insertRef{karlis2008polygonal}{fitODBOD}
+#' \insertRef{okagbue2014using}{fitODBOD}
 #'
 #' @examples
 #' No.D.D <- 0:7   #assigning the random variables
@@ -999,19 +921,9 @@ coef.mlTRI<-function(object,...)
 #' can be used to extract specific outputs.
 #'
 #' @references
-#' Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,
-#' Series A, 120:148-191.
-#'
-#' Karlis, D. & Xekalaki, E., 2008. The Polygonal Distribution. In Advances in Mathematical and Statistical
-#' Modeling. Boston: Birkhuser Boston, pp. 21-33.
-#'
-#' Available at: \doi{10.1007/978-0-8176-4626-4_2}.
-#'
-#' Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
-#' Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of Mathematics
-#' & Computer Science, 4(24), pp.3497-3507.
-#'
-#' Available at: \doi{10.9734/BJMCS/2014/12299}.
+#' \insertRef{horsnell1957economical}{fitODBOD}
+#' \insertRef{karlis2008polygonal}{fitODBOD}
+#' \insertRef{okagbue2014using}{fitODBOD}
 #'
 #' @examples
 #' No.D.D <- 0:7      #assigning the random variables

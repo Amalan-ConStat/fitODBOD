@@ -45,6 +45,5 @@ NegLLKumBin(No.D.D,Obs.fre.1,1.3,4.4) #acquiring the negative log likelihood val
 
 }
 \references{
-Li, X. H., Huang, Y. Y., & Zhao, X. Y. (2011). The Kumaraswamy Binomial Distribution. Chinese Journal
-of Applied Probability and Statistics, 27(5), 511-521.
+\insertRef{xiaohu2011kumaraswamy}{fitODBOD}
 }

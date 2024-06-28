@@ -42,18 +42,8 @@
 #' \code{var}             variance of the Kumaraswamy distribution.
 #'
 #' @references
-#' Kumaraswamy, P. (1980). A generalized probability density function for double-bounded random processes.
-#' Journal of Hydrology, 46(1), 79-88.
-#'
-#' Available at : \doi{10.1016/0022-1694(80)90036-0}.
-#'
-#' Jones, M. C. (2009). Kumaraswamy's distribution: A beta-type distribution with some tractability advantages.
-#' Statistical Methodology, 6(1), 70-81.
-#'
-#' Available at : \doi{10.1016/j.stamet.2008.04.001}.
-#'
-#' @seealso
-#' \code{\link[extraDistr]{Kumaraswamy}}
+#' \insertRef{kumaraswamy1980generalized}{fitODBOD}
+#' \insertRef{jones2009kumaraswamy}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -88,6 +78,7 @@
 #' #only the integer value of moments is taken here because moments cannot be decimal
 #' mazKUM(1.9,5.5,6)
 #'
+#' @importFrom Rdpack reprompt
 #' @export
 dKUM<-function(p,a,b)
 {
@@ -165,18 +156,8 @@ dKUM<-function(p,a,b)
 #' The output of \code{pKUM} gives the cumulative density values in vector form.
 #'
 #' @references
-#' Kumaraswamy, P. (1980). A generalized probability density function for double-bounded random processes.
-#' Journal of Hydrology, 46(1), 79-88.
-#'
-#' Available at : \doi{10.1016/0022-1694(80)90036-0}.
-#'
-#' Jones, M. C. (2009). Kumaraswamy's distribution: A beta-type distribution with some tractability advantages.
-#' Statistical Methodology, 6(1), 70-81.
-#'
-#' Available at : \doi{10.1016/j.stamet.2008.04.001}.
-#'
-#' @seealso
-#' \code{\link[extraDistr]{Kumaraswamy}}
+#' \insertRef{kumaraswamy1980generalized}{fitODBOD}
+#' \insertRef{jones2009kumaraswamy}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -287,18 +268,8 @@ pKUM<-function(p,a,b)
 #' The output of \code{mazKUM} gives the moments about zero in vector form.
 #'
 #' @references
-#' Kumaraswamy, P. (1980). A generalized probability density function for double-bounded random processes.
-#' Journal of Hydrology, 46(1), 79-88.
-#'
-#' Available at : \doi{10.1016/0022-1694(80)90036-0}.
-#'
-#' Jones, M. C. (2009). Kumaraswamy's distribution: A beta-type distribution with some tractability advantages.
-#' Statistical Methodology, 6(1), 70-81.
-#'
-#' Available at : \doi{10.1016/j.stamet.2008.04.001}.
-#'
-#' @seealso
-#' \code{\link[extraDistr]{Kumaraswamy}}
+#' \insertRef{kumaraswamy1980generalized}{fitODBOD}
+#' \insertRef{jones2009kumaraswamy}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -427,8 +398,7 @@ mazKUM<-function(r,a,b)
 #' \code{over.dis.para} over dispersion value of the Kumaraswamy Distribution.
 #'
 #' @references
-#' Li, X. H., Huang, Y. Y., & Zhao, X. Y. (2011). The Kumaraswamy Binomial Distribution. Chinese Journal
-#' of Applied Probability and Statistics, 27(5), 511-521.
+#' \insertRef{xiaohu2011kumaraswamy}{fitODBOD}
 #'
 #' @examples
 #' \dontrun{
@@ -581,8 +551,7 @@ dKumBin<-function(x,n,a,b,it=25000)
 #' The output of \code{pKumBin} gives cumulative probability values in vector form.
 #'
 #' @references
-#' Li, X. H., Huang, Y. Y., & Zhao, X. Y. (2011). The Kumaraswamy Binomial Distribution. Chinese Journal
-#' of Applied Probability and Statistics, 27(5), 511-521.
+#' \insertRef{xiaohu2011kumaraswamy}{fitODBOD}
 #'
 #' @examples
 #' \dontrun{
@@ -658,8 +627,7 @@ pKumBin<-function(x,n,a,b,it=25000)
 #' The output of \code{NegLLKumBin} will produce a single numeric value.
 #'
 #' @references
-#' Li, X. H., Huang, Y. Y., & Zhao, X. Y. (2011). The Kumaraswamy Binomial Distribution. Chinese Journal
-#' of Applied Probability and Statistics, 27(5), 511-521.
+#' \insertRef{xiaohu2011kumaraswamy}{fitODBOD}
 #'
 #' @examples
 #' No.D.D <- 0:7          #assigning the random variables
@@ -765,8 +733,7 @@ NegLLKumBin<-function(x,freq,a,b,it=25000)
 #' \pkg{bbmle} package therefore output is of class of mle2.
 #'
 #' @references
-#' Li, X. H., Huang, Y. Y., & Zhao, X. Y. (2011). The Kumaraswamy Binomial Distribution. Chinese Journal
-#' of Applied Probability and Statistics, 27(5), 511-521.
+#' \insertRef{xiaohu2011kumaraswamy}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[bbmle]{mle2}}
@@ -878,8 +845,7 @@ EstMLEKumBin<-function(x,freq,a,b,it,...)
 #' extract specific outputs.
 #'
 #' @references
-#' Li, X. H., Huang, Y. Y., & Zhao, X. Y. (2011). The Kumaraswamy Binomial Distribution. Chinese Journal
-#' of Applied Probability and Statistics, 27(5), 511-521.
+#' \insertRef{xiaohu2011kumaraswamy}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[bbmle]{mle2}}

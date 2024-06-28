@@ -40,9 +40,7 @@
 #' \code{var}        variance of Lovinson Multiplicative Binomial Distribution.
 #'
 #' @references
-#' Elamir, E.A., 2013. Multiplicative-Binomial Distribution: Some Results on
-#' Characterization, Inference and Random Data Generation. Journal of Statistical
-#' Theory and Applications, 12(1), pp.92-105.
+#' \insertRef{elamir2013multiplicative}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -78,6 +76,7 @@
 #'
 #' pLMBin(0:10,10,.58,10.022)     #acquiring the cumulative probability values
 #'
+#' @importFrom Rdpack reprompt
 #' @export
 dLMBin<-function(x,n,p,phi)
 {
@@ -194,9 +193,7 @@ dLMBin<-function(x,n,p,phi)
 #' The output of \code{pLMBin} gives cumulative probability values in vector form.
 #'
 #' @references
-#' Elamir, E.A., 2013. Multiplicative-Binomial Distribution: Some Results on
-#' Characterization, Inference and Random Data Generation. Journal of Statistical
-#' Theory and Applications, 12(1), pp.92-105.
+#' \insertRef{elamir2013multiplicative}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -268,9 +265,7 @@ pLMBin<-function(x,n,p,phi)
 #' The output of \code{NegLLLMBin} will produce a single numeric value.
 #'
 #' @references
-#' Elamir, E.A., 2013. Multiplicative-Binomial Distribution: Some Results on
-#' Characterization, Inference and Random Data Generation. Journal of Statistical
-#' Theory and Applications, 12(1), pp.92-105.
+#' \insertRef{elamir2013multiplicative}{fitODBOD}
 #'
 #' @examples
 #' No.D.D <- 0:7       #assigning the random variables
@@ -361,9 +356,7 @@ NegLLLMBin<-function(x,freq,p,phi)
 #' \pkg{bbmle} package therefore output is of class of mle2.
 #'
 #' @references
-#' Elamir, E.A., 2013. Multiplicative-Binomial Distribution: Some Results on
-#' Characterization, Inference and Random Data Generation. Journal of Statistical
-#' Theory and Applications, 12(1), pp.92-105.
+#' \insertRef{elamir2013multiplicative}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[bbmle]{mle2}}
@@ -462,9 +455,7 @@ EstMLELMBin<-function(x,freq,p,phi,...)
 #' can be used to extract specific outputs.
 #'
 #' @references
-#' Elamir, E.A., 2013. Multiplicative-Binomial Distribution: Some Results on
-#' Characterization, Inference and Random Data Generation. Journal of Statistical
-#' Theory and Applications, 12(1), pp.92-105.
+#' \insertRef{elamir2013multiplicative}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[bbmle]{mle2}}

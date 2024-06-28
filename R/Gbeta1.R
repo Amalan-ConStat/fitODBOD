@@ -44,19 +44,9 @@
 #' \code{var}                   variance of the Generalized Beta Type-1 Distribution.
 #'
 #' @references
-#' Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomial Distribution: A New
-#' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
-#' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
-#'
-#' Available at: \doi{10.5539/ijsp.v2n2p24} .
-#'
-#' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
-#' Beta - Binomial Parameters. , (October), pp.702-709.
-#'
-#' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
-#' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
-#'
-#' Available at: \doi{10.5539/ijsp.v2n2p24}.
+#' \insertRef{manoj2013mcdonald}{fitODBOD}
+#' \insertRef{janiffer2014estimating}{fitODBOD}
+#' \insertRef{roozegar2017mcdonald}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -80,6 +70,7 @@
 #' #only the integer value of moments is taken here because moments cannot be decimal
 #' mazGBeta1(3.2,3,2,2)
 #'
+#' @importFrom Rdpack reprompt
 #' @export
 dGBeta1<-function(p,a,b,c)
 {
@@ -159,19 +150,9 @@ dGBeta1<-function(p,a,b,c)
 #' The output \code{pGBeta1} gives the cumulative density values in vector form.
 #'
 #' @references
-#' Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomial Distribution: A New
-#' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
-#' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
-#'
-#' Available at: \doi{10.5539/ijsp.v2n2p24}.
-#'
-#' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
-#' Beta - Binomial Parameters. , (October), pp.702-709.
-#'
-#' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
-#' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
-#'
-#' Available at: \doi{10.1080/03610918.2015.1088024}.
+#' \insertRef{manoj2013mcdonald}{fitODBOD}
+#' \insertRef{janiffer2014estimating}{fitODBOD}
+#' \insertRef{roozegar2017mcdonald}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -285,19 +266,9 @@ pGBeta1<-function(p,a,b,c)
 #' The output \code{mazGBeta1} gives the moments about zero in vector form.
 #'
 #' @references
-#' Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomial Distribution: A New
-#' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
-#' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
-#'
-#' Available at: \doi{10.5539/ijsp.v2n2p24}.
-#'
-#' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
-#' Beta - Binomial Parameters. , (October), pp.702-709.
-#'
-#' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
-#' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
-#'
-#' Available at: \doi{10.1080/03610918.2015.1088024}.
+#' \insertRef{manoj2013mcdonald}{fitODBOD}
+#' \insertRef{janiffer2014estimating}{fitODBOD}
+#' \insertRef{roozegar2017mcdonald}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -408,19 +379,9 @@ mazGBeta1<-function(r,a,b,c)
 #' \code{over.dis.para}  over dispersion value of McDonald Generalized Beta Binomial Distribution.
 #'
 #' @references
-#' Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomial Distribution: A New
-#' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
-#' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
-#'
-#' Available at: \doi{10.5539/ijsp.v2n2p24}.
-#'
-#' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
-#' Beta - Binomial Parameters. , (October), pp.702-709.
-#'
-#' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
-#' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
-#'
-#' Available at: \doi{10.1080/03610918.2015.1088024}.
+#' \insertRef{manoj2013mcdonald}{fitODBOD}
+#' \insertRef{janiffer2014estimating}{fitODBOD}
+#' \insertRef{roozegar2017mcdonald}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -541,19 +502,9 @@ dMcGBB<-function(x,n,a,b,c)
 #' The output of \code{pMcGBB} gives cumulative probability function values in vector form.
 #'
 #' @references
-#' Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomial Distribution: A New
-#' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
-#' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
-#'
-#' Available at: \doi{10.5539/ijsp.v2n2p24}.
-#'
-#' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
-#' Beta - Binomial Parameters. , (October), pp.702-709.
-#'
-#' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
-#' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
-#'
-#' Available at: \doi{10.1080/03610918.2015.1088024}.
+#' \insertRef{manoj2013mcdonald}{fitODBOD}
+#' \insertRef{janiffer2014estimating}{fitODBOD}
+#' \insertRef{roozegar2017mcdonald}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -622,19 +573,9 @@ pMcGBB<-function(x,n,a,b,c)
 #' The output of \code{NegLLMcGBB} will produce a single numeric value.
 #'
 #' @references
-#' Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomial Distribution: A New
-#' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
-#' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
-#'
-#' Available at: \doi{10.5539/ijsp.v2n2p24}.
-#'
-#' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
-#' Beta - Binomial Parameters. , (October), pp.702-709.
-#'
-#' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
-#' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
-#'
-#' Available at: \doi{10.1080/03610918.2015.1088024}.
+#' \insertRef{manoj2013mcdonald}{fitODBOD}
+#' \insertRef{janiffer2014estimating}{fitODBOD}
+#' \insertRef{roozegar2017mcdonald}{fitODBOD}
 #'
 #' @examples
 #' No.D.D <- 0:7            #assigning the random variables
@@ -715,19 +656,9 @@ NegLLMcGBB<-function(x,freq,a,b,c)
 #' therefore output is of class of mle2.
 #'
 #' @references
-#' Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomial Distribution: A New
-#' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
-#' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
-#'
-#' Available at: \doi{10.5539/ijsp.v2n2p24}.
-#'
-#' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
-#' Beta - Binomial Parameters. , (October), pp.702-709.
-#'
-#' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
-#' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
-#'
-#' Available at: \doi{10.1080/03610918.2015.1088024}.
+#' \insertRef{manoj2013mcdonald}{fitODBOD}
+#' \insertRef{janiffer2014estimating}{fitODBOD}
+#' \insertRef{roozegar2017mcdonald}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[bbmle]{mle2}}
@@ -839,19 +770,9 @@ EstMLEMcGBB<-function(x,freq,a,b,c,...)
 #' extract specific outputs.
 #'
 #' @references
-#' Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomial Distribution: A New
-#' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
-#' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
-#'
-#' Available at: \doi{10.5539/ijsp.v2n2p24}.
-#'
-#' Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
-#' Beta - Binomial Parameters. , (October), pp.702-709.
-#'
-#' Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
-#' Communications in Statistics - Simulation and Computation, (May), pp.0-0.
-#'
-#' Available at: \doi{10.1080/03610918.2015.1088024}.
+#' \insertRef{manoj2013mcdonald}{fitODBOD}
+#' \insertRef{janiffer2014estimating}{fitODBOD}
+#' \insertRef{roozegar2017mcdonald}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[bbmle]{mle2}}

@@ -38,9 +38,7 @@
 #' The output of \code{GenerateBOD} gives a vector of overdispersed binomial random variables
 #'
 #' @references
-#' Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomial Distribution: A New
-#' Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
-#' Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
+#' \insertRef{manoj2013mcdonald}{fitODBOD}
 #'
 #' @examples
 #' N <- 500    # Number of observations
@@ -52,6 +50,7 @@
 #' New_overdispersed_data <- GenerateBOD(N, n, pi, rho)
 #' table(New_overdispersed_data)
 #'
+#' @importFrom Rdpack reprompt
 #' @export
 GenerateBOD<-function(N, n, pi, rho)
 {

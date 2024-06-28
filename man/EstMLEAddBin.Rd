@@ -55,16 +55,8 @@ coef(results)
 }
 }
 \references{
-Johnson, N. L., Kemp, A. W., & Kotz, S. (2005). Univariate discrete distributions (Vol. 444).
-Hoboken, NJ: Wiley-Interscience.
-
-L. L. Kupper, J.K.H., 1978. The Use of a Correlated Binomial Model for the Analysis of Certain Toxicological
-Experiments. Biometrics, 34(1), pp.69-76.
-
-Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
-- Theory and Methods, 14(6), pp.1497-1506.
-
-Available at: \doi{10.1080/03610928508828990}
-
-Jorge G. Morel and Nagaraj K. Neerchal. Overdispersion Models in SAS. SAS Institute, 2012.
+\insertRef{johnson2005univariate}{fitODBOD}
+\insertRef{kupper1978use}{fitODBOD}
+\insertRef{paul1985three}{fitODBOD}
+\insertRef{morel2012overdispersion}{fitODBOD}
 }

@@ -41,8 +41,5 @@ NegLLBetaCorrBin(No.D.D,Obs.fre.1,0.001,9.03,10)     #acquiring the negative log
 
 }
 \references{
-Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
-- Theory and Methods, 14(6), pp.1497-1506.
-
-Available at: \doi{10.1080/03610928508828990} .
+\insertRef{paul1985three}{fitODBOD}
 }

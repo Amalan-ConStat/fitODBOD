@@ -35,13 +35,7 @@
 #' \code{var}           variance of COM Poisson  Binomial Distribution.
 #'
 #' @references
-#' Extracted from
-#'
-#' Borges, P., Rodrigues, J., Balakrishnan, N. and Bazan, J., 2014. A COM-Poisson type
-#' generalization of the binomial distribution and its properties and applications.
-#' Statistics & Probability Letters, 87, pp.158-166.
-#'
-#' Available at: \doi{10.1016/j.spl.2014.01.019}
+#' \insertRef{borges2014poisson}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -74,6 +68,7 @@
 #'
 #' pCOMPBin(0:10,10,0.58,0.022)      #acquiring the cumulative probability values
 #'
+#' @importFrom Rdpack reprompt
 #' @export
 dCOMPBin<-function(x,n,p,v)
 {
@@ -172,13 +167,7 @@ dCOMPBin<-function(x,n,p,v)
 #' The output of \code{pCOMPBin} gives  cumulative probability  values in vector form.
 #'
 #' @references
-#' Extracted from
-#'
-#' Borges, P., Rodrigues, J., Balakrishnan, N. and Bazan, J., 2014. A COM-Poisson type
-#' generalization of the binomial distribution and its properties and applications.
-#' Statistics & Probability Letters, 87, pp.158-166.
-#'
-#' Available at: \doi{10.1016/j.spl.2014.01.019}
+#' \insertRef{borges2014poisson}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -251,11 +240,7 @@ pCOMPBin<-function(x,n,p,v)
 #' The output of \code{NegLLCOMPBin} will produce a single numeric value.
 #'
 #' @references
-#' Borges, P., Rodrigues, J., Balakrishnan, N. and Bazan, J., 2014. A COM-Poisson type
-#' generalization of the binomial distribution and its properties and applications.
-#' Statistics & Probability Letters, 87, pp.158-166.
-#'
-#' Available at: \doi{10.1016/j.spl.2014.01.019}
+#' \insertRef{borges2014poisson}{fitODBOD}
 #'
 #' @examples
 #' No.D.D <- 0:7         #assigning the random variables
@@ -350,11 +335,7 @@ NegLLCOMPBin<-function(x,freq,p,v)
 #' therefore output is of class of mle2.
 #'
 #' @references
-#' Borges, P., Rodrigues, J., Balakrishnan, N. and Bazan, J., 2014. A COM-Poisson type
-#' generalization of the binomial distribution and its properties and applications.
-#' Statistics & Probability Letters, 87, pp.158-166.
-#'
-#' Available at: \doi{10.1016/j.spl.2014.01.019}
+#' \insertRef{borges2014poisson}{fitODBOD}
 #'
 #' @examples
 #' No.D.D <- 0:7               #assigning the random variables
@@ -453,11 +434,7 @@ EstMLECOMPBin<-function(x,freq,p,v,...)
 #' can be used to extract specific outputs.
 #'
 #' @references
-#' Borges, P., Rodrigues, J., Balakrishnan, N. and Bazan, J., 2014. A COM-Poisson type
-#' generalization of the binomial distribution and its properties and applications.
-#' Statistics & Probability Letters, 87, pp.158-166.
-#'
-#' Available at: \doi{10.1016/j.spl.2014.01.019}
+#' \insertRef{borges2014poisson}{fitODBOD}
 #'
 #' @examples
 #' No.D.D <- 0:7                    #assigning the random variables

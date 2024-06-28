@@ -1,11 +1,11 @@
 Type: Package
 Package: fitODBOD
 Title: Modeling Over Dispersed Binomial Outcome Data Using BMD and ABD
-Version: 1.5.1
+Version: 1.5.2
 Authors@R: c(
-    person("Amalan", "Mahendran", , "amalan0595@gmail.com", role = c("aut", "cre"),
+    person(given="Amalan",family="Mahendran", email="amalan0595@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-0643-9052")),
-    person("Pushpakanthie", "Wijekoon", role = c("aut", "ctb"),
+    person(given="Pushpakanthie", family="Wijekoon", role = c("aut", "ctb"),
            comment = c(ORCID = "0000-0003-4242-1017"))
   )
 Description: Contains Probability Mass Functions, Cumulative Mass
@@ -25,7 +25,9 @@ Imports:
     hypergeo,
     MASS,
     mvtnorm,
+    Rdpack,
     stats
+RdMacros: Rdpack
 Suggests: 
     flextable,
     ggplot2,

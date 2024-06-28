@@ -49,10 +49,7 @@ bbmle::coef(parameters)           #extracting the parameters
 
 }
 \references{
-Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
-- Theory and Methods, 14(6), pp.1497-1506.
-
-Available at: \doi{10.1080/03610928508828990} .
+\insertRef{paul1985three}{fitODBOD}
 }
 \seealso{
 \code{\link[bbmle]{mle2}}

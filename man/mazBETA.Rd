@@ -77,13 +77,8 @@ mazBETA(1.9,5.5,6)
 
 }
 \references{
-Johnson, N. L., Kotz, S. and Balakrishnan, N. (1994) Continuous Univariate Distributions, Vol. 2,
-Wiley Series in Probability and Mathematical Statistics, Wiley.
-
-Trenkler, G., 1996. Continuous univariate distributions. Computational Statistics & Data Analysis,
-21(1), p.119.
-
-Available at: \doi{10.1016/0167-9473(96)90015-8}.
+\insertRef{johnson1995continuous}{fitODBOD}
+\insertRef{trenkler1996continuous}{fitODBOD}
 }
 \seealso{
 \code{\link[stats]{Beta}}

@@ -47,9 +47,5 @@ bbmle::coef(parameters)           #extracting the parameters
 
 }
 \references{
-Borges, P., Rodrigues, J., Balakrishnan, N. and Bazan, J., 2014. A COM-Poisson type
-generalization of the binomial distribution and its properties and applications.
-Statistics & Probability Letters, 87, pp.158-166.
-
-Available at: \doi{10.1016/j.spl.2014.01.019}
+\insertRef{borges2014poisson}{fitODBOD}
 }

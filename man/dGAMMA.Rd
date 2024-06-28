@@ -84,8 +84,7 @@ mazGAMMA(1.9,5.5,6)
 
 }
 \references{
-Olshen, A. C. Transformations of the Pearson Type III Distribution.
-Ann. Math. Statist. 9 (1938), no. 3, 176--200.
+\insertRef{olshen1938transformations}{fitODBOD}
 }
 \seealso{
 \code{\link[stats]{GammaDist}}

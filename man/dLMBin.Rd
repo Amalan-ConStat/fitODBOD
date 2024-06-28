@@ -83,7 +83,5 @@ pLMBin(0:10,10,.58,10.022)     #acquiring the cumulative probability values
 
 }
 \references{
-Elamir, E.A., 2013. Multiplicative-Binomial Distribution: Some Results on
-Characterization, Inference and Random Data Generation. Journal of Statistical
-Theory and Applications, 12(1), pp.92-105.
+\insertRef{elamir2013multiplicative}{fitODBOD}
 }

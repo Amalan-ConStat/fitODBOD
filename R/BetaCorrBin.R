@@ -57,11 +57,7 @@
 #' \code{maxcorr}       maximum correlation value possible.
 #'
 #' @references
-#' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
-#' - Theory and Methods, 14(6), pp.1497-1506.
-#'
-#' Available at: \doi{10.1080/03610928508828990} .
-#'
+#' \insertRef{paul1985three}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -97,6 +93,7 @@
 #'
 #' pBetaCorrBin(0:10,10,0.001,10,13)      #acquiring the cumulative probability values
 #'
+#' @importFrom Rdpack reprompt
 #' @export
 dBetaCorrBin<-function(x,n,cov,a,b)
 {
@@ -233,10 +230,7 @@ dBetaCorrBin<-function(x,n,cov,a,b)
 #' The output of \code{pBetaCorrBin} gives cumulative probability  values in vector form.
 #'
 #' @references
-#' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
-#' - Theory and Methods, 14(6), pp.1497-1506.
-#'
-#' Available at: \doi{10.1080/03610928508828990}.
+#' \insertRef{paul1985three}{fitODBOD}
 #'
 #' @examples
 #' #plotting the random variables and probability values
@@ -313,12 +307,7 @@ pBetaCorrBin<-function(x,n,cov,a,b)
 #' The output of \code{NegLLBetaCorrBin} will produce a single numeric value.
 #'
 #' @references
-#'
-#' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
-#' - Theory and Methods, 14(6), pp.1497-1506.
-#'
-#' Available at: \doi{10.1080/03610928508828990} .
-#'
+#' \insertRef{paul1985three}{fitODBOD}
 #'
 #' @examples
 #' No.D.D <- 0:7         #assigning the random variables
@@ -442,10 +431,7 @@ NegLLBetaCorrBin<-function(x,freq,cov,a,b)
 #' therefore output is of class of mle2.
 #'
 #' @references
-#' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
-#' - Theory and Methods, 14(6), pp.1497-1506.
-#'
-#' Available at: \doi{10.1080/03610928508828990} .
+#' \insertRef{paul1985three}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[bbmle]{mle2}}
@@ -561,10 +547,7 @@ EstMLEBetaCorrBin<-function(x,freq,cov,a,b,...)
 #' can be used to extract specific outputs.
 #'
 #' @references
-#' Paul, S.R., 1985. A three-parameter generalization of the binomial distribution. Communications in Statistics
-#' - Theory and Methods, 14(6), pp.1497-1506.
-#'
-#' Available at: \doi{10.1080/03610928508828990} .
+#' \insertRef{paul1985three}{fitODBOD}
 #'
 #' @examples
 #' No.D.D <- 0:7                    #assigning the random variables

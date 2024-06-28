@@ -94,8 +94,7 @@ residuals(results)
 
 }
 \references{
-Li, X. H., Huang, Y. Y., & Zhao, X. Y. (2011). The Kumaraswamy Binomial Distribution. Chinese Journal
-of Applied Probability and Statistics, 27(5), 511-521.
+\insertRef{xiaohu2011kumaraswamy}{fitODBOD}
 }
 \seealso{
 \code{\link[bbmle]{mle2}}

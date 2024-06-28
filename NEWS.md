@@ -55,3 +55,8 @@
 
 - Updated the package with GenerateBOD function to generate overdispersed Binomial Outcome data. 
 - A small introduction to fitODBODRshiny package and Rshiny application.
+
+# Version 1.5.2
+
+- Resolve the issues in tests because of R-devel.
+- Proper reference included for functions. 

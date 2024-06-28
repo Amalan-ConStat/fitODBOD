@@ -48,12 +48,8 @@
 #' \code{var}           variance of the Gaussian Hypergeometric Generalized Beta Distribution.
 #'
 #' @references
-#' Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
-#' of the beta-binomial distribution. Journal of the Royal Statistical Society. Series C (Applied Statistics), 56(1), 51-61.
-#'
-
-#'
-#' Pearson, J., 2009. Computation of Hypergeometric Functions. Transformation, (September), p.1--123.
+#' \insertRef{rodriguez2007generalization}{fitODBOD}
+#' \insertRef{pearson2009computation}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[hypergeo]{hypergeo_powerseries}}
@@ -203,11 +199,8 @@
 #'
 #'
 #' @references
-#' Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
-#' of the beta-binomial distribution. Journal of the Royal Statistical Society. Series C (Applied Statistics), 56(1), 51-61.
-#'
-#'
-#' Pearson, J., 2009. Computation of Hypergeometric Functions. Transformation, (September), p.1--123.
+#' \insertRef{rodriguez2007generalization}{fitODBOD}
+#' \insertRef{pearson2009computation}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[hypergeo]{hypergeo_powerseries}}
@@ -356,11 +349,8 @@ pGHGBeta<-function(p,n,a,b,c)
 #' The output of \code{mazGHGBeta} give the moments about zero in vector form.
 #'
 #' @references
-#' Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
-#' of the beta-binomial distribution. Journal of the Royal Statistical Society. Series C (Applied Statistics), 56(1), 51-61.
-#'
-#'
-#' Pearson, J., 2009. Computation of Hypergeometric Functions. Transformation, (September), p.1--123.
+#' \insertRef{rodriguez2007generalization}{fitODBOD}
+#' \insertRef{pearson2009computation}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[hypergeo]{hypergeo_powerseries}}
@@ -520,11 +510,8 @@ mazGHGBeta<-function(r,n,a,b,c)
 #'                        Binomial Distribution.
 #'
 #' @references
-#' Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
-#' of the beta-binomial distribution. Journal of the Royal Statistical Society. Series C (Applied Statistics), 56(1), 51-61.
-#'
-#'
-#' Pearson, J., 2009. Computation of Hypergeometric Functions. Transformation, (September), p.1--123.
+#' \insertRef{rodriguez2007generalization}{fitODBOD}
+#' \insertRef{pearson2009computation}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[hypergeo]{hypergeo_powerseries}}
@@ -662,11 +649,8 @@ dGHGBB<-function(x,n,a,b,c)
 #' The output of \code{pGHGBB} gives cumulative probability function values in vector form.
 #'
 #' @references
-#' Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
-#' of the beta-binomial distribution. Journal of the Royal Statistical Society. Series C (Applied Statistics), 56(1), 51-61.
-#'
-#'
-#' Pearson, J., 2009. Computation of Hypergeometric Functions. Transformation, (September), p.1--123.
+#' \insertRef{rodriguez2007generalization}{fitODBOD}
+#' \insertRef{pearson2009computation}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[hypergeo]{hypergeo_powerseries}}
@@ -741,11 +725,8 @@ pGHGBB<-function(x,n,a,b,c)
 #' The output of \code{NegLLGHGBB} will produce a single numeric value.
 #'
 #' @references
-#' Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
-#' of the beta-binomial distribution. Journal of the Royal Statistical Society. Series C (Applied Statistics), 56(1), 51-61.
-#'
-#'
-#' Pearson, J., 2009. Computation of Hypergeometric Functions. Transformation, (September), p.1--123.
+#' \insertRef{rodriguez2007generalization}{fitODBOD}
+#' \insertRef{pearson2009computation}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[hypergeo]{hypergeo_powerseries}}
@@ -833,11 +814,8 @@ NegLLGHGBB<-function(x,freq,a,b,c)
 #' \pkg{bbmle} package therefore output is of class of mle2.
 #'
 #' @references
-#' Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
-#' of the beta-binomial distribution. Journal of the Royal Statistical Society. Series C (Applied Statistics), 56(1), 51-61.
-#'
-#'
-#' Pearson, J., 2009. Computation of Hypergeometric Functions. Transformation, (September), p.1--123.
+#' \insertRef{rodriguez2007generalization}{fitODBOD}
+#' \insertRef{pearson2009computation}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[hypergeo]{hypergeo_powerseries}}
@@ -946,11 +924,8 @@ EstMLEGHGBB<-function(x,freq,a,b,c,...)
 #' to extract specific outputs.
 #'
 #' @references
-#' Rodriguez-Avi, J., Conde-Sanchez, A., Saez-Castillo, A. J., & Olmo-Jimenez, M. J. (2007). A generalization
-#' of the beta-binomial distribution. Journal of the Royal Statistical Society. Series C (Applied Statistics), 56(1), 51-61.
-#'
-#'
-#' Pearson, J., 2009. Computation of Hypergeometric Functions. Transformation, (September), p.1--123.
+#' \insertRef{rodriguez2007generalization}{fitODBOD}
+#' \insertRef{pearson2009computation}{fitODBOD}
 #'
 #' @seealso
 #' \code{\link[hypergeo]{hypergeo_powerseries}}

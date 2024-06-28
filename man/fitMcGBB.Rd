@@ -91,19 +91,9 @@ residuals(results)
 
 }
 \references{
-Manoj, C., Wijekoon, P. & Yapa, R.D., 2013. The McDonald Generalized Beta-Binomial Distribution: A New
-Binomial Mixture Distribution and Simulation Based Comparison with Its Nested Distributions in Handling
-Overdispersion. International Journal of Statistics and Probability, 2(2), pp.24-41.
-
-Available at: \doi{10.5539/ijsp.v2n2p24}.
-
-Janiffer, N.M., Islam, A. & Luke, O., 2014. Estimating Equations for Estimation of Mcdonald Generalized
-Beta - Binomial Parameters. , (October), pp.702-709.
-
-Roozegar, R., Tahmasebi, S. & Jafari, A.A., 2015. The McDonald Gompertz Distribution: Properties and Applications.
-Communications in Statistics - Simulation and Computation, (May), pp.0-0.
-
-Available at: \doi{10.1080/03610918.2015.1088024}.
+\insertRef{manoj2013mcdonald}{fitODBOD}
+\insertRef{janiffer2014estimating}{fitODBOD}
+\insertRef{roozegar2017mcdonald}{fitODBOD}
 }
 \seealso{
 \code{\link[bbmle]{mle2}}

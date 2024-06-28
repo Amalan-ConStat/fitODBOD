@@ -65,11 +65,8 @@ mazUNI(1.9)
 
 }
 \references{
-Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,
-Series A, 120:148-191.
-
-Johnson, N. L., Kotz, S. and Balakrishnan, N. (1994) Continuous Univariate Distributions,
-Vol. 2, Wiley Series in Probability and Mathematical Statistics, Wiley.
+\insertRef{horsnell1957economical}{fitODBOD}
+\insertRef{johnson1995continuous}{fitODBOD}
 }
 \seealso{
 \code{\link[stats]{Uniform}}

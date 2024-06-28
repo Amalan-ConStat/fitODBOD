@@ -57,12 +57,6 @@ pUniBin(0:15,15)       #acquiring the cumulative probability values
 
 }
 \references{
-Horsnell, G. (1957). Economic acceptance sampling schemes. Journal of the Royal Statistical Society,
-Series A, 120:148-191.
-
-Okagbue, H. et al., 2014. Using the Average of the Extreme Values of a Triangular Distribution for a
-Transformation, and Its Approximant via the Continuous Uniform Distribution. British Journal of
-Mathematics & Computer Science, 4(24), pp.3497-3507.
-
-Available at: \doi{10.9734/BJMCS/2014/12299}.
+\insertRef{horsnell1957economical}{fitODBOD}
+\insertRef{okagbue2014using}{fitODBOD}
 }

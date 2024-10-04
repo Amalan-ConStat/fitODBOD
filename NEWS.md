@@ -60,3 +60,7 @@
 
 - Resolve the issues in tests because of R-devel.
 - Proper reference included for functions. 
+
+# Version 1.5.3
+
+- spelling issues resolved

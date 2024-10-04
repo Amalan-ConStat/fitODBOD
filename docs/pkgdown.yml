@@ -1,4 +1,4 @@
-pandoc: 3.1.11
+pandoc: '3.2'
 pkgdown: 2.0.9
 pkgdown_sha: ~
 articles:
@@ -11,5 +11,5 @@ articles:
   Mixing_Distributions_dxxx: Mixing_Distributions_dxxx.html
   Mixing_Distributions_mazxxx: Mixing_Distributions_mazxxx.html
   Mixing_Distributions_pxxx: Mixing_Distributions_pxxx.html
-last_built: 2024-06-22T11:52Z
+last_built: 2024-10-04T13:43Z
 

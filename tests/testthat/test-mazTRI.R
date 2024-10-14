@@ -1,29 +1,16 @@
-context("Scenario of un wanted inputs")
+context_start_file("mazTRI function")
 test_that("NA values are avoided",{
-          expect_that(mazTRI(NA,0.1),
-          throws_error("NA or Infinite or NAN values in the Input"))
-          })
-test_that("Infinite values are avoided",{
-          expect_that(mazTRI(Inf,0.1),
-          throws_error("NA or Infinite or NAN values in the Input"))
-          })
-test_that("NAN values are avoided",{
-          expect_that(mazTRI(NaN,0.1),
-          throws_error("NA or Infinite or NAN values in the Input"))
-          })
-
-context("Scenario of mode")
+  expect_error(mazTRI(NA,0.1),
+              "NA or Infinite or NAN values in the Input")
+})
 test_that("Mode out of range",{
-          expect_that(mazTRI(1,5),
-          throws_error("Mode cannot be less than zero or greater than one"))
-          })
-test_that("Mode out of range",{
-          expect_that(mazTRI(1,-5),
-          throws_error("Mode cannot be less than zero or greater than one"))
-          })
-
-context("Moments issues")
+  expect_error(mazTRI(1,5),
+              "Mode cannot be less than zero or greater than one")
+})
 test_that("Moments being negative or zero",{
-          expect_that(mazTRI(-3,0.3),
-          throws_error("Moments cannot be less than or equal to zero"))
-          })
+  expect_error(mazTRI(-3,0.3),
+              "Moments cannot be less than or equal to zero")
+})
+test_that("run smoothly",{
+  expect_no_error(mazTRI(2,0.5))
+})

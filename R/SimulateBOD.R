@@ -54,6 +54,25 @@
 #' @export
 GenerateBOD<-function(N, n, pi, rho)
 {
+  if(any(is.na(c(N,n,pi,rho))) | any(is.nan(c(N,n,pi,rho)))){
+    stop("NA or Infinite or NAN values in the N,n,pi or rho")
+  }
+
+  if((length(N)+length(n)+length(pi)+length(rho))!= 4){
+    stop("N, n, pi or rho has a value greater than length one")
+  }
+
+  if(N <= 0 | n <= 0 ){
+    stop("N or n cannot be negative values")
+  }
+
+  if(pi <= 0 | pi >= 1){
+    stop("probability of success cannot be greater than or equal to one \nor less than or equal to zero")
+  }
+  if(rho < 0 ){
+    stop("dispersion parameter rho cannot be less than zero")
+  }
+
   # Function to solve for delta, copied for completeness
   z_pi <- stats::qnorm(pi)
 

@@ -101,15 +101,10 @@ dCOMPBin<-function(x,n,p,v)
       }
       else
       {
-        value<-NULL
         #constructing the probability values for all random variables
         y<-0:n
-        value1<-NULL
-        for(i in 1:length(y))
-        {
-          value1[i]<-(((choose(n,y[i]))^v)*(p^y[i])*((1-p)^(n-y[i])))/
-                        (sum(((choose(n,y))^v)*(p^y)*((1-p)^(n-y))))
-        }
+        value1<-sapply(1:length(y),function(i) (((choose(n,y[i]))^v)*(p^y[i])*((1-p)^(n-y[i])))/
+                         (sum(((choose(n,y))^v)*(p^y)*((1-p)^(n-y)))))
         check1<-sum(value1)
 
         #checking if the sum of all probability values leads upto one
@@ -122,11 +117,9 @@ dCOMPBin<-function(x,n,p,v)
         else
         {
           #for each random variable in the input vector below calculations occur
-          for (i in 1:length(x))
-          {
-            value[i]<-(((choose(n,x[i]))^v)*(p^x[i])*((1-p)^(n-x[i])))/
-                              (sum(((choose(n,y))^v)*(p^y)*((1-p)^(n-y))))
-          }
+          value<-sapply(1:length(x),function(i) (((choose(n,x[i]))^v)*(p^x[i])*((1-p)^(n-x[i])))/
+                          (sum(((choose(n,y))^v)*(p^y)*((1-p)^(n-y)))))
+
           # generating an output in list format consisting pdf,mean and variance
           return(list("pdf"=value,"mean"=sum(value1*y),
                       "var"=sum((y^2)*value1)-(sum(value1*y))^2))
@@ -203,13 +196,10 @@ dCOMPBin<-function(x,n,p,v)
 #' @export
 pCOMPBin<-function(x,n,p,v)
 {
-  ans<-NULL
   #for each binomial random variable in the input vector the cumulative proability function
   #values are calculated
-  for(i in 1:length(x))
-  {
-    ans[i]<-sum(dCOMPBin(0:x[i],n,p,v)$pdf)
-  }
+  ans<-sapply(1:length(x),function(i) sum(dCOMPBin(0:x[i],n,p,v)$pdf))
+
   #generating an ouput vector cumulative probability function values
   return(ans)
 }
@@ -276,15 +266,10 @@ NegLLCOMPBin<-function(x,freq,p,v)
     }
     else
     {
-      value<-NULL
       #constructing the probability values for all random variables
       y<-0:n
-      value1<-NULL
-      for(i in 1:length(y))
-      {
-        value1[i]<-(((choose(n,y[i]))^v)*(p^y[i])*((1-p)^(n-y[i])))/
-                       (sum(((choose(n,y))^v)*(p^y)*((1-p)^(n-y))))
-      }
+      value1<-sapply(1:length(y),function(i) (((choose(n,y[i]))^v)*(p^y[i])*((1-p)^(n-y[i])))/
+                       (sum(((choose(n,y))^v)*(p^y)*((1-p)^(n-y)))))
       check1<-sum(value1)
 
       #checking if the sum of all probability values leads upto one
@@ -369,7 +354,6 @@ EstMLECOMPBin<-function(x,freq,p,v,...)
   #with respective to using bbmle package function mle2 there is no need impose any restrictions
   #therefor the output is directly a single numeric value for the negative log likelihood value of
   #COM Poisson Binomial distribution
-  value<-NULL
   n<-max(x)
   y<-0:n
   data<-rep(x,freq)

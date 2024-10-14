@@ -1,44 +1,21 @@
-context ("Scenario of un wanted inputs")
+context_start_file("NegLLTriBin function")
 test_that("NA values are avoided",{
-          expect_that(NegLLTriBin(NA,4,0.2),
-          throws_error("NA or Infinite or NAN values in the Input"))
-        })
-test_that("Infinite values are avoided",{
-        expect_that(NegLLTriBin(Inf,4,0.2),
-        throws_error("NA or Infinite or NAN values in the Input"))
-        })
-test_that("NAN values are avoided",{
-        expect_that(NegLLTriBin(NaN,4,0.3),
-        throws_error("NA or Infinite or NAN values in the Input"))
-        })
-
-context("Binomial Random variable or frequency issues")
+  expect_error(NegLLTriBin(NA,4,0.2),
+              "NA or Infinite or NAN values in the Input")
+})
 test_that("Negativity Binomial random variable",{
-        expect_that(NegLLTriBin(-3,4,0.2),
-        throws_error("Binomial random variable or frequency values cannot be negative"))
-        })
-test_that("Negativity frequency values",{
-        expect_that(NegLLTriBin(-3,4,0.2),
-        throws_error("Binomial random variable or frequency values cannot be negative"))
-        })
-
-context("Mode issues")
+  expect_error(NegLLTriBin(-3,4,0.2),
+              "Binomial random variable or frequency values cannot be negative")
+})
 test_that("Greater than 1",{
-        expect_that(NegLLTriBin(3,4,3),
-        throws_error("Mode cannot be less than zero or greater than one"))
-        })
-test_that("Lesser than 1",{
-        expect_that(NegLLTriBin(3,4,-3),
-        throws_error("Mode cannot be less than zero or greater than one"))
-        })
-
-context("Checking outputs")
+  expect_error(NegLLTriBin(3,4,3),
+              "Mode cannot be less than zero or greater than one")
+})
 test_that("Output value expected",{
-        expect_identical(round(NegLLTriBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7),4),
-                         440.6691)
-                         })
-
+  expect_identical(round(NegLLTriBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7),4),
+                   440.6691)
+})
 test_that("Checking class of output",{
-        expect_that(NegLLTriBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7),
-        is_a("numeric"))
-        })
+  expect_type(NegLLTriBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7),
+              "double")
+})

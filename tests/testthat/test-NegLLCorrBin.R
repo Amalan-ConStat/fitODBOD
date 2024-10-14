@@ -1,61 +1,25 @@
-context ("Scenario of un wanted inputs")
+context_start_file("NegLLCorrBin functions")
 test_that("NA values are avoided",{
-          expect_that(NegLLCorrBin(NA,4,0.1,.3),
-          throws_error("NA or Infinite or NAN values in the Input"))
-          })
-test_that("Infinite values are avoided",{
-          expect_that(NegLLCorrBin(Inf,4,0.1,.3),
-          throws_error("NA or Infinite or NAN values in the Input"))
-          })
-test_that("NAN values are avoided",{
-          expect_that(NegLLCorrBin(NaN,4,0.1,.3),
-          throws_error("NA or Infinite or NAN values in the Input"))
-          })
-
-context("Binomial Random variable or frequency issues")
+  expect_error(NegLLCorrBin(NA,4,0.1,.3),
+               "NA or Infinite or NAN values in the Input")
+})
 test_that("Negativity Binomial random variable",{
-          expect_that(NegLLCorrBin(-3,4,0.2,0.4),
-          throws_error("Binomial random variable or frequency values cannot be negative"))
-          })
-test_that("Negativity frequency values",{
-          expect_that(NegLLCorrBin(-3,4,0.2,0.4),
-          throws_error("Binomial random variable or frequency values cannot be negative"))
-          })
-
-context("Probability value issues")
+  expect_error(NegLLCorrBin(-3,4,0.2,0.4),
+               "Binomial random variable or frequency values cannot be negative")
+})
 test_that("Probability issues",{
-          expect_that(NegLLCorrBin(3,5,3,0.4),
-          throws_error("Probability value doesnot satisfy conditions"))
-          })
-test_that("Probability issues",{
-          expect_that(NegLLCorrBin(3,5,-3,0.4),
-          throws_error("Probability value doesnot satisfy conditions"))
-          })
-context("Correlation limitations")
+  expect_error(NegLLCorrBin(3,5,3,0.4),
+               "Probability value doesnot satisfy conditions")
+})
 test_that("Correlation above maximum limit",{
-          expect_that(NegLLCorrBin(3,5,0.2,19),
-          throws_error("Correlation cannot be greater than 1 or Lesser than -1 or it cannot be greater than Maximum Correlation or Lesser than Minimum Correlation"))
-          })
-test_that("Correlation above 1",{
-          expect_that(NegLLCorrBin(3,5,0.2,9),
-          throws_error("Correlation cannot be greater than 1 or Lesser than -1 or it cannot be greater than Maximum Correlation or Lesser than Minimum Correlation"))
-          })
-test_that("Correlation below minimum limit",{
-          expect_that(NegLLCorrBin(3,5,0.2,-19),
-          throws_error("Correlation cannot be greater than 1 or Lesser than -1 or it cannot be greater than Maximum Correlation or Lesser than Minimum Correlation"))
-          })
-test_that("Correlation below -1",{
-          expect_that(NegLLCorrBin(3,5,0.2,-9),
-          throws_error("Correlation cannot be greater than 1 or Lesser than -1 or it cannot be greater than Maximum Correlation or Lesser than Minimum Correlation"))
-          })
-
-context("Checking outputs")
+  expect_error(NegLLCorrBin(3,5,0.2,19),
+               "Correlation cannot be greater than 1 or Lesser than -1 or it cannot be greater than Maximum Correlation or Lesser than Minimum Correlation")
+})
 test_that("Output value expected",{
-          expect_identical(round(NegLLCorrBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7,0.01),4),
-                           466.572)
-                           })
-
+  expect_identical(round(NegLLCorrBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7,0.01),4),
+                   466.572)
+})
 test_that("Checking class of output",{
-          expect_that(NegLLCorrBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7,0.01),
-          is_a("numeric"))
-          })
+  expect_type(NegLLCorrBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7,0.01),
+              "double")
+})

@@ -105,19 +105,11 @@ dBETA<-function(p,a,b)
     }
     else
     {
-      ans<-NULL
       #for each input values in the vector necessary calculations and conditions are applied
-      for (i in 1:length(p))
-      {
-        if(p[i]<0 |p[i]>1)
-        {
-          stop("Invalid values in the input")
-        }
-        else
-        {
-          ans[i]<-(p[i]^(a-1)*(1-p[i])^(b-1))/beta(a,b)
-        }
+      if(any(p<0) | any(p>1)){
+        stop("Invalid values in the input")
       }
+      ans<-sapply(1:length(p), function(i) (p[i]^(a-1)*(1-p[i])^(b-1))/beta(a,b))
     }
     # generating an output in list format consisting pdf,mean and variance
     return(list("pdf"=ans,"mean"=a/(a+b),"var"=(a*b)/(((a+b)^2)*(a+b+1)) ))
@@ -224,24 +216,16 @@ pBETA<-function(p,a,b)
     }
     else
     {
-      ans<-NULL
-      val<-NULL
       #the equation contains partial beta integration, below is the integral function
-
-      #for each input values in the vector necessary calculations and conditions are applied
-      for(i in 1:length(p))
-      {
-        if(p[i]<0 | p[i]>1)
-        {
-          stop("Invalid values in the input")
-        }
-        else
-        {
-          #integrating the above mentioned function under limits of zero and vector p
-          val<-stats::integrate(function(q){ (q^(a-1))*((1-q)^(b-1)) },lower = 0,upper = p[i])
-          ans[i]<-val$value/beta(a,b)
-        }
+      if(any(p<0) | any(p>1)){
+        stop("Invalid values in the input")
       }
+      #for each input values in the vector necessary calculations and conditions are applied
+      ans<-sapply(1:length(p),function(i){
+        #integrating the above mentioned function under limits of zero and vector p
+        val<-stats::integrate(function(q){ (q^(a-1))*((1-q)^(b-1)) },lower = 0,upper = p[i])
+        val$value/beta(a,b)
+      })
       #generating an ouput vector of cumulative probability values
       return(ans)
     }
@@ -350,21 +334,13 @@ mazBETA<-function(r,a,b)
     {
       #the moments cannot be a decimal value therefore converting it into an integer
       r<-as.integer(r)
-      ans<-NULL
       #for each input values in the vector necessary calculations and conditions are applied
-      for(i in 1:length(r))
-      {
+      if(any(r<=0)){
         #checking if moment values are less than or equal to zero and creating
         # an error message as well as stopping the function progress
-        if(r[i]<=0)
-        {
-          stop("Moments cannot be less than or equal to zero")
-        }
-        else
-        {
-          ans[i]<-prod((a+(0:(r[i]-1)))/(a+b+(0:(r[i]-1))))
-        }
+        stop("Moments cannot be less than or equal to zero")
       }
+      ans<-sapply(1:length(r),function(i) prod((a+(0:(r[i]-1)))/(a+b+(0:(r[i]-1)))))
       #generating an ouput vector of moment about zero values
       return(ans)
     }
@@ -480,12 +456,8 @@ dBetaBin<-function(x,n,a,b)
       {
         stop("Binomial random variable or binomial trial value cannot be negative")
       }
-      ans<-NULL
       #for each random variable in the input vector below calculations occur
-      for (i in 1:length(x))
-      {
-        ans[i]<-choose(n,x[i])*(beta(a+x[i],n+b-x[i])/beta(a,b))
-      }
+      ans<-sapply(1:length(x),function(i) choose(n,x[i])*(beta(a+x[i],n+b-x[i])/beta(a,b)))
     }
   }
 
@@ -568,13 +540,9 @@ dBetaBin<-function(x,n,a,b)
 #' @export
 pBetaBin<-function(x,n,a,b)
 {
-  ans<-NULL
   #for each binomial random variable in the input vector the cumulative proability function
   #values are calculated
-  for(i in 1:length(x))
-  {
-    ans[i]<-sum(dBetaBin(0:x[i],n,a,b)$pdf)
-  }
+  ans<-sapply(1:length(x),function(i) sum(dBetaBin(0:x[i],n,a,b)$pdf))
   #generating an ouput vector cumulative probability function values
   return(ans)
 }
@@ -619,8 +587,7 @@ NegLLBetaBin<-function(x,freq,a,b)
 {
   #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
   #if so creating an error message as well as stopping the function progress.
-  if(any(is.na(c(x,freq,a,b))) | any(is.infinite(c(x,freq,a,b)))
-     |any(is.nan(c(x,freq,a,b))) )
+  if(any(is.na(c(x,freq,a,b))) | any(is.infinite(c(x,freq,a,b)))| any(is.nan(c(x,freq,a,b))) )
   {
     stop("NA or Infinite or NAN values in the Input")
   }
@@ -844,7 +811,7 @@ summary.mgf<-function(object,...)
 {
   cat("Coefficients: \n a \t  b \n", object$a,object$b)
   cat("\n\nNegative Log-likelihood : ",object$min)
-  cat("\n\nAIC : ",object$AIC)
+  cat("\n\nAIC : ",object$AIC,"\n")
 }
 
 #' @method coef mgf

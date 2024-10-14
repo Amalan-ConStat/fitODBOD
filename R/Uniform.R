@@ -81,21 +81,13 @@ dUNI<-function(p)
   }
   else
   {
-    ans<-NULL
     #for each input values in the vector necessary calculations and conditions are applied
-    for(i in 1:length(p))
-    {
-      if(p[i]<0 | p[i]>1)
-      {
-        #checking if probability values are greater than one or less than zero and creating
-        # an error message as well as stopping the function progress
-        stop("Invalid values in the input")
-      }
-      else
-      {
-        ans[i]<-1
-      }
+    if(any(p<0) | any(p>1)){
+      #checking if probability values are greater than one or less than zero and creating
+      # an error message as well as stopping the function progress
+      stop("Invalid values in the input")
     }
+    ans<-sapply(1:length(p),function(i) 1)
   }
   # generating an output in list format consisting pdf,mean and variance
   return(list("pdf"=ans,"mean"=1/2,"var"=1/12))
@@ -177,21 +169,13 @@ pUNI<-function(p)
   }
   else
   {
-    ans<-NULL
     #for each input values in the vector necessary calculations and conditions are applied
-    for(i in 1:length(p))
-    {
-      if(p[i]<0 | p[i]>1)
-      {
-        #checking if probability values are greater than one or less than zero and creating
-        # an error message as well as stopping the function progress
-        stop("Invalid values in the input")
-      }
-      else
-      {
-        ans[i]<-p[i]
-      }
+    if(any(p<0) | any(p>1)){
+      #checking if probability values are greater than one or less than zero and creating
+      # an error message as well as stopping the function progress
+      stop("Invalid values in the input")
     }
+    ans<-sapply(1:length(p),function(i) p[i])
     #generating an ouput vector of cumulative probability values
     return(ans)
   }
@@ -275,21 +259,13 @@ mazUNI<-function(r)
   {
     #the moments cannot be a decimal value therefore converting it into an integer
     r<-as.integer(r)
-    ans<-NULL
     #for each input values in the vector necessary calculations and conditions are applied
-    for (i in 1:length(r))
-    {
+    if(any(r<=0)){
       #checking if moment values are less than or equal to zero and creating
       # an error message as well as stopping the function progress
-      if(r[i]<=0)
-      {
-        stop("Moments cannot be less than or equal to zero")
-      }
-      else
-      {
-        ans[i]<-1/(1+r[i])
-      }
+      stop("Moments cannot be less than or equal to zero")
     }
+    ans<-sapply(1:length(r),function(i) 1/(1+r[i]))
     #generating an ouput vector of moment about zero values
     return(ans)
   }
@@ -424,13 +400,9 @@ dUniBin<-function(x,n)
 #' @export
 pUniBin<-function(x,n)
 {
-  ans<-NULL
   #for each binomial random variable in the input vector the cumulative proability function
   #values are calculated
-  for(i in 1:length(x))
-  {
-    ans[i]<-sum(dUniBin(0:x[i],n)$pdf)
-  }
+  ans<-sapply(1:length(x),function(i) sum(dUniBin(0:x[i],n)$pdf))
   #generating an ouput vector cumulative probability function values
   return(ans)
 }

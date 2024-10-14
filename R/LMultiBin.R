@@ -113,13 +113,9 @@ dLMBin<-function(x,n,p,phi)
       {
         #constructing the probability values for all random variables
         y<-0:n
-        value1<-NULL
         j<-0:n
         func1<-sum(choose(n,j)*(p^j)*((1-p)^(n-j))*(phi^(j*(n-j))))
-        for (i in 1:length(y))
-        {
-          value1[i]<-choose(n,y[i])*(p^y[i])*((1-p)^(n-y[i]))*(phi^(y[i]*(n-y[i])))/func1
-        }
+        value1<-sapply(1:length(y),function(i) choose(n,y[i])*(p^y[i])*((1-p)^(n-y[i]))*(phi^(y[i]*(n-y[i])))/func1)
         check1<-sum(value1)
         #checking if the theta value is less than or equal to zero if so providig an error message
         #and stopping the function progress
@@ -136,25 +132,22 @@ dLMBin<-function(x,n,p,phi)
         }
         else
         {
-          value<-NULL
           #for each random variable in the input vector below calculations occur
-          for (i in 1:length(x))
-          {
-            value[i]<-choose(n,x[i])*(p^x[i])*((1-p)^(n-x[i]))*(phi^(x[i]*(n-x[i])))/func1
-          }
+          value<-sapply(1:length(x),function(i) choose(n,x[i])*(p^x[i])*((1-p)^(n-x[i]))*(phi^(x[i]*(n-x[i])))/func1)
           # generating an output in list format consisting pdf,mean and variance
-          pi<-function(phi,p,i,n)
-          {
-            Ktop<-sum(choose(n-i,0:n-i)*(p^(0:n-i))*((1-p)^(n-i-(0:n-i)))*(phi^((n-i-(0:n-i))*(0:n-i+i))))
-            Kbottom<-sum(choose(n,0:n)*(p^(0:n))*((1-p)^(n-(0:n)))*(phi^((n-(0:n))*(0:n))))
-            return(p^i*Ktop/Kbottom)
-          }
-          return(list("pdf"=value,"mean"=n*pi(phi,p,1,n),
-                      "var"=n*pi(phi,p,1,n)+n*(n-1)*pi(phi,p,2,n)-(n*pi(phi,p,1,n))^2))
+          return(list("pdf"=value,"mean"=n*.pi_func(phi,p,1,n),
+                      "var"=n*.pi_func(phi,p,1,n)+n*(n-1)*.pi_func(phi,p,2,n)-(n*.pi_func(phi,p,1,n))^2))
         }
       }
     }
   }
+}
+
+.pi_func<-function(phi,p,i,n)
+{
+  Ktop<-sum(choose(n-i,0:n-i)*(p^(0:n-i))*((1-p)^(n-i-(0:n-i)))*(phi^((n-i-(0:n-i))*(0:n-i+i))))
+  Kbottom<-sum(choose(n,0:n)*(p^(0:n))*((1-p)^(n-(0:n)))*(phi^((n-(0:n))*(0:n))))
+  return(p^i*Ktop/Kbottom)
 }
 
 #' Lovinson Multiplicative  Binomial Distribution
@@ -231,13 +224,9 @@ dLMBin<-function(x,n,p,phi)
 #' @export
 pLMBin<-function(x,n,p,phi)
 {
-  ans<-NULL
   #for each binomial random variable in the input vector the cumulative proability function
   #values are calculated
-  for(i in 1:length(x))
-  {
-    ans[i]<-sum(dLMBin(0:x[i],n,p,phi)$pdf)
-  }
+  ans<-sapply(1:length(x),function(i) sum(dLMBin(0:x[i],n,p,phi)$pdf))
   #generating an ouput vector cumulative probability function values
   return(ans)
 }
@@ -290,13 +279,9 @@ NegLLLMBin<-function(x,freq,p,phi)
   {
     #constructing the probability values for all random variables
     y<-0:n
-    value1<-NULL
     j<-0:n
     func1<-sum(choose(n,j)*(p^j)*((1-p)^(n-j))*(phi^(j*(n-j))))
-    for (i in 1:length(y))
-    {
-      value1[i]<-choose(n,y[i])*(p^y[i])*((1-p)^(n-y[i]))*(phi^(y[i]*(n-y[i])))/func1
-    }
+    value1<-sapply(1:length(y),function(i) choose(n,y[i])*(p^y[i])*((1-p)^(n-y[i]))*(phi^(y[i]*(n-y[i])))/func1)
     check1<-sum(value1)
     #checking if any of the random variables of frequencies are less than zero if so
     #creating a error message as well as stopping the function progress

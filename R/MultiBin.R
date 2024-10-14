@@ -113,13 +113,8 @@ dMultiBin<-function(x,n,p,theta)
       {
         #constructing the probability values for all random variables
         y<-0:n
-        value1<-NULL
-
-        func1<-
-        for (i in 1:length(y))
-        {
-          value1[i]<-choose(n,y[i])*(p^y[i])*((1-p)^(n-y[i]))*(theta^(y[i]*(n-y[i])))/(sum(choose(n,0:n)*(p^(0:n))*((1-p)^(n-(0:n)))*(theta^((0:n)*(n-(0:n))))))
-        }
+        value1<-sapply(1:length(y),function(i) choose(n,y[i])*(p^y[i])*((1-p)^(n-y[i]))*(theta^(y[i]*(n-y[i])))/
+                         (sum(choose(n,0:n)*(p^(0:n))*((1-p)^(n-(0:n)))*(theta^((0:n)*(n-(0:n)))))))
         check1<-sum(value1)
         #checking if the theta value is less than or equal to zero if so providig an error message
         #and stopping the function progress
@@ -136,13 +131,9 @@ dMultiBin<-function(x,n,p,theta)
         }
         else
         {
-          value<-NULL
           #for each random variable in the input vector below calculations occur
-          for (i in 1:length(x))
-          {
-            value[i]<-choose(n,x[i])*(p^x[i])*((1-p)^(n-x[i]))*(theta^(x[i]*(n-x[i])))/
-              (sum(choose(n,0:n)*(p^(0:n))*((1-p)^(n-(0:n)))*(theta^((0:n)*(n-(0:n))))))
-          }
+          value<-sapply(1:length(x),function(i) choose(n,x[i])*(p^x[i])*((1-p)^(n-x[i]))*(theta^(x[i]*(n-x[i])))/
+                          (sum(choose(n,0:n)*(p^(0:n))*((1-p)^(n-(0:n)))*(theta^((0:n)*(n-(0:n)))))))
           # generating an output in list format consisting pdf,mean and variance
           return(list("pdf"=value,"mean"=sum((0:n)*value1),
                       "var"=sum(((0:n)^2)*value1)-(sum((0:n)*value1))^2))
@@ -226,13 +217,9 @@ dMultiBin<-function(x,n,p,theta)
 #' @export
 pMultiBin<-function(x,n,p,theta)
 {
-  ans<-NULL
   #for each binomial random variable in the input vector the cumulative proability function
   #values are calculated
-  for(i in 1:length(x))
-  {
-    ans[i]<-sum(dMultiBin(0:x[i],n,p,theta)$pdf)
-  }
+  ans<-sapply(1:length(x),function(i) sum(dMultiBin(0:x[i],n,p,theta)$pdf))
   #generating an ouput vector cumulative probability function values
   return(ans)
 }
@@ -287,13 +274,8 @@ NegLLMultiBin<-function(x,freq,p,theta)
   {
     #constructing the probability values for all random variables
     y<-0:n
-    value1<-NULL
-
-    for (i in 1:length(y))
-    {
-      value1[i]<-choose(n,y[i])*(p^y[i])*((1-p)^(n-y[i]))*(theta^(y[i]*(n-y[i])))/
-        sum(choose(n,0:n)*(p^(0:n))*((1-p)^(n-(0:n)))*(theta^((0:n)*(n-(0:n)))))
-    }
+    value1<-sapply(1:length(y),function(i) choose(n,y[i])*(p^y[i])*((1-p)^(n-y[i]))*(theta^(y[i]*(n-y[i])))/
+                     sum(choose(n,0:n)*(p^(0:n))*((1-p)^(n-(0:n)))*(theta^((0:n)*(n-(0:n))))))
     check1<-sum(value1)
     #checking if any of the random variables of frequencies are less than zero if so
     #creating a error message as well as stopping the function progress

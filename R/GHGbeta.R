@@ -129,22 +129,13 @@
         }
         else
         {
-          ans<-NULL
           #for each input values in the vector necessary calculations and conditions are applied
-          for (i in 1:length(p))
-          {
-            if(p[i] < 0 | p[i] > 1)
-            {
-              stop("Invalid values in the input")
-            }
-            else
-            {
-              ans[i]<-(1/beta(a,b))*(forward1/forward2)*(p[i]^(a-1))*((1-p[i])^(b-1))*
-                ((c^(b+n))/((c+(1-c)*p[i])^(a+b+n)))
-            }
+          if(any(p<0) | any(p>1)){
+            stop("Invalid values in the input")
           }
+          ans<-sapply(1:length(p),function(i) (1/beta(a,b))*(forward1/forward2)*(p[i]^(a-1))*((1-p[i])^(b-1))*
+                        ((c^(b+n))/((c+(1-c)*p[i])^(a+b+n))))
         }
-
         # generating an output in list format consisting pdf,mean and variance
         return(list("pdf"=ans,"mean"=mazGHGBeta(1,n,a,b,c),
                     "var"=mazGHGBeta(2,n,a,b,c)-mazGHGBeta(1,n,a,b,c)^2))
@@ -280,21 +271,13 @@ pGHGBeta<-function(p,n,a,b,c)
         }
         else
         {
-          ans<-NULL
           #for each input values in the vector necessary calculations and conditions are applied
-          for (i in 1:length(p))
-          {
-            if(p[i] < 0 | p[i] > 1)
-            {
-              stop("Invalid values in the input")
-            }
-            else
-            {
-              ans[i]<-stats::integrate(function(p){(1/beta(a,b))*(forward1/forward2)*
-                  (p^(a-1))*((1-p)^(b-1))*((c^(b+n))/((c+(1-c)*p)^(a+b+n)))},
-                                       lower=0,upper=p[i])$value
-            }
+          if(any(p<0) | any(p>1)){
+            stop("Invalid values in the input")
           }
+          ans<-sapply(1:length(p),function(i) stats::integrate(function(p){(1/beta(a,b))*(forward1/forward2)*
+              (p^(a-1))*((1-p)^(b-1))*((c^(b+n))/((c+(1-c)*p)^(a+b+n)))},
+              lower=0,upper=p[i])$value)
         }
         #generating an ouput vector of cumulative probability values
         return(ans)
@@ -432,24 +415,16 @@ mazGHGBeta<-function(r,n,a,b,c)
         {
           #the moments cannot be a decimal value therefore converting it into an integer
           r<-as.integer(r)
-          ans<-NULL
           #for each input values in the vector necessary calculations and conditions are applied
-          for(i in 1:length(r))
-          {
+          if(any(r<=0)){
             #checking if moment values are less than or equal to zero and creating
             # an error message as well as stopping the function progress
-            if(r[i] <= 0)
-            {
-              stop("Moments cannot be less than or equal to zero")
-            }
-            else
-            {
-              #integral function to calculate the moment about zero values
-              ans[i]<-stats::integrate(function(p,r){(p^r)*(1/beta(a,b))*(forward1/forward2)*
-                  (p^(a-1))*((1-p)^(b-1))*((c^(b+n))/((c+(1-c)*p)^(a+b+n)))},
-                                       lower=0,upper=1,r=r[i])$value
-            }
+            stop("Moments cannot be less than or equal to zero")
           }
+          #integral function to calculate the moment about zero values
+          ans<-sapply(1:length(r),function(i) stats::integrate(function(p,r){(p^r)*(1/beta(a,b))*(forward1/forward2)*
+              (p^(a-1))*((1-p)^(b-1))*((c^(b+n))/((c+(1-c)*p)^(a+b+n)))},
+              lower=0,upper=1,r=r[i])$value)
         }
       }
       #generating an ouput vector of moment about zero values
@@ -589,12 +564,8 @@ dGHGBB<-function(x,n,a,b,c)
         }
         else
         {
-          ans<-NULL
           #for each random variable in the input vector below calculations occur
-          for (i in 1:length(x))
-          {
-            ans[i]<-(choose(n,x[i])*beta(x[i]+a,n-x[i]+b)*c^x[i])/(beta(a,b+n)*forward)
-          }
+          ans<-sapply(1:length(x),function(i) (choose(n,x[i])*beta(x[i]+a,n-x[i]+b)*c^x[i])/(beta(a,b+n)*forward))
         }
         Tempsy<-dGHGBeta(0,n,a,b,c)
         # generating an output in list format consisting pdf,mean,variance and overdispersion value
@@ -688,13 +659,9 @@ dGHGBB<-function(x,n,a,b,c)
 #' @export
 pGHGBB<-function(x,n,a,b,c)
 {
-  ans<-NULL
   #for each binomial random variable in the input vector the cumulative proability function
   #values are calculated
-  for(i in 1:length(x))
-  {
-    ans[i]<-sum(dGHGBB(0:x[i],n,a,b,c)$pdf)
-  }
+  ans<-sapply(1:length(x),function(i) sum(dGHGBB(0:x[i],n,a,b,c)$pdf))
   #generating an ouput vector cumulative probability function values
   return(ans)
 }
@@ -741,8 +708,7 @@ NegLLGHGBB<-function(x,freq,a,b,c)
 {
   #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
   #if so creating an error message as well as stopping the function progress.
-  if(any(is.na(c(x,freq,a,b,c))) | any(is.infinite(c(x,freq,a,b,c)))
-     |any(is.nan(c(x,freq,a,b,c))) )
+  if(any(is.na(c(x,freq,a,b,c))) | any(is.infinite(c(x,freq,a,b,c))) | any(is.nan(c(x,freq,a,b,c))) )
   {
     stop("NA or Infinite or NAN values in the Input")
   }

@@ -115,17 +115,13 @@ dAddBin<-function(x,n,p,alpha)
       else
       {
         #creating the necessary limits for alpha, the left hand side and right hand side limits
-        value<-NULL
         right.h<-2*(n+((2*p-1)^2)/(4*p*(1-p)))^(-1)
         left.h<-(-2/(n*(n-1)))*min(p/(1-p),(1-p)/p)
+
         #constructing the probability values for all random variables
         y<-0:n
-        value1<-NULL
-        for(i in 1:length(y))
-        {
-        value1[i]<- (choose(n,y[i])*(p^y[i])*((1-p)^(n-y[i])))*
-          ((alpha/2)*((y[i]*(y[i]-1)/p)+((n-y[i])*(n-y[i]-1)/(1-p)))-(alpha*n*(n-1)/2) + 1)
-        }
+        value1<-sapply(1:length(y),function(i) (choose(n,y[i])*(p^y[i])*((1-p)^(n-y[i])))*
+                         ((alpha/2)*((y[i]*(y[i]-1)/p)+((n-y[i])*(n-y[i]-1)/(1-p)))-(alpha*n*(n-1)/2) + 1))
         check1<-sum(value1)
         #checking if the alpha is inbetween the limits given
         if(left.h > alpha | alpha >right.h)
@@ -142,11 +138,9 @@ dAddBin<-function(x,n,p,alpha)
         else
         {
           #for each random variable in the input vector below calculations occur
-          for (i in 1:length(x))
-          {
-            value[i]<-(choose(n,x[i])*(p^x[i])*((1-p)^(n-x[i])))*
-              ((alpha/2)*((x[i]*(x[i]-1)/p)+((n-x[i])*(n-x[i]-1)/(1-p)))-(alpha*n*(n-1)/2) + 1)
-          }
+          value<-sapply(1:length(x), function(i) (choose(n,x[i])*(p^x[i])*((1-p)^(n-x[i])))*
+                          ((alpha/2)*((x[i]*(x[i]-1)/p)+((n-x[i])*(n-x[i]-1)/(1-p)))-(alpha*n*(n-1)/2) + 1))
+
           # generating an output in list format consisting pdf,mean and variance
           return(list("pdf"=value,"mean"=n*p,"var"=n*p*(1-p)*(1+(n-1)*alpha)))
         }
@@ -233,13 +227,9 @@ dAddBin<-function(x,n,p,alpha)
 #' @export
 pAddBin<-function(x,n,p,alpha)
 {
-  ans<-NULL
   #for each binomial random variable in the input vector the cumulative proability function
   #values are calculated
-  for(i in 1:length(x))
-  {
-   ans[i]<-sum(dAddBin(0:x[i],n,p,alpha)$pdf)
-  }
+  ans<-sapply(1:length(x), function(i) sum(dAddBin(0:x[i],n,p,alpha)$pdf))
   #generating an ouput vector cumulative probability function values
   return(ans)
 }
@@ -308,17 +298,12 @@ NegLLAddBin<-function(x,freq,p,alpha)
     else
     {
       #creating the necessary limits for alpha, the left hand side and right hand side limits
-      value<-NULL
       right.h<-2*(n+((2*p-1)^2)/(4*p*(1-p)))^(-1)
       left.h<-(-2/(n*(n-1)))*min(p/(1-p),(1-p)/p)
       #constructing the probability values for all random variables
       y<-0:n
-      value1<-NULL
-      for(i in 1:length(y))
-      {
-        value1[i]<- (choose(n,y[i])*(p^y[i])*((1-p)^(n-y[i])))*
-          ((alpha/2)*((y[i]*(y[i]-1)/p)+((n-y[i])*(n-y[i]-1)/(1-p)))-(alpha*n*(n-1)/2) + 1)
-      }
+      value1<-sapply(1:length(y), function(i) (choose(n,y[i])*(p^y[i])*((1-p)^(n-y[i])))*
+                       ((alpha/2)*((y[i]*(y[i]-1)/p)+((n-y[i])*(n-y[i]-1)/(1-p)))-(alpha*n*(n-1)/2) + 1))
       check1<-sum(value1)
       #checking if the alpha is inbetween the limits given
       if(left.h > alpha | alpha > right.h)
@@ -334,11 +319,9 @@ NegLLAddBin<-function(x,freq,p,alpha)
       }
       else
       {
-        for (i in 1:sum(freq))
-        {
-          value[i]<-((alpha/2)*((data[i]*(data[i]-1)/p)+((n-data[i])*(n-data[i]-1)/(1-p)))-
-                       (alpha*n*(n-1)/2) + 1)
-        }
+        value<-sapply(1:sum(freq),function(i) ((alpha/2)*((data[i]*(data[i]-1)/p)+((n-data[i])*(n-data[i]-1)/(1-p)))-
+                                                 (alpha*n*(n-1)/2) + 1))
+
       }
       #calculating the negative log likelihood value and representing as a single output value
       return(-(sum(log(choose(n,data[1:sum(freq)]))) + log(p)*sum(data[1:sum(freq)]) +
@@ -429,87 +412,30 @@ EstMLEAddBin<-function(x,freq)
   }
   else
   {
-    #finding the negative log likelihood value without any restrictions when
-    #binomial random variables, frequencies and probability value and alpha are given
-    findNegLL<-function(x,freq,p,alpha)
-    {
-      value<-NULL
-      n<-max(x)
-      data<-rep(x,freq)
-
-      for (i in 1:sum(freq))
-      {
-        value[i]<-log(((alpha/2)*((data[i]*(data[i]-1)/p)+((n-data[i])*(n-data[i]-1)/(1-p)))-
-                         (alpha*n*(n-1)/2) + 1))
-      }
-
-      return(-(sum(log(choose(n,data[1:sum(freq)]))) + log(p)*sum(data[1:sum(freq)]) +
-                 log(1-p)*sum(n-data[1:sum(freq)]) + sum(value)))
-    }
-    #below looping function is to find the best estimated parameter combinations which minimizes the
-    #negative log likelihood value by increasing the decimal point to precision of six
-    looping<-function(x,freq,startp,endp,repp,itp,startc,endc,repc,itc)
-    {
-      #for a given starting value and end value with the sequence function of R, a seq of probability values
-      #and alpha values are created
-      p<-seq(startp,endp,by=repp)
-      alpha<-seq(startc,endc,by=repc)
-      #create a matrix with itc columns and itp rows
-      value1<-matrix(ncol=itc,nrow=itp)
-      #name the row names as the below probability values
-      rownames(value1)<-p
-      #name the column names as the below alpha values
-      colnames(value1)<-alpha
-      #now for each row and column using the probability and alpha values calculate the negative log likelihood values
-      #and save them in the matrix
-      for (j in 1:itc)
-      {
-        for (i in 1:itp)
-        {
-          value1[i,j]<-findNegLL(x,freq,p[i],alpha[j])
-        }
-      }
-      #find the minimum value of the matrix
-      minimum<-min(value1,na.rm=TRUE)
-      #which is the minimum negative loglikelihood value
-      AddBinNegLL<-minimum
-      #finding which row and column values gives the minimum negative loglikelihood value
-      #and save it as inds
-      inds<-which(value1==min(value1,na.rm=TRUE),arr.ind = TRUE)
-      #acquire the name of the row which will give the probability value, assign it to rnames
-      rnames<-as.numeric(rownames(value1)[inds[,1]])
-      #acquire the name of the column which will give the alpha value, assign it to cnames
-      cnames<-as.numeric(colnames(value1)[inds[,2]])
-      #generate the output as a list format where NegLLAddBin is the minimum negative loglikelihood
-      #value and probability and alpha are the corresponding estimated probability and alpha
-      #parameter values.
-      output<-list("NegLLAddBin"=AddBinNegLL,"p"=rnames,"alpha"=cnames)
-      return(output)
-    }
     #consider the probability values from 0.1 to 0.9 and alpha values from -0.9 to 0.9 and
     #estimate the best probability value in between 0.1 and 0.9  and alpha value inbetween
     # -0.9 to 0.9 for first decimal point
-    answer1<-looping(x,freq,0.1,0.9,0.1,9,-0.9,0.9,0.1,19)
+    answer1<-.looping_AddBin(x,freq,0.1,0.9,0.1,9,-0.9,0.9,0.1,19)
     #assign the found best estimated probability value to p1 and alpha value to alpha1
     p1<-answer1$p ; alpha1<-answer1$alpha
     #consider the second decimal point of p1 and alpha1, now estimate the best probability and alpha value
-    answer2<-looping(x,freq,p1-0.05,p1+0.04,0.01,10,alpha1-0.05,alpha1+0.04,0.01,10)
+    answer2<-.looping_AddBin(x,freq,p1-0.05,p1+0.04,0.01,10,alpha1-0.05,alpha1+0.04,0.01,10)
     #assign the found best estimated probability value to p2 and alpha value to alpha2
     p2<-answer2$p ; alpha2<-answer2$alpha
     #consider the third decimal point of p2 and alpha2, now estimate the best probability and alpha value
-    answer3<-looping(x,freq,p2-0.005,p2+0.004,0.001,10,alpha2-0.005,alpha2+0.004,0.001,10)
+    answer3<-.looping_AddBin(x,freq,p2-0.005,p2+0.004,0.001,10,alpha2-0.005,alpha2+0.004,0.001,10)
     #assign the found best estimated probability value to p3 and alpha value to alpha3
     p3<-answer3$p ; alpha3<-answer3$alpha
     #consider the fourth decimal point of p3 and alpha3, now estimate the best probability and alpha value
-    answer4<-looping(x,freq,p3-0.0005,p3+0.0004,0.0001,10,alpha3-0.0005,alpha3+0.0004,0.0001,10)
+    answer4<-.looping_AddBin(x,freq,p3-0.0005,p3+0.0004,0.0001,10,alpha3-0.0005,alpha3+0.0004,0.0001,10)
     #assign the found best estimated probability value to p4 and alpha value to alpha4
     p4<-answer4$p ; alpha4<-answer4$alpha
     #consider the fifth decimal point of p4 and alpha4, now estimate the best probability and alpha value
-    answer5<-looping(x,freq,p4-0.00005,p4+0.00004,0.00001,10,alpha4-0.00005,alpha4+0.00004,0.00001,10)
+    answer5<-.looping_AddBin(x,freq,p4-0.00005,p4+0.00004,0.00001,10,alpha4-0.00005,alpha4+0.00004,0.00001,10)
     #assign the found best estimated probability value to p5 and alpha value to alpha5
     p5<-answer5$p ; alpha5<-answer5$alpha
     #consider the sixth decimal point of p5 and alpha5, now estimate the best probability and alpha value
-    answerfin<-looping(x,freq,p5-0.000005,p5+0.000004,0.000001,10,alpha5-0.000005,alpha5+0.000004,0.000001,10)
+    answerfin<-.looping_AddBin(x,freq,p5-0.000005,p5+0.000004,0.000001,10,alpha5-0.000005,alpha5+0.000004,0.000001,10)
     #finally the found best estimated p5 and alpha5 value to pfin and alphafin and find the corresponding log likelihood
     #value as well
     pfin<-answerfin$p ; alphafin<-answerfin$alpha ; NegLLAddBinfin<-answerfin$NegLLAddBin
@@ -520,6 +446,56 @@ EstMLEAddBin<-function(x,freq)
     return(output)
 
   }
+}
+
+.findNegLL_AddBin<-function(x,freq,p,alpha)
+{
+  n<-max(x)
+  data<-rep(x,freq)
+  value<-sapply(1:sum(freq),function(i) log(((alpha/2)*((data[i]*(data[i]-1)/p)+((n-data[i])*(n-data[i]-1)/(1-p)))-
+                                               (alpha*n*(n-1)/2) + 1)))
+
+  return(-(sum(log(choose(n,data[1:sum(freq)]))) + log(p)*sum(data[1:sum(freq)]) +
+             log(1-p)*sum(n-data[1:sum(freq)]) + sum(value)))
+}
+
+.looping_AddBin<-function(x,freq,startp,endp,repp,itp,startc,endc,repc,itc)
+{
+  #for a given starting value and end value with the sequence function of R, a seq of probability values
+  #and alpha values are created
+  p<-seq(startp,endp,by=repp)
+  alpha<-seq(startc,endc,by=repc)
+  #create a matrix with itc columns and itp rows
+  value1<-matrix(ncol=itc,nrow=itp)
+  #name the row names as the below probability values
+  rownames(value1)<-p
+  #name the column names as the below alpha values
+  colnames(value1)<-alpha
+  #now for each row and column using the probability and alpha values calculate the negative log likelihood values
+  #and save them in the matrix
+  for (j in 1:itc)
+  {
+    for (i in 1:itp)
+    {
+      value1[i,j]<-.findNegLL_AddBin(x,freq,p[i],alpha[j])
+    }
+  }
+  #find the minimum value of the matrix
+  minimum<-min(value1,na.rm=TRUE)
+  #which is the minimum negative loglikelihood value
+  AddBinNegLL<-minimum
+  #finding which row and column values gives the minimum negative loglikelihood value
+  #and save it as inds
+  inds<-which(value1==min(value1,na.rm=TRUE),arr.ind = TRUE)
+  #acquire the name of the row which will give the probability value, assign it to rnames
+  rnames<-as.numeric(rownames(value1)[inds[,1]])
+  #acquire the name of the column which will give the alpha value, assign it to cnames
+  cnames<-as.numeric(colnames(value1)[inds[,2]])
+  #generate the output as a list format where NegLLAddBin is the minimum negative loglikelihood
+  #value and probability and alpha are the corresponding estimated probability and alpha
+  #parameter values.
+  output<-list("NegLLAddBin"=AddBinNegLL,"p"=rnames,"alpha"=cnames)
+  return(output)
 }
 
 #' @method EstMLEAddBin default
@@ -548,7 +524,7 @@ summary.mlAB<-function(object,...)
 {
   cat("Coefficients: \n \t p \t alpha \n", object$p,object$alpha)
   cat("\n\nNegative Log-likelihood : ",object$min)
-  cat("\n\nAIC : ",object$AIC)
+  cat("\n\nAIC : ",object$AIC,"\n")
 }
 
 #' @method coef mlAB
@@ -662,7 +638,7 @@ fitAddBin<-function(x,obs.freq,p,alpha)
     p.value<-1-stats::pchisq(statistic,df)
 
     #checking if df is less than or equal to zero
-    if(df<0 | df==0)
+    if(df<=0)
     {
       stop("Degrees of freedom cannot be less than or equal to zero")
     }

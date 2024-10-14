@@ -1,7 +1,7 @@
 estimate <- EstMGFBetaBin(Chromosome_data$No.of.Asso,Chromosome_data$fre)
 fitBB<-fitBetaBin(Chromosome_data$No.of.Asso,Chromosome_data$fre,estimate$a,estimate$b)
 
-context("Checking Outputs")
+context("Checking residuals")
 test_that("checking value 1",{
           expect_identical(round(residuals(fitBB)[1]),
                            -2)

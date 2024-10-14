@@ -102,13 +102,12 @@ dTRI<-function(p,mode)
     {
       ans<-NULL
       #for each input values in the vector necessary calculations and conditions are applied
+      if(any(p<0) | any(p>1)){
+        stop("Invalid values in the input")
+      }
       for(i in 1:length(p))
       {
-        if(p[i]<0 | p[i]>1 )
-        {
-          stop("Invalid values in the input")
-        }
-        else if(0<=p[i] && p[i]<mode)
+        if(0<=p[i] && p[i]<mode)
         {
           ans[i]<-(2*p[i]) /mode
         }
@@ -221,13 +220,13 @@ pTRI<-function(p,mode)
     {
       ans<-NULL
       #for each input values in the vector necessary calculations and conditions are applied
+      if(any(p<0) | any(p>1)){
+        stop("Invalid values in the input")
+      }
+
       for(i in 1:length(p))
       {
-        if(p[i]<0 | p[i]>1)
-        {
-          stop("Invalid values in the input")
-        }
-        else if(0<=p[i] && p[i]<mode)
+        if(0<=p[i] && p[i]<mode)
         {
           ans[i]<-(p[i])^2/mode
         }
@@ -340,22 +339,14 @@ mazTRI<-function(r,mode)
     {
       #the moments cannot be a decimal value therefore converting it into an integer
       r<-as.integer(r)
-      ans<-NULL
       #for each input values in the vector necessary calculations and conditions are applied
-      for (i in 1:length(r))
-      {
+      if(any(r<=0)){
         #checking if moment values are less than or equal to zero if so
         #creating an error message as well as stopping the function progress
-        if(r[i]<=0)
-        {
-          stop("Moments cannot be less than or equal to zero")
-        }
-        else
-        {
-          ans[i]<-((2*(mode^(r[i]+2)))/(mode*(r[i]+2)))+((2*(1-mode^(r[i]+1)))/((r[i]+1)*(1-mode)))+
-                  ((2*(mode^(r[i]+2)-1))/((r[i]+2)*(1-mode)))
-        }
+        stop("Moments cannot be less than or equal to zero")
       }
+      ans<-sapply(1:length(r),function(i) ((2*(mode^(r[i]+2)))/(mode*(r[i]+2)))+((2*(1-mode^(r[i]+1)))/((r[i]+1)*(1-mode)))+
+                    ((2*(mode^(r[i]+2)-1))/((r[i]+2)*(1-mode))))
       #generating an ouput vector of moment about zero values
       return(ans)
     }
@@ -585,13 +576,9 @@ dTriBin<-function(x,n,mode)
 #' @export
 pTriBin<-function(x,n,mode)
 {
-  ans<-NULL
   #for each binomial random variable in the input vector the cumulative proability function
   #values are calculated
-  for(i in 1:length(x))
-  {
-    ans[i]<-sum(dTriBin(0:x[i],n,mode)$pdf)
-  }
+  ans<-sapply(1:length(x),function(i) sum(dTriBin(0:x[i],n,mode)$pdf))
   #generating an ouput vector of cumulative probability function values
   return(ans)
 }
@@ -772,56 +759,28 @@ EstMLETriBin<-function(x,freq)
   {
     #below looping function is to find the best estimated mode parameter which minimizes the
     #negative log likelihood value by increasing the decimal point to precision of six
-    looping<-function(x,freq,startmode,endmode,repmode,itmode)
-    {
-      #for a given starting value and end value with the sequence function of R, a seq of mode values
-      #are created
-      mode<-seq(startmode,endmode,by=repmode)
-      #create a matrix with one column and itmode as rows
-      value1<-matrix(ncol=1,nrow=itmode)
-      #name the row names as the above mode values
-      rownames(value1)<-mode
-      #now for each row using the mode value calculate the negative log likelihood values
-      #and save them in the vector
-      for (i in 1:itmode)
-      {
-        value1[i,1]<-NegLLTriBin(x,freq,mode[i])
-      }
-      #find the minimum value of the matrix
-      minimum<-min(value1,na.rm=TRUE)
-      #which is the minimum negative loglikelihood value
-      TriBinNegLL<-minimum
-      #finding which row(mode value) gives the minimum negative loglikelihood value
-      #and save it as inds
-      inds<-which(value1==min(value1,na.rm=TRUE),arr.ind = TRUE)
-      #acquire the name of the row which will give the mode value, assign it to rnames
-      rnames<-as.numeric(rownames(value1)[inds[,1]])
-      #generate the output as a list format where TriBinNegLL is the minimum negative loglikelihood
-      #value and mode is the corresponding estimated mode parameter value.
-      return(list("TriBinNegLL"=TriBinNegLL,"mode"=rnames))
-    }
     #consider the mode values from 0.1 to 0.9 estimate the best mode value in between 0.1 and 0.9 for first decimal point
-    answer1<-looping(x,freq,0.1,0.9,0.1,9)
+    answer1<-.looping_TriBin(x,freq,0.1,0.9,0.1,9)
     #assign the found best estimated mode value to mode1
     mode1<-answer1$mode
     #consider the second decimal point of mode1, now estimate the best mode value
-    answer2<-looping(x,freq,mode1-0.05,mode1+0.04,0.01,10)
+    answer2<-.looping_TriBin(x,freq,mode1-0.05,mode1+0.04,0.01,10)
     #assign the found best estimated mode1 value to mode2
     mode2<-answer2$mode
     #consider the third decimal point of mode2, now estimate the best mode value
-    answer3<-looping(x,freq,mode2-0.005,mode2+0.004,0.001,10)
+    answer3<-.looping_TriBin(x,freq,mode2-0.005,mode2+0.004,0.001,10)
     #assign the found best estimated mode 2 value to mode3
     mode3<-answer3$mode
     #consider the fourth decimal point of mode3, now estimate the best mode value
-    answer4<-looping(x,freq,mode3-0.0005,mode3+0.0004,0.0001,10)
+    answer4<-.looping_TriBin(x,freq,mode3-0.0005,mode3+0.0004,0.0001,10)
     #assign the found best estimated mode 3 value to mode 4
     mode4<-answer4$mode
     #consider the fifth decimal point of mode4, now estimate the best mode value
-    answer5<-looping(x,freq,mode4-0.00005,mode4+0.00004,0.00001,10)
+    answer5<-.looping_TriBin(x,freq,mode4-0.00005,mode4+0.00004,0.00001,10)
     #assign the found best estimated mode 4 value to mode 5
     mode5<-answer5$mode
     #consider the sixth decimal point of mode5, now estimate the best mode value
-    answerfin<-looping(x,freq,mode5-0.000005,mode5+0.000004,0.000001,10)
+    answerfin<-.looping_TriBin(x,freq,mode5-0.000005,mode5+0.000004,0.000001,10)
 
     #generate the output as a list format where TriBinNegLL is the minimum negative loglikelihood
     #value and mode is the corresponding estimated mode parameter value.
@@ -830,6 +789,35 @@ EstMLETriBin<-function(x,freq)
     class(output)<-c("ml","mlTRI")
     return(output)
   }
+}
+
+.looping_TriBin<-function(x,freq,startmode,endmode,repmode,itmode)
+{
+  #for a given starting value and end value with the sequence function of R, a seq of mode values
+  #are created
+  mode<-seq(startmode,endmode,by=repmode)
+  #create a matrix with one column and itmode as rows
+  value1<-matrix(ncol=1,nrow=itmode)
+  #name the row names as the above mode values
+  rownames(value1)<-mode
+  #now for each row using the mode value calculate the negative log likelihood values
+  #and save them in the vector
+  for (i in 1:itmode)
+  {
+    value1[i,1]<-NegLLTriBin(x,freq,mode[i])
+  }
+  #find the minimum value of the matrix
+  minimum<-min(value1,na.rm=TRUE)
+  #which is the minimum negative loglikelihood value
+  TriBinNegLL<-minimum
+  #finding which row(mode value) gives the minimum negative loglikelihood value
+  #and save it as inds
+  inds<-which(value1==min(value1,na.rm=TRUE),arr.ind = TRUE)
+  #acquire the name of the row which will give the mode value, assign it to rnames
+  rnames<-as.numeric(rownames(value1)[inds[,1]])
+  #generate the output as a list format where TriBinNegLL is the minimum negative loglikelihood
+  #value and mode is the corresponding estimated mode parameter value.
+  return(list("TriBinNegLL"=TriBinNegLL,"mode"=rnames))
 }
 
 #' @method EstMLETriBin default
@@ -857,7 +845,7 @@ summary.mlTRI<-function(object,...)
 {
   cat("Coefficients: \n mode \n", object$mode)
   cat("\n\nNegative Log-likelihood : ",object$min)
-  cat("\n\nAIC : ",object$AIC)
+  cat("\n\nAIC : ",object$AIC,"\n")
 }
 
 #' @method coef mlTRI

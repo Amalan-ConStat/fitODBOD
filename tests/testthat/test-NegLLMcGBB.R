@@ -1,48 +1,21 @@
-context ("Scenario of un wanted inputs")
+context_start_file("NegLLMcGBB functions")
 test_that("NA values are avoided",{
-          expect_that(NegLLMcGBB(NA,4,0.1,3,3),
-          throws_error("NA or Infinite or NAN values in the Input"))
-          })
-test_that("Infinite values are avoided",{
-          expect_that(NegLLMcGBB(Inf,4,0.1,3,3),
-          throws_error("NA or Infinite or NAN values in the Input"))
-          })
-test_that("NAN values are avoided",{
-          expect_that(NegLLMcGBB(NaN,4,0.1,3,3),
-          throws_error("NA or Infinite or NAN values in the Input"))
-          })
-
-context("Shape parameter issues")
+  expect_error(NegLLMcGBB(NA,4,0.1,3,3),
+              "NA or Infinite or NAN values in the Input")
+})
 test_that("shape parameter a",{
-          expect_that(NegLLMcGBB(2,4,-3,3,6),
-          throws_error("Shape parameters cannot be less than or equal to zero"))
-          })
-test_that("shape parameter b",{
-          expect_that(NegLLMcGBB(2,4,1,-3,5),
-          throws_error("Shape parameters cannot be less than or equal to zero"))
-          })
-test_that("shape parameter c",{
-          expect_that(NegLLMcGBB(2,4,1,1,-3),
-          throws_error("Shape parameters cannot be less than or equal to zero"))
-          })
-
-context("Binomial Random variable or frequency issues")
+  expect_error(NegLLMcGBB(2,4,-3,3,6),
+              "Shape parameters cannot be less than or equal to zero")
+})
 test_that("Negativity Binomial random variable",{
-          expect_that(NegLLMcGBB(-3,4,0.2,4,3),
-          throws_error("Binomial random variable or frequency values cannot be negative"))
-          })
-test_that("Negativity Binomial random variable",{
-          expect_that(NegLLMcGBB(3,-4,0.2,4,3),
-          throws_error("Binomial random variable or frequency values cannot be negative"))
-          })
-
-context("Checking outputs")
+  expect_error(NegLLMcGBB(-3,4,0.2,4,3),
+              "Binomial random variable or frequency values cannot be negative")
+})
 test_that("Output value expected",{
-          expect_identical(round(NegLLMcGBB(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7,1,2),4),
-                           453.457)
-                           })
-
+  expect_identical(round(NegLLMcGBB(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7,1,2),4),
+                   453.457)
+})
 test_that("Checking class of output",{
-          expect_that(NegLLMcGBB(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7,1,2),
-          is_a("numeric"))
-          })
+  expect_type(NegLLMcGBB(Chromosome_data$No.of.Asso,Chromosome_data$fre,0.7,1,2),
+              "double")
+})

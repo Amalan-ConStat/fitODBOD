@@ -52,6 +52,7 @@ Overdispersion.fitTB<-function(object)
 #' @export
 Overdispersion.fitBB<-function(object)
 {
+  names(object$over.dis.para)<-NULL
   return(object$over.dis.para)
 }
 
@@ -59,6 +60,7 @@ Overdispersion.fitBB<-function(object)
 #' @export
 Overdispersion.fitKB<-function(object)
 {
+  names(object$over.dis.para)<-NULL
   return(object$over.dis.para)
 }
 
@@ -66,6 +68,7 @@ Overdispersion.fitKB<-function(object)
 #' @export
 Overdispersion.fitGB<-function(object)
 {
+  names(object$over.dis.para)<-NULL
   return(object$over.dis.para)
 }
 
@@ -73,6 +76,7 @@ Overdispersion.fitGB<-function(object)
 #' @export
 Overdispersion.fitGrIIB<-function(object)
 {
+  names(object$over.dis.para)<-NULL
   return(object$over.dis.para)
 }
 
@@ -80,6 +84,7 @@ Overdispersion.fitGrIIB<-function(object)
 #' @export
 Overdispersion.fitGaB<-function(object)
 {
+  names(object$over.dis.para)<-NULL
   return(object$over.dis.para)
 }
 
@@ -87,5 +92,6 @@ Overdispersion.fitGaB<-function(object)
 #' @export
 Overdispersion.fitMB<-function(object)
 {
+  names(object$over.dis.para)<-NULL
   return(object$over.dis.para)
 }

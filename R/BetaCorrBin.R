@@ -129,29 +129,24 @@ dBetaCorrBin<-function(x,n,cov,a,b)
       }
       else
       {
-        value<-NULL
         #creating the necessary limits for correlation, the left hand side and right hand side limits
         left.h<-(-2/(n*(n-1)))*min(p/(1-p),(1-p)/p)
         right.h<-(2*p*(1-p))/(((n-1)*p*(1-p))+0.25- min(((0:n)-(n-1)*p-0.5)^2))
-          # checking if the correlation output satisfies conditions mentioned above
-          if(correlation < -1 | correlation > 1 | correlation < left.h | correlation > right.h)
-          {
-            stop("Correlation cannot be greater than 1 or Lesser than -1 or it cannot be greater than Maximum Correlation or Lesser than Minimum Correlation")
-          }
-          else
-          {
+        # checking if the correlation output satisfies conditions mentioned above
+        if(correlation < -1 | correlation > 1 | correlation < left.h | correlation > right.h)
+        {
+          stop("Correlation cannot be greater than 1 or Lesser than -1 or it cannot be greater than Maximum Correlation or Lesser than Minimum Correlation")
+        }
+        else
+        {
           #constructing the probability values for all random variables
           y<-0:n
-          value1<-NULL
-          for(i in 1:length(y))
-          {
-            value1[i]<-((choose(n,y[i]))*(beta(a+y[i],b+n-y[i])/beta(a,b))*
-              (1+(cov/2)*(((y[i]*(y[i]-1)*(a+b+n-4)*(a+b+n-3)*(a+b+n-2)*(a+b+n-1))/
-                              ((y[i]+a-2)*(y[i]+a-1)*(n-y[i]+b-2)*(n-y[i]+b-1)))-
-                    ((2*y[i]*(n-1)*(a+b+n-3)*(a+b+n-2)*(a+b+n-1))/
-                       ((y[i]+a-1)*(n-y[i]+b-2)*(n-y[i]+b-1)))+
-                     ((n*(n-1)*(a+b+n-2)*(a+b+n-1))/((n-y[i]+b-2)*(n-y[i]+b-1))))))
-          }
+          value1<-sapply(1:length(y), function(i) ((choose(n,y[i]))*(beta(a+y[i],b+n-y[i])/beta(a,b))*
+                                                     (1+(cov/2)*(((y[i]*(y[i]-1)*(a+b+n-4)*(a+b+n-3)*(a+b+n-2)*(a+b+n-1))/
+                                                                    ((y[i]+a-2)*(y[i]+a-1)*(n-y[i]+b-2)*(n-y[i]+b-1)))-
+                                                                   ((2*y[i]*(n-1)*(a+b+n-3)*(a+b+n-2)*(a+b+n-1))/
+                                                                      ((y[i]+a-1)*(n-y[i]+b-2)*(n-y[i]+b-1)))+
+                                                                   ((n*(n-1)*(a+b+n-2)*(a+b+n-1))/((n-y[i]+b-2)*(n-y[i]+b-1)))))))
           check1<-sum(value1)
 
           #checking if the sum of all probability values leads upto one
@@ -164,15 +159,13 @@ dBetaCorrBin<-function(x,n,cov,a,b)
           else
           {
             #for each random variable in the input vector below calculations occur
-            for (i in 1:length(x))
-            {
-              value[i]<-((choose(n,x[i]))*(beta(a+x[i],b+n-x[i])/beta(a,b))*
-                (1+(cov/2)*(((x[i]*(x[i]-1)*(a+b+n-4)*(a+b+n-3)*(a+b+n-2)*(a+b+n-1))/
-                        ((x[i]+a-2)*(x[i]+a-1)*(n-x[i]+b-2)*(n-x[i]+b-1)))-
-                      ((2*x[i]*(n-1)*(a+b+n-3)*(a+b+n-2)*(a+b+n-1))/
-                         ((x[i]+a-1)*(n-x[i]+b-2)*(n-x[i]+b-1)))+
-                      ((n*(n-1)*(a+b+n-2)*(a+b+n-1))/((n-x[i]+b-2)*(n-x[i]+b-1))))))
-            }
+            value<-sapply(1:length(x),function(i) ((choose(n,x[i]))*(beta(a+x[i],b+n-x[i])/beta(a,b))*
+                                                     (1+(cov/2)*(((x[i]*(x[i]-1)*(a+b+n-4)*(a+b+n-3)*(a+b+n-2)*(a+b+n-1))/
+                                                                    ((x[i]+a-2)*(x[i]+a-1)*(n-x[i]+b-2)*(n-x[i]+b-1)))-
+                                                                   ((2*x[i]*(n-1)*(a+b+n-3)*(a+b+n-2)*(a+b+n-1))/
+                                                                      ((x[i]+a-1)*(n-x[i]+b-2)*(n-x[i]+b-1)))+
+                                                                   ((n*(n-1)*(a+b+n-2)*(a+b+n-1))/((n-x[i]+b-2)*(n-x[i]+b-1)))))))
+
             # generating an output in list format consisting pdf,mean and variance
             return(list("pdf"=value,"mean"=n*p,"var"=n*p*(1-p)*(n*shi+1)/(1+shi)+n*(n-1)*cov,
                         "corr"=cov/(p*(1-p)),"mincorr"=left.h,"maxcorr"=right.h))
@@ -269,13 +262,10 @@ dBetaCorrBin<-function(x,n,cov,a,b)
 #' @export
 pBetaCorrBin<-function(x,n,cov,a,b)
 {
-  ans<-NULL
   #for each binomial random variable in the input vector the cumulative proability function
   #values are calculated
-  for(i in 1:length(x))
-  {
-   ans[i]<-sum(dBetaCorrBin(0:x[i],n,cov,a,b)$pdf)
-  }
+  ans<-sapply(1:length(x),function(i) sum(dBetaCorrBin(0:x[i],n,cov,a,b)$pdf))
+
   #generating an ouput vector cumulative probability function values
   return(ans)
 }
@@ -346,8 +336,6 @@ NegLLBetaCorrBin<-function(x,freq,cov,a,b)
     }
     else
     {
-      value<-NULL
-
       #creating the necessary limits for correlation, the left hand side and right hand side limits
       left.h<-(-2/(n*(n-1)))*min(p/(1-p),(1-p)/p)
       right.h<-(2*p*(1-p))/(((n-1)*p*(1-p))+0.25- min(((0:n)-(n-1)*p-0.5)^2))
@@ -361,16 +349,13 @@ NegLLBetaCorrBin<-function(x,freq,cov,a,b)
       {
       #constructing the probability values for all random variables
       y<-0:n
-      value1<-NULL
-      for(i in 1:length(y))
-      {
-        value1[i]<-((choose(n,y[i]))*(beta(a+y[i],b+n-y[i])/beta(a,b))*
-            (1+(cov/2)*(((y[i]*(y[i]-1)*(a+b+n-4)*(a+b+n-3)*(a+b+n-2)*(a+b+n-1))/
-                             ((y[i]+a-2)*(y[i]+a-1)*(n-y[i]+b-2)*(n-y[i]+b-1)))-
-                    ((2*y[i]*(n-1)*(a+b+n-3)*(a+b+n-2)*(a+b+n-1))/
-                       ((y[i]+a-1)*(n-y[i]+b-2)*(n-y[i]+b-1)))+
-                    ((n*(n-1)*(a+b+n-2)*(a+b+n-1))/((n-y[i]+b-2)*(n-y[i]+b-1))))))
-      }
+      value1<-sapply(1:length(y),function(i) ((choose(n,y[i]))*(beta(a+y[i],b+n-y[i])/beta(a,b))*
+                                                (1+(cov/2)*(((y[i]*(y[i]-1)*(a+b+n-4)*(a+b+n-3)*(a+b+n-2)*(a+b+n-1))/
+                                                               ((y[i]+a-2)*(y[i]+a-1)*(n-y[i]+b-2)*(n-y[i]+b-1)))-
+                                                              ((2*y[i]*(n-1)*(a+b+n-3)*(a+b+n-2)*(a+b+n-1))/
+                                                                 ((y[i]+a-1)*(n-y[i]+b-2)*(n-y[i]+b-1)))+
+                                                              ((n*(n-1)*(a+b+n-2)*(a+b+n-1))/((n-y[i]+b-2)*(n-y[i]+b-1)))))))
+
       check1<-sum(value1)
 
       #checking if the sum of all probability values leads upto one
@@ -382,14 +367,12 @@ NegLLBetaCorrBin<-function(x,freq,cov,a,b)
         }
         else
         {
-          for (i in 1:sum(freq))
-          {
-            value[i]<-log((1+(cov/2)*(((data[i]*(data[i]-1)*(a+b+n-4)*(a+b+n-3)*(a+b+n-2)*(a+b+n-1))/
-                                      ((data[i]+a-2)*(data[i]+a-1)*(n-data[i]+b-2)*(n-data[i]+b-1)))-
-                        ((2*data[i]*(n-1)*(a+b+n-3)*(a+b+n-2)*(a+b+n-1))/
-                           ((data[i]+a-1)*(n-data[i]+b-2)*(n-data[i]+b-1)))+
-                        ((n*(n-1)*(a+b+n-2)*(a+b+n-1))/((n-data[i]+b-2)*(n-data[i]+b-1))))))
-          }
+          value<-sapply(1:sum(freq),function(i) log((1+(cov/2)*(((data[i]*(data[i]-1)*(a+b+n-4)*(a+b+n-3)*(a+b+n-2)*(a+b+n-1))/
+                                                                   ((data[i]+a-2)*(data[i]+a-1)*(n-data[i]+b-2)*(n-data[i]+b-1)))-
+                                                                  ((2*data[i]*(n-1)*(a+b+n-3)*(a+b+n-2)*(a+b+n-1))/
+                                                                     ((data[i]+a-1)*(n-data[i]+b-2)*(n-data[i]+b-1)))+
+                                                                  ((n*(n-1)*(a+b+n-2)*(a+b+n-1))/((n-data[i]+b-2)*(n-data[i]+b-1)))))))
+
         #calculating the negative log likelihood value and representing as a single output value
         return(-(sum(log(choose(n,data[1:sum(freq)]))) - length(data)*log(beta(a,b)) +
                    sum(log(beta(a+data[1:sum(freq)],b+n-data[1:sum(freq)]))) + sum(value)))
@@ -470,18 +453,15 @@ EstMLEBetaCorrBin<-function(x,freq,cov,a,b,...)
   #therefor the output is directly a single numeric value for the negative log likelihood value of
   #Beta-Correlated Binomial distribution
   shi<-1/(a+b)
-  value<-NULL
   n<-max(x)
   data<-rep(x,freq)
 
-  for (i in 1:sum(freq))
-  {
-    value[i]<-log((1+(cov/2)*(((data[i]*(data[i]-1)*(a+b+n-4)*(a+b+n-3)*(a+b+n-2)*(a+b+n-1))/
-               ((data[i]+a-2)*(data[i]+a-1)*(n-data[i]+b-2)*(n-data[i]+b-1)))-
-              ((2*data[i]*(n-1)*(a+b+n-3)*(a+b+n-2)*(a+b+n-1))/
-                 ((data[i]+a-1)*(n-data[i]+b-2)*(n-data[i]+b-1)))+
-              ((n*(n-1)*(a+b+n-2)*(a+b+n-1))/((n-data[i]+b-2)*(n-data[i]+b-1))))))
-  }
+  value<-sapply(1:sum(freq),function(i) log((1+(cov/2)*(((data[i]*(data[i]-1)*(a+b+n-4)*(a+b+n-3)*(a+b+n-2)*(a+b+n-1))/
+                                                           ((data[i]+a-2)*(data[i]+a-1)*(n-data[i]+b-2)*(n-data[i]+b-1)))-
+                                                          ((2*data[i]*(n-1)*(a+b+n-3)*(a+b+n-2)*(a+b+n-1))/
+                                                             ((data[i]+a-1)*(n-data[i]+b-2)*(n-data[i]+b-1)))+
+                                                          ((n*(n-1)*(a+b+n-2)*(a+b+n-1))/((n-data[i]+b-2)*(n-data[i]+b-1)))))))
+
   return(-(sum(log(choose(n,data[1:sum(freq)])))- length(data)*log(beta(a,b)) +
              sum(log(beta(a+data[1:sum(freq)],b+n-data[1:sum(freq)]))) + sum(value)))
 }

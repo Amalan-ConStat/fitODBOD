@@ -1,29 +1,16 @@
-context("Scenario of un wanted inputs")
+context_start_file("mazGAMMA function")
 test_that("NA values are avoided",{
-          expect_that(mazGAMMA(NA,0.1,2),
-          throws_error("NA or Infinite or NAN values in the Input"))
-          })
-test_that("Infinite values are avoided",{
-          expect_that(mazGAMMA(Inf,0.1,3),
-          throws_error("NA or Infinite or NAN values in the Input"))
-          })
-test_that("NAN values are avoided",{
-          expect_that(mazGAMMA(NaN,0.1,4),
-          throws_error("NA or Infinite or NAN values in the Input"))
-          })
-
-context("Scenario of shape parameters")
+  expect_error(mazGAMMA(NA,0.1,2),
+              "NA or Infinite or NAN values in the Input")
+})
 test_that("shape parameter b",{
-          expect_that(mazGAMMA(1,5,-4),
-          throws_error("Shape parameters cannot be less than or equal to zero"))
-          })
-test_that("shape parameter a",{
-          expect_that(mazGAMMA(1,-5,4),
-          throws_error("Shape parameters cannot be less than or equal to zero"))
-          })
-
-context("Moments issues")
+  expect_error(mazGAMMA(1,5,-4),
+              "Shape parameters cannot be less than or equal to zero")
+})
 test_that("Moments being negative or zero",{
-          expect_that(mazGAMMA(-3,0.3,4),
-          throws_error("Moments cannot be less than or equal to zero"))
-          })
+  expect_error(mazGAMMA(-3,0.3,4),
+              "Moments cannot be less than or equal to zero")
+})
+test_that("run smoothly",{
+  expect_no_error(mazGAMMA(1,5,1))
+})

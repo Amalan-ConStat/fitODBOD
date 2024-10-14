@@ -98,19 +98,11 @@ dKUM<-function(p,a,b)
     }
     else
     {
-      ans<-NULL
       #for each input values in the vector necessary calculations and conditions are applied
-      for(i in 1:length(p))
-      {
-        if(p[i] < 0 | p[i] > 1)
-        {
-          stop("Invalid values in the input")
-        }
-        else
-        {
-          ans[i]<-a*b*(p[i]^(a-1))*((1-p[i]^a)^(b-1))
-        }
+      if(any(p<0) | any(p>1)){
+        stop("Invalid values in the input")
       }
+      ans<-sapply(1:length(p),function(i) a*b*(p[i]^(a-1))*((1-p[i]^a)^(b-1)))
     }
   }
   # generating an output in list format consisting pdf,mean and variance
@@ -211,19 +203,11 @@ pKUM<-function(p,a,b)
     }
     else
     {
-      ans<-NULL
       #for each input values in the vector necessary calculations and conditions are applied
-      for (i in 1:length(p))
-      {
-        if(p[i]<0 |p[i]>1)
-        {
-          stop("Invalid values in the input")
-        }
-        else
-        {
-          ans[i]<-1-(1-p[i]^a)^b
-        }
+      if(any(p<0) | any(p>1)){
+        stop("Invalid values in the input")
       }
+      ans<-sapply(1:length(p),function(i) 1-(1-p[i]^a)^b)
       #generating an ouput vector of cumulative probability values
       return(ans)
     }
@@ -324,21 +308,14 @@ mazKUM<-function(r,a,b)
     {
       #the moments cannot be a decimal value therefore converting it into an integer
       r<-as.integer(r)
-      ans<-NULL
       #for each input values in the vector necessary calculations and conditions are applied
-      for (i in 1:length(r))
-      {
+
+      if(any(r<=0)){
         #checking if moment values are less than or equal to zero and creating
         # an error message as well as stopping the function progress
-        if(r[i]<=0)
-        {
-          stop("Moments cannot be less than or equal to zero")
-        }
-        else
-        {
-          ans[i]<-b*beta(1+(r[i]/a),b)
-        }
+        stop("Moments cannot be less than or equal to zero")
       }
+      ans<-sapply(1:length(r),function(i) b*beta(1+(r[i]/a),b))
       #generating an ouput vector of moment about zero values
       return(ans)
     }
@@ -457,9 +434,6 @@ dKumBin<-function(x,n,a,b,it=25000)
     }
     else
     {
-      check<-NULL
-      ans<-NULL
-      ans1<-NULL
       #checking if at any chance the binomial random variable is greater than binomial trial value
       #if so providing an error message and stopping the function progress
       if(max(x)>n)
@@ -476,10 +450,7 @@ dKumBin<-function(x,n,a,b,it=25000)
       {
         #constructing the probability values for all random variables
         y<-0:n
-        for(i in 1:length(y))
-        {
-         ans1[i]<-a*b*choose(n,y[i])*sum(((-1)^(0:it))*choose(b-1,0:it)*beta(y[i]+a+a*(0:it),n-y[i]+1))
-        }
+        ans1<-sapply(1:length(y),function(i) a*b*choose(n,y[i])*sum(((-1)^(0:it))*choose(b-1,0:it)*beta(y[i]+a+a*(0:it),n-y[i]+1)))
         check<-sum(ans1)
         #checking if the sum of all probability values leads upto 1
         #if not providing an error message and stopping the function progress
@@ -490,10 +461,7 @@ dKumBin<-function(x,n,a,b,it=25000)
         else
         {
           #for each random variable in the input vector below calculations occur
-          for(i in 1:length(x))
-          {
-            ans[i]<-a*b*choose(n,x[i])*sum(((-1)^(0:it))*choose(b-1,0:it)*beta(x[i]+a+a*(0:it),n-x[i]+1))
-          }
+          ans<-sapply(1:length(x),function(i) a*b*choose(n,x[i])*sum(((-1)^(0:it))*choose(b-1,0:it)*beta(x[i]+a+a*(0:it),n-x[i]+1)))
         }
       }
     }
@@ -587,13 +555,9 @@ dKumBin<-function(x,n,a,b,it=25000)
 #' @export
 pKumBin<-function(x,n,a,b,it=25000)
 {
-  ans<-NULL
   #for each binomial random variable in the input vector the cumulative probability function
   #values are calculated
-  for(i in 1:length(x))
-  {
-    ans[i]<-sum(dKumBin(0:x[i],n,a,b,it)$pdf)
-  }
+  ans<-sapply(1:length(x),function(i) sum(dKumBin(0:x[i],n,a,b,it)$pdf))
   #generating an ouput vector cumulative probability function values
   return(ans)
 }
@@ -669,14 +633,10 @@ NegLLKumBin<-function(x,freq,a,b,it=25000)
     }
     else
     {
-      ans1<-NULL
       n<-max(x)
       y<-0:n
       #constructing the probability values for all random variables
-      for(i in 1:length(y))
-      {
-       ans1[i]<-a*b*choose(n,y[i])*sum(((-1)^(0:it))*choose(b-1,(0:it))*beta(y[i]+a+a*(0:it),n-y[i]+1))
-      }
+      ans1<-sapply(1:length(y),function(i) a*b*choose(n,y[i])*sum(((-1)^(0:it))*choose(b-1,(0:it))*beta(y[i]+a+a*(0:it),n-y[i]+1)))
       check<-sum(ans1)
       #checking if the sum of all probability values leads upto one
       #if not providing an error message and stopping the function progress
@@ -688,12 +648,7 @@ NegLLKumBin<-function(x,freq,a,b,it=25000)
       {
         #constructing the data set using the random variables vector and frequency vector
         data<-rep(x,freq)
-
-        value<-NULL
-        for (i in 1:sum(freq))
-        {
-          value[i]<-sum(((-1)^(0:it))*choose(b-1,(0:it))*beta(data[i]+a+a*(0:it),n-data[i]+1))
-        }
+        value<-sapply(1:sum(freq),function(i) sum(((-1)^(0:it))*choose(b-1,(0:it))*beta(data[i]+a+a*(0:it),n-data[i]+1)))
       }
       #calculating the negative log likelihood value and representing as a single output value
       return(-(sum(freq)*log(a*b)+sum(log(choose(n,data[1:sum(freq)])))+sum(log(value))))
@@ -774,13 +729,7 @@ EstMLEKumBin<-function(x,freq,a,b,it,...)
   #Kumaraswamy binomial distribution
   n<-max(x)
   data<-rep(x,freq)
-
-  value<-NULL
-  for (i in 1:sum(freq))
-  {
-    value[i]<-sum(((-1)^(0:it))*choose(b-1,(0:it))*beta(data[i]+a+a*(0:it),n-data[i]+1))
-  }
-
+  value<-sapply(1:sum(freq),function(i) sum(((-1)^(0:it))*choose(b-1,(0:it))*beta(data[i]+a+a*(0:it),n-data[i]+1)))
   return(-(sum(freq)*log(a*b)+ sum(log(choose(n,data[1:sum(freq)])))+ sum(log(value))))
 }
 

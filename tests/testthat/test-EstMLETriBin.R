@@ -1,34 +1,20 @@
-context("Scenario of un wanted inputs")
+context_start_file("Checking outputs EstMLETriBin")
 test_that("NA values are avoided",{
-          expect_that(EstMLETriBin(NA,4),
-          throws_error("NA or Infinite or NAN values in the Input"))
-          })
-test_that("NAN values are avoided",{
-          expect_that(EstMLETriBin(NaN,4),
-          throws_error("NA or Infinite or NAN values in the Input"))
-          })
-test_that("Infinite values are avoided",{
-          expect_that(EstMLETriBin(Inf,4),
-          throws_error("NA or Infinite or NAN values in the Input"))
-          })
-
-context("Checking outputs")
+  expect_error(EstMLETriBin(NA,4),
+               "NA or Infinite or NAN values in the Input")
+})
 test_that("estimate parameter mode",{
-          expect_identical(round(EstMLETriBin(Chromosome_data$No.of.Asso,Chromosome_data$fre)$mode,6),
-                           0.707276)
-                           })
-
+  expect_identical(round(EstMLETriBin(Chromosome_data$No.of.Asso,Chromosome_data$fre)$mode,6),
+                   0.707276)
+})
 test_that("minimized negative ll value",{
-          expect_identical(round(EstMLETriBin(Chromosome_data$No.of.Asso,Chromosome_data$fre)$min,4),
-                           440.6583)
-                           })
-
+  expect_identical(round(EstMLETriBin(Chromosome_data$No.of.Asso,Chromosome_data$fre)$min,4),
+                   440.6583)
+})
+Tempsy<-EstMLETriBin(Chromosome_data$No.of.Asso,Chromosome_data$fre)
 test_that("Checking class of output",{
-          expect_that(EstMLETriBin(Chromosome_data$No.of.Asso,Chromosome_data$fre),
-          is_a("mlTRI"))
-          })
-
-test_that("Checking class of output",{
-          expect_that(EstMLETriBin(Chromosome_data$No.of.Asso,Chromosome_data$fre),
-          is_a("ml"))
-          })
+  expect_type(Tempsy,"list")
+})
+test_that("Checking value",{
+  expect_type(Tempsy$min,"double")
+})

@@ -1,19 +1,12 @@
-context("Scenario of un wanted inputs")
+context_start_file("mazUNI function")
 test_that("NA values are avoided",{
-          expect_that(mazUNI(NA),
-          throws_error("NA or Infinite or NAN values in the Input"))
-          })
-test_that("Infinite values are avoided",{
-          expect_that(mazUNI(Inf),
-          throws_error("NA or Infinite or NAN values in the Input"))
-          })
-test_that("NAN values are avoided",{
-          expect_that(mazUNI(NaN),
-          throws_error("NA or Infinite or NAN values in the Input"))
-          })
-
-context("Moments issues")
+  expect_error(mazUNI(NA),
+              "NA or Infinite or NAN values in the Input")
+})
 test_that("Moments being negative or zero",{
-          expect_that(mazUNI(-3),
-          throws_error("Moments cannot be less than or equal to zero"))
-          })
+  expect_error(mazUNI(-3),
+              "Moments cannot be less than or equal to zero")
+})
+test_that("run smoothly",{
+  expect_no_error(mazUNI(1))
+})

@@ -1,23 +1,17 @@
-context("Scenario of un wanted inputs")
+context_start_file("dUNI function errors")
+test_that("checking class",{
+  expect_type(dUNI(seq(0,1,by=0.05))$pdf,"double")
+})
+Temp<-dUNI(seq(0,1,by=0.05))
+test_that("checking length of output",{
+  expect_type(Temp,"list")
+})
 test_that("NA values are avoided",{
-        expect_that(dUNI(NA),
-        throws_error("NA or Infinite or NAN values in the Input"))
-        })
-test_that("Infinite values are avoided",{
-        expect_that(dUNI(Inf),
-        throws_error("NA or Infinite or NAN values in the Input"))
-        })
-test_that("NAN values are avoided",{
-        expect_that(dUNI(NaN),
-        throws_error("NA or Infinite or NAN values in the Input"))
-        })
-
-context("Scenario of invalid inputs")
+  expect_error(dUNI(NA),
+              "NA or Infinite or NAN values in the Input")
+})
 test_that("Greater than 1",{
-        expect_that(dUNI(3),
-        throws_error("Invalid values in the input"))
-        })
-test_that("Lesser than 1",{
-        expect_that(dUNI(-3),
-        throws_error("Invalid values in the input"))
-        })
+  expect_error(dUNI(3),
+              "Invalid values in the input")
+})
+

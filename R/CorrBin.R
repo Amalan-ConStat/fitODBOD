@@ -116,14 +116,13 @@ dCorrBin<-function(x,n,p,cov)
     else
     {
       correlation<-cov/(p*(1-p))
-     #checking the probability value is inbetween zero and one
+      #checking the probability value is inbetween zero and one
       if( p <= 0 | p >= 1 )
       {
         stop("Probability value doesnot satisfy conditions")
       }
       else
       {
-        value<-NULL
         #creating the necessary limits for correlation, the left hand side and right hand side limits
         left.h<-(-2/(n*(n-1)))*min(p/(1-p),(1-p)/p)
         right.h<-(2*p*(1-p))/(((n-1)*p*(1-p))+0.25-min(((0:n)-(n-1)*p-0.5)^2))
@@ -136,12 +135,9 @@ dCorrBin<-function(x,n,p,cov)
         {
           #constructing the probability values for all random variables
           y<-0:n
-          value1<-NULL
-          for(i in 1:length(y))
-          {
-            value1[i]<-((choose(n,y[i]))*(p^y[i])*((1-p)^(n-y[i]))*
-                          (1+(cov/(2*(p^2)*((1-p)^2)))*(((y[i]-n*p)^2)+(y[i]*(2*p-1))-(n*(p^2)))))
-          }
+          value1<-sapply(1:length(y),function(i) ((choose(n,y[i]))*(p^y[i])*((1-p)^(n-y[i]))*
+                            (1+(cov/(2*(p^2)*((1-p)^2)))*(((y[i]-n*p)^2)+(y[i]*(2*p-1))-(n*(p^2))))))
+
           check1<-sum(value1)
 
           #checking if the sum of all probability values leads upto one
@@ -154,11 +150,9 @@ dCorrBin<-function(x,n,p,cov)
           else
           {
             #for each random variable in the input vector below calculations occur
-            for (i in 1:length(x))
-            {
-              value[i]<-((choose(n,x[i]))*(p^x[i])*((1-p)^(n-x[i]))*
-                           (1+(cov/(2*(p^2)*((1-p)^2)))*(((x[i]-n*p)^2)+(x[i]*(2*p-1))-(n*(p^2)))))
-            }
+            value<-sapply(1:length(x),function(i) ((choose(n,x[i]))*(p^x[i])*((1-p)^(n-x[i]))*
+                            (1+(cov/(2*(p^2)*((1-p)^2)))*(((x[i]-n*p)^2)+(x[i]*(2*p-1))-(n*(p^2))))))
+
             # generating an output in list format consisting pdf,mean and variance
             return(list("pdf"=value,"mean"=n*p,"var"=n*(p*(1-p)+(n-1)*cov),
                         "corr"=cov/(p*(1-p)),"mincorr"=left.h,"maxcorr"=right.h))
@@ -251,13 +245,9 @@ dCorrBin<-function(x,n,p,cov)
 #' @export
 pCorrBin<-function(x,n,p,cov)
 {
-  ans<-NULL
   #for each binomial random variable in the input vector the cumulative proability function
   #values are calculated
-  for(i in 1:length(x))
-  {
-    ans[i]<-sum(dCorrBin(0:x[i],n,p,cov)$pdf)
-  }
+  ans<-sapply(1:length(x),function(i) sum(dCorrBin(0:x[i],n,p,cov)$pdf))
   #generating an ouput vector cumulative probability function values
   return(ans)
 }
@@ -328,7 +318,6 @@ NegLLCorrBin<-function(x,freq,p,cov)
     }
     else
     {
-      value<-NULL
       #creating the necessary limits for correlation, the left hand side and right hand side limits
       left.h<-(-2/(n*(n-1)))*min(p/(1-p),(1-p)/p)
       right.h<-(2*p*(1-p))/(((n-1)*p*(1-p))+0.25-(min(((0:n)-(n-1)*p-0.5)^2)))
@@ -341,12 +330,9 @@ NegLLCorrBin<-function(x,freq,p,cov)
       {
         #constructing the probability values for all random variables
         y<-0:n
-        value1<-NULL
-        for(i in 1:length(y))
-        {
-          value1[i]<-((choose(n,y[i]))*(p^y[i])*((1-p)^(n-y[i]))*
-                        (1+(cov/(2*(p^2)*((1-p)^2)))*(((y[i]-n*p)^2)+(y[i]*(2*p-1))-(n*(p^2)))))
-        }
+        value1<-sapply(1:length(y),function(i) ((choose(n,y[i]))*(p^y[i])*((1-p)^(n-y[i]))*
+                          (1+(cov/(2*(p^2)*((1-p)^2)))*(((y[i]-n*p)^2)+(y[i]*(2*p-1))-(n*(p^2))))))
+
         check1<-sum(value1)
 
         #checking if the sum of all probability values leads upto one
@@ -358,10 +344,7 @@ NegLLCorrBin<-function(x,freq,p,cov)
         }
         else
         {
-          for (i in 1:sum(freq))
-          {
-            value[i]<-log(1+((cov/(2*(p^2)*((1-p)^2)))*(((data[i]-n*p)^2)+(data[i]*(2*p-1))-(n*(p^2)))))
-          }
+          value<-sapply(1:sum(freq),function(i) log(1+((cov/(2*(p^2)*((1-p)^2)))*(((data[i]-n*p)^2)+(data[i]*(2*p-1))-(n*(p^2))))))
           #calculating the negative log likelihood value and representing as a single output value
           return(-(sum(log(choose(n,data[1:sum(freq)]))) +
                      log(p)*sum(data[1:sum(freq)]) + log(1-p)*sum(n-data[1:sum(freq)]) + sum(value)))
@@ -443,14 +426,9 @@ EstMLECorrBin<-function(x,freq,p,cov,...)
   #with respective to using bbmle package function mle2 there is no need impose any restrictions
   #therefor the output is directly a single numeric value for the negative log likelihood value of
   #Correlated Binomial distribution
-  value<-NULL
   n<-max(x)
   data<-rep(x,freq)
-
-  for (i in 1:sum(freq))
-  {
-    value[i]<-log(1+((cov/(2*(p^2)*((1-p)^2)))*(((data[i]-n*p)^2)+(data[i]*(2*p-1))-(n*(p^2)))))
-  }
+  value<-sapply(1:sum(freq),function(i) log(1+((cov/(2*(p^2)*((1-p)^2)))*(((data[i]-n*p)^2)+(data[i]*(2*p-1))-(n*(p^2))))))
 
   return(-(sum(log(choose(n,data[1:sum(freq)]))) + log(p)*sum(data[1:sum(freq)]) +
              log(1-p)*sum(n-data[1:sum(freq)]) + sum(value)))

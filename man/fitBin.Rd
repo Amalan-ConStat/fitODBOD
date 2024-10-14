@@ -12,7 +12,7 @@ fitBin(x,obs.freq,p=0)
 
 \item{obs.freq}{vector of frequencies.}
 
-\item{p}{single value for probability.}
+\item{p}{single value for probability or zero to estimate p.}
 }
 \value{
 The output of \code{fitBin} gives the class format \code{fitB} and \code{fit} consisting a list
@@ -43,7 +43,7 @@ seen if this distribution fits the data.
 }
 \details{
 \deqn{x = 0,1,2,...}
-\deqn{0 \le p \le 1}
+\deqn{0 < p <= 1}
 \deqn{obs.freq \ge 0}
 
 \strong{NOTE} : If input parameters are not in given domain conditions

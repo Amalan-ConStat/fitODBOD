@@ -305,10 +305,16 @@
 #' @export
 BODextract<-function(data)
 {
+  if(is.null(data)){
+    stop("data is empty")
+  }
+
   #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
   #if so cleaning the data set and removing all NA,infinite and NAN values
   if(any(is.na(data)) | any(is.infinite(data)) |any(is.nan(data)) )
   {
+    warning("NA, NAN or infinite values are removed")
+
     data1<-data[!is.nan(data)]
     data2<-data1[!is.na(data1)]
     data3<-data2[!is.infinite(data2)]
@@ -354,11 +360,11 @@ BODextract<-function(data)
 #'
 #' @param x                  vector of binomial random variables.
 #' @param obs.freq           vector of frequencies.
-#' @param p                  single value for probability.
+#' @param p                  single value for probability or zero to estimate p.
 #'
 #' @details
 #' \deqn{x = 0,1,2,...}
-#' \deqn{0 \le p \le 1}
+#' \deqn{0 < p <= 1}
 #' \deqn{obs.freq \ge 0}
 #'
 #' \strong{NOTE} : If input parameters are not in given domain conditions
@@ -398,88 +404,82 @@ fitBin<-function(x,obs.freq,p=0)
   #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values if so
   #creating an error message as well as stopping the function progress.
   if(any(is.na(c(x,obs.freq,p))) | any(is.infinite(c(x,obs.freq,p))) |
-     any(is.nan(c(x,obs.freq,p))) )
-  {
+     any(is.nan(c(x,obs.freq,p))) ){
     stop("NA or Infinite or NAN values in the Input")
+  }
+  #checking if the probability value is less than or equal to zero and greater than one,
+  #if so creating an error message as well as stopping the function progress.
+  if(p<0 | p>=1)
+  {
+    stop("Probability value cannot be less than or equal to zero or greater than or equal to one")
+  }
+
+  if(p==0)
+  {
+    i<-1:length(x)
+    #estimating the probability value when it is not given
+    p.hat<-(sum(x[i]*obs.freq[i]))/(max(x)*sum(obs.freq))
+    #estimating the probability values for the given binomial random variables
+    est.prob<-stats::dbinom(x,max(x),p.hat)
+    #calculating the expected frequencies
+    exp.freq<-round((sum(obs.freq)*est.prob),2)
+    #chi-squared test statistics is calculated with observed frequency and expected frequency
+    statistic<-sum(((obs.freq-exp.freq)^2)/exp.freq)
+    #degree of freedom is calculated
+    df<-length(x)-2
+    #p value of chi-squared test statistic is calculated
+    p.value<-1-stats::pchisq(statistic,df)
+
+    #checking if df is less than or equal to zero
+    if(df<0 | df==0)
+    {
+      stop("Degrees of freedom cannot be less than or equal to zero")
+    }
+    #checking if any of the expected frequencies are less than five and greater than zero, if so
+    #a warning message is provided in interpreting the results
+    if(min(exp.freq)<5 && min(exp.freq) > 0)
+    {
+      message("Chi-squared approximation may be doubtful because expected frequency is less than 5")
+    }
+    #checking if expected frequency is zero, if so providing a warning message in interpreting
+    #the results
+    if(min(exp.freq)==0)
+    {
+      message("Chi-squared approximation is not suitable because expected frequency approximates to zero")
+    }
+    #the final output is in a list format containing the calculated values
+    final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,"statistic"=round(statistic,4),
+                "df"=df,"p.value"=round(p.value,4),"fitB"=est.prob,"phat"=p.hat,"call"=match.call())
   }
   else
   {
-    #checking if the probability value is less than or equal to zero and greater than one,
-    #if so creating an error message as well as stopping the function progress.
-    if(p<=0 && p>1)
-    {
-      stop("Probability value cannot be less than zero or greater than one")
-    }
-    else
-    {
-      if(p==0)
-      {
-        i<-1:length(x)
-        #estimating the probability value when it is not given
-        p.hat<-(sum(x[i]*obs.freq[i]))/(max(x)*sum(obs.freq))
-        #estimating the probability values for the given binomial random variables
-        est.prob<-stats::dbinom(x,max(x),p.hat)
-        #calculating the expected frequencies
-        exp.freq<-round((sum(obs.freq)*est.prob),2)
-        #chi-squared test statistics is calculated with observed frequency and expected frequency
-        statistic<-sum(((obs.freq-exp.freq)^2)/exp.freq)
-        #degree of freedom is calculated
-        df<-length(x)-2
-        #p value of chi-squared test statistic is calculated
-        p.value<-1-stats::pchisq(statistic,df)
+    #estimating the probability values for the given binomial random variables
+    est.prob<-stats::dbinom(x,max(x),p)
+    #calculating the expected frequencies
+    exp.freq<-round((sum(obs.freq)*est.prob),2)
+    #applying the chi squared test
+    ans<-stats::chisq.test(x=obs.freq,p=est.prob)
 
-        #checking if df is less than or equal to zero
-        if(df<0 | df==0)
-        {
-          stop("Degrees of freedom cannot be less than or equal to zero")
-        }
-        #checking if any of the expected frequencies are less than five and greater than zero, if so
-        #a warning message is provided in interpreting the results
-        if(min(exp.freq)<5 && min(exp.freq) > 0)
-        {
-          message("Chi-squared approximation may be doubtful because expected frequency is less than 5")
-        }
-        #checking if expected frequency is zero, if so providing a warning message in interpreting
-        #the results
-        if(min(exp.freq)==0)
-        {
-          message("Chi-squared approximation is not suitable because expected frequency approximates to zero")
-        }
-        #the final output is in a list format containing the calculated values
-        final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,"statistic"=round(statistic,4),
-                    "df"=df,"p.value"=round(p.value,4),"fitB"=est.prob,"phat"=p.hat,"call"=match.call())
-      }
-      else
-      {
-        #estimating the probability values for the given binomial random variables
-        est.prob<-stats::dbinom(x,max(x),p)
-        #calculating the expected frequencies
-        exp.freq<-round((sum(obs.freq)*est.prob),2)
-        #applying the chi squared test
-        ans<-stats::chisq.test(x=obs.freq,p=est.prob)
-
-        #checking if any of the expected frequencies are less than five and greater than zero, if so
-        #a warning message is provided in interpreting the results
-        if(min(exp.freq)<5 && min(exp.freq) > 0)
-        {
-          message("Chi-squared approximation may be doubtful because expected frequency is less than 5")
-        }
-        #checking if expected frequency is zero, if so providing a warning message in interpreting
-        #the results
-        if(min(exp.freq)==0)
-        {
-          message("Chi-squared approximation is not suitable because expected frequency approximates to zero")
-        }
-        #the final output is in a list format containing the calculated values
-        final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,
-                    "statistic"=round(ans$statistic,4),"df"=ans$parameter,
-                    "p.value"=round(ans$p.value,4),"fitB"=est.prob,"phat"=p,
-                    "call"=match.call())
-      }
-      class(final)<-c("fitB","fit")
-      return(final)
+    #checking if any of the expected frequencies are less than five and greater than zero, if so
+    #a warning message is provided in interpreting the results
+    if(min(exp.freq)<5 && min(exp.freq) > 0)
+    {
+      message("Chi-squared approximation may be doubtful because expected frequency is less than 5")
     }
+    #checking if expected frequency is zero, if so providing a warning message in interpreting
+    #the results
+    if(min(exp.freq)==0)
+    {
+      message("Chi-squared approximation is not suitable because expected frequency approximates to zero")
+    }
+    #the final output is in a list format containing the calculated values
+    final<-list("bin.ran.var"=x,"obs.freq"=obs.freq,"exp.freq"=exp.freq,
+                "statistic"=round(ans$statistic,4),"df"=ans$parameter,
+                "p.value"=round(ans$p.value,4),"fitB"=est.prob,"phat"=p,
+                "call"=match.call())
   }
+  class(final)<-c("fitB","fit")
+  return(final)
 }
 
 #' @method fitBin default

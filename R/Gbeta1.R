@@ -90,19 +90,11 @@ dGBeta1<-function(p,a,b,c)
     }
     else
     {
-      ans<-NULL
       #for each input values in the vector necessary calculations and conditions are applied
-      for(i in 1:length(p))
-      {
-        if(p[i]<0 | p[i]>1)
-        {
-          stop("Invalid values in the input")
-        }
-        else
-        {
-          ans[i]<-(c/beta(a,b))*(p[i]^(a*c-1))*((1-p[i]^c)^(b-1))
-        }
+      if(any(p<0) | any(p>1)){
+        stop("Invalid values in the input")
       }
+      ans<-sapply(1:length(p),function(i) (c/beta(a,b))*(p[i]^(a*c-1))*((1-p[i]^c)^(b-1)))
     }
   }
   # generating an output in list format consisting pdf,mean and variance
@@ -195,31 +187,21 @@ pGBeta1<-function(p,a,b,c)
     }
     else
     {
-      term<-NULL
-      ans<-NULL
       #for each input values in the vector necessary calculations and conditions are applied
-      for(i in 1:length(p))
-      {
-        if(p[i]<0 | p[i]>1)
-        {
-          stop("Invalid values in the input")
-        }
-        else
-        {
-          term[i]<-Re(hypergeo::hypergeo_powerseries(a,1-b,(p[i])^c,a+1))
-          #checking if the hypergeometric function value is NA(not assigned)values,
-          #infinite values or NAN(not a number)values if so providing an error message and
-          #stopping the function progress
-          if(is.nan(term[i]) | term[i] <= 0 | is.infinite(term[i]) |is.na(term[i]) )
-          {
-            stop("Given input values generate error values for Gaussian Hypergeometric Function")
-          }
-          else
-          {
-            ans[i]<-(((p[i])^(a*c))*term[i])/(a*beta(a,b))
-          }
-        }
+      if(any(p<0) | any(p>1)){
+        stop("Invalid values in the input")
       }
+      term<-sapply(1:length(p),function(i) Re(hypergeo::hypergeo_powerseries(a,1-b,(p[i])^c,a+1)))
+
+      #checking if the hypergeometric function value is NA(not assigned)values,
+      #infinite values or NAN(not a number)values if so providing an error message and
+      #stopping the function progress
+      if( any(is.nan(term)) | any(term<=0) | any(is.infinite(term)) | any(is.na(term)) ){
+        stop("Given input values generate error values for Gaussian Hypergeometric Function")
+      }
+
+      ans<-sapply(1:length(p),function(i) (((p[i])^(a*c))*term[i])/(a*beta(a,b)))
+
       #generating an ouput vector of cumulative probability values
       return(ans)
     }
@@ -312,23 +294,17 @@ mazGBeta1<-function(r,a,b,c)
     }
     else
     {
-      ans<-NULL
       #the moments cannot be a decimal value therefore converting it into an integer
       r<-as.integer(r)
       #for each input values in the vector necessary calculations and conditions are applied
-      for (i in 1:length(r))
-      {
-        #checking if moment values are less than or equal to zero and creating
-        # an error message as well as stopping the function progress
-        if(r[i]<=0)
-        {
-          stop("Moments cannot be less than or equal to zero")
-        }
-        else
-        {
-          ans[i]<-beta(a+b,r[i]/c)/beta(a,r[i]/c)
-        }
+      if(any(r<=0)){
+        stop("Moments cannot be less than or equal to zero")
       }
+
+      #checking if moment values are less than or equal to zero and creating
+      # an error message as well as stopping the function progress
+      ans<-sapply(1:length(r),function(i) beta(a+b,r[i]/c)/beta(a,r[i]/c))
+
       #generating an ouput vector of moment about zero values
       return(ans)
     }
@@ -444,17 +420,12 @@ dMcGBB<-function(x,n,a,b,c)
       {
         stop("Binomial random variable or binomial trial value cannot be negative")
       }
-
       else
       {
-        final<-NULL
         #for each random variable in the input vector below calculations occur
-        for (i in 1:length(x))
-        {
-          value<-NULL
+        final<-sapply(1:length(x),function(i){
           value<-sum(((-1)^(0:(n-x[i])))*choose(n-x[i],(0:(n-x[i])))*beta((x[i]/c+a+(0:(n-x[i]))/c),b))
-          final[i]<-choose(n,x[i])*(1/beta(a,b))*value
-        }
+          choose(n,x[i])*(1/beta(a,b))*value} )
       }
     }
   }
@@ -539,13 +510,9 @@ dMcGBB<-function(x,n,a,b,c)
 #' @export
 pMcGBB<-function(x,n,a,b,c)
 {
-  ans<-NULL
   #for each binomial random variable in the input vector the cumulative proability function
   #values are calculated
-  for(i in 1:length(x))
-  {
-    ans[i]<-sum(dMcGBB(0:x[i],n,a,b,c)$pdf)
-  }
+  ans<-sapply(1:length(x),function(i) sum(dMcGBB(0:x[i],n,a,b,c)$pdf))
   #generating an ouput vector cumulative probability function values
   return(ans)
 }
@@ -612,13 +579,9 @@ NegLLMcGBB<-function(x,freq,a,b,c)
       #constructing the data set using the random variables vector and frequency vector
       n<-max(x)
       data<-rep(x,freq)
+      value<-sapply(1:sum(freq),function(i) sum(((-1)^(0:n-data[i]))*choose(n-data[i],(0:n-data[i]))*
+                                                  beta((data[i]/c)+a+((0:n-data[i])/c),b)))
 
-      value<-NULL
-      for (i in 1:sum(freq))
-      {
-       value[i]<-sum(((-1)^(0:n-data[i]))*choose(n-data[i],(0:n-data[i]))*
-                       beta((data[i]/c)+a+((0:n-data[i])/c),b))
-      }
       #calculating the negative log likelihood value and representing as a single output value
       return(-(sum(log(choose(n,data[1:sum(freq)])))+sum(log(value))+
                  sum(freq)*log(1/beta(a,b))))
@@ -700,12 +663,8 @@ EstMLEMcGBB<-function(x,freq,a,b,c,...)
   n<-max(x)
   data<-rep(x,freq)
 
-  value<-NULL
-  for (i in 1:sum(freq))
-  {
-   value[i]<-sum(((-1)^(0:n-data[i]))*choose(n-data[i],(0:n-data[i]))*
-                   beta((data[i]/c)+a+((0:n-data[i])/c),b))
-  }
+  value<-sapply(1:sum(freq),function(i) sum(((-1)^(0:n-data[i]))*choose(n-data[i],(0:n-data[i]))*
+                                              beta((data[i]/c)+a+((0:n-data[i])/c),b)))
 
   return(-(sum(log(choose(n,data[1:sum(freq)])))+sum(log(value))+
              sum(freq)*log(1/beta(a,b))))

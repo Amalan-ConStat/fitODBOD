@@ -101,19 +101,11 @@ dGAMMA<-function(p,c,l)
     }
     else
     {
-      ans<-NULL
       #for each input values in the vector necessary calculations and conditions are applied
-      for (i in 1:length(p))
-      {
-        if(p[i]<0 |p[i]>1)
-        {
-          stop("Invalid values in the input")
-        }
-        else
-        {
-          ans[i]<-(c^l* p[i]^(c-1)*(log(1/p[i]))^(l-1))/gamma(l)
-        }
+      if(any(p<0) | any(p>1)){
+        stop("Invalid values in the input")
       }
+      ans<-sapply(1:length(p),function(i) (c^l* p[i]^(c-1)*(log(1/p[i]))^(l-1))/gamma(l))
     }
     # generating an output in list format consisting pdf,mean and variance
     return(list("pdf"=ans,"mean"=(c/(c+1))^l,
@@ -218,22 +210,15 @@ pGAMMA<-function(p,c,l)
     }
     else
     {
-      ans<-NULL
-      val<-NULL
       #for each input values in the vector necessary calculations and conditions are applied
-      for(i in 1:length(p))
-      {
-        if(p[i]<0 | p[i]>1)
-        {
-          stop("Invalid values in the input")
-        }
-        else
-        {
-          #integrating the above mentioned function under limits of zero and vector p
-          val<-stats::integrate(function(t){(t^(l-1))*(exp(-t))},lower = 0,upper = (c*log(1/p[i])))
-          ans[i]<-val$value/gamma(l)
-        }
+      if(any(p<0) | any(p>1)){
+        stop("Invalid values in the input")
       }
+      #integrating the above mentioned function under limits of zero and vector p
+      ans<-sapply(1:length(p),function(i){
+        val<-stats::integrate(function(t){(t^(l-1))*(exp(-t))},lower = 0,upper = (c*log(1/p[i])))
+        val$value/gamma(l) })
+
       #generating an ouput vector of cumulative probability values
       return(ans)
     }
@@ -338,21 +323,13 @@ mazGAMMA<-function(r,c,l)
     {
       #the moments cannot be a decimal value therefore converting it into an integer
       r<-as.integer(r)
-      ans<-NULL
       #for each input values in the vector necessary calculations and conditions are applied
-      for(i in 1:length(r))
-      {
-        #checking if moment values are less than or equal to zero and creating
-        # an error message as well as stopping the function progress
-        if(r[i]<=0)
-        {
-          stop("Moments cannot be less than or equal to zero")
-        }
-        else
-        {
-          ans[i]<-(c/(c+r[i]))^l
-        }
+      if(any(r<=0)){
+        stop("Moments cannot be less than or equal to zero")
       }
+      #checking if moment values are less than or equal to zero and creating
+      # an error message as well as stopping the function progress
+      ans<-sapply(1:length(r),function(i) (c/(c+r[i]))^l)
       #generating an ouput vector of moment about zero values
       return(ans)
     }
@@ -458,19 +435,15 @@ dGammaBin<-function(x,n,c,l)
       {
         stop("Binomial random variable cannot be greater than binomial trial value")
       }
-      #checking if any random variable or trial value is negative if so providig an error message
-      #and stopping the function progress
       else if(any(x<0) | n<0)
       {
+        #checking if any random variable or trial value is negative if so providig an error message
+        #and stopping the function progress
         stop("Binomial random variable or binomial trial value cannot be negative")
       }
-      ans<-NULL
       #for each random variable in the input vector below calculations occur
-      for (i in 1:length(x))
-      {
-       ans[i]<-choose(n,x[i])*sum((-1)^(0:(n-x[i]))*choose(n-x[i],(0:(n-x[i])))*
-                                    (c/(c+x[i]+(0:(n-x[i]))))^l)
-      }
+      ans<-sapply(1:length(x),function(i) choose(n,x[i])*sum((-1)^(0:(n-x[i]))*choose(n-x[i],(0:(n-x[i])))*
+                                                               (c/(c+x[i]+(0:(n-x[i]))))^l))
     }
   }
   # generating an output in list format consisting pdf,mean,variance and overdispersion value
@@ -548,13 +521,9 @@ dGammaBin<-function(x,n,c,l)
 #' @export
 pGammaBin<-function(x,n,c,l)
 {
-  ans<-NULL
   #for each binomial random variable in the input vector the cumulative proability function
   #values are calculated
-  for(i in 1:length(x))
-  {
-   ans[i]<-sum(dGammaBin(0:x[i],n,c,l)$pdf)
-  }
+  ans<-sapply(1:length(x),function(i) sum(dGammaBin(0:x[i],n,c,l)$pdf))
   #generating an ouput vector cumulative probability function values
   return(ans)
 }
@@ -597,8 +566,7 @@ NegLLGammaBin<-function(x,freq,c,l)
 {
   #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
   #if so creating an error message as well as stopping the function progress.
-  if(any(is.na(c(x,freq,c,l))) | any(is.infinite(c(x,freq,c,l)))
-     |any(is.nan(c(x,freq,c,l))) )
+  if(any(is.na(c(x,freq,c,l))) | any(is.infinite(c(x,freq,c,l)))|any(is.nan(c(x,freq,c,l))) )
   {
     stop("NA or Infinite or NAN values in the Input")
   }
@@ -621,13 +589,9 @@ NegLLGammaBin<-function(x,freq,c,l)
       #constructing the data set using the random variables vector and frequency vector
       n<-max(x)
       data<-rep(x,freq)
+      value<-sapply(1:sum(freq),function(i) sum((-1)^(0:(n-data[i]))*choose(n-data[i],(0:(n-data[i])))*
+                                                  (c/(c+data[i]+(0:(n-data[i]))))^l))
 
-      value<-NULL
-      for (i in 1:sum(freq))
-        {
-        value[i]<-sum((-1)^(0:(n-data[i]))*choose(n-data[i],(0:(n-data[i])))*
-                        (c/(c+data[i]+(0:(n-data[i]))))^l)
-        }
       #calculating the negative log likelihood value and representing as a single output value
       return(-(sum(log(choose(n,data[1:sum(freq)])))+sum(log(value))))
     }
@@ -700,12 +664,9 @@ EstMLEGammaBin<-function(x,freq,c,l,...)
   n<-max(x)
   data<-rep(x,freq)
 
-  value<-NULL
-  for (i in 1:sum(freq))
-  {
-   value[i]<-sum(((-1)^(0:n-data[i]))*choose(n-data[i],(0:n-data[i]))*
-                   (c/(c+data[i]+(0:n-data[i])))^l)
-  }
+  value<-sapply(1:sum(freq),function(i) sum(((-1)^(0:n-data[i]))*choose(n-data[i],(0:n-data[i]))*
+                                              (c/(c+data[i]+(0:n-data[i])))^l))
+
   return(-(sum(log(choose(n,data[1:sum(freq)])))+sum(log(value))))
 }
 
@@ -792,8 +753,7 @@ fitGammaBin<-function(x,obs.freq,c,l)
 {
   #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
   #if so creating an error message as well as stopping the function progress.
-  if(any(is.na(c(x,obs.freq,c,l))) | any(is.infinite(c(x,obs.freq,c,l))) |
-     any(is.nan(c(x,obs.freq,c,l))) )
+  if(any(is.na(c(x,obs.freq,c,l))) | any(is.infinite(c(x,obs.freq,c,l))) |any(is.nan(c(x,obs.freq,c,l))) )
   {
     stop("NA or Infinite or NAN values in the Input")
   }
@@ -985,13 +945,9 @@ dGrassiaIIBin<-function(x,n,a,b)
       {
         stop("Binomial random variable or binomial trial value cannot be negative")
       }
-      ans<-NULL
       #for each random variable in the input vector below calculations occur
-      for (i in 1:length(x))
-      {
-       ans[i]<-choose(n,x[i])*sum((-1)^(x[i]-(0:x[i]))*
-                                    choose(x[i],0:x[i])*(1+b*(n-(0:x[i])))^(-a))
-      }
+      ans<-sapply(1:length(x),function(i) choose(n,x[i])*sum((-1)^(x[i]-(0:x[i]))*
+                                                               choose(x[i],0:x[i])*(1+b*(n-(0:x[i])))^(-a)))
     }
   }
   # generating an output in list format consisting pdf,mean,variance and overdispersion value
@@ -1069,13 +1025,9 @@ dGrassiaIIBin<-function(x,n,a,b)
 #' @export
 pGrassiaIIBin<-function(x,n,a,b)
 {
-  ans<-NULL
   #for each binomial random variable in the input vector the cumulative proability function
   #values are calculated
-  for(i in 1:length(x))
-  {
-   ans[i]<-sum(dGrassiaIIBin(0:x[i],n,a,b)$pdf)
-  }
+  ans<-sapply(1:length(x),function(i) sum(dGrassiaIIBin(0:x[i],n,a,b)$pdf))
   #generating an ouput vector cumulative probability function values
   return(ans)
 }
@@ -1118,8 +1070,7 @@ NegLLGrassiaIIBin<-function(x,freq,a,b)
 {
   #checking if inputs consist NA(not assigned)values, infinite values or NAN(not a number)values
   #if so creating an error message as well as stopping the function progress.
-  if(any(is.na(c(x,freq,a,b))) | any(is.infinite(c(x,freq,a,b)))
-     |any(is.nan(c(x,freq,a,b))) )
+  if(any(is.na(c(x,freq,a,b))) | any(is.infinite(c(x,freq,a,b)))|any(is.nan(c(x,freq,a,b))) )
   {
     stop("NA or Infinite or NAN values in the Input")
   }
@@ -1143,12 +1094,9 @@ NegLLGrassiaIIBin<-function(x,freq,a,b)
       n<-max(x)
       data<-rep(x,freq)
 
-      value<-NULL
-      for (i in 1:sum(freq))
-      {
-        value[i]<-sum((-1)^(data[i]-(0:data[i]))*
-                        choose(data[i],(0:data[i]))*(1+b*(n-(0:data[i])))^(-a))
-      }
+      value<-sapply(1:sum(freq),function(i) sum((-1)^(data[i]-(0:data[i]))*
+                                                  choose(data[i],(0:data[i]))*(1+b*(n-(0:data[i])))^(-a)))
+
       #calculating the negative log likelihood value and representing as a single output value
       return(-(sum(log(choose(n,data[1:sum(freq)])))+sum(log(value))))
     }
@@ -1220,13 +1168,9 @@ EstMLEGrassiaIIBin<-function(x,freq,a,b,...)
   #Gamma binomial distribution
   n<-max(x)
   data<-rep(x,freq)
+  value<-sapply(1:sum(freq),function(i) sum(((-1)^(data[i]-(0:data[i])))*
+                                              choose(data[i],0:data[i])*(1+b*(n-(0:data[i])))^(-a)))
 
-  value<-NULL
-  for (i in 1:sum(freq))
-  {
-    value[i]<-sum(((-1)^(data[i]-(0:data[i])))*
-                    choose(data[i],0:data[i])*(1+b*(n-(0:data[i])))^(-a))
-  }
   return(-(sum(log(choose(n,data[1:sum(freq)])))+sum(log(value))))
 }
 

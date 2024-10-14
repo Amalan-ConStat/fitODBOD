@@ -2,6 +2,7 @@
 #' @export
 AIC.fit<-function(object,...)
 {
+  names(object$AIC)<-NULL
   return(object$AIC)
 }
 
@@ -9,6 +10,7 @@ AIC.fit<-function(object,...)
 #' @export
 residuals.fit<-function(object,...)
 {
+  names(object$obs.freq)<-names(object$exp.freq)<-NULL
   return(object$obs.freq-object$exp.freq)
 }
 
@@ -16,5 +18,6 @@ residuals.fit<-function(object,...)
 #' @export
 fitted.fit<-function(object,...)
 {
+  names(object$exp.freq)<-NULL
   return(object$exp.freq)
 }

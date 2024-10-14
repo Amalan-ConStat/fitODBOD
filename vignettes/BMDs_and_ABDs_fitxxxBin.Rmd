@@ -284,7 +284,8 @@ flextable(data=ABD_flexed_Data,
                                EstFreq_CorrBinD="Correlated Binomial Distribution",
                                EstFreq_MultiBinD="Multiplicative Binomial Distribution",
                                EstFreq_LMBinD="Lovinson Multiplicative Binomial Distribution")) %>%
-  align(i=1,part = "header",align = "center")
+  align(i=1,part = "header",align = "center") %>% 
+   fontsize(size = 7, part = "all")
 
 ```
 
@@ -553,7 +554,8 @@ flextable(data=BMD_flexed_Data,
                                EstFreq_McGBBD="McDonald Generalized Beta Binomial Distribution",
                                EstFreq_GammaBinD="Gamma Binomial Distribution",
                                EstFreq_GrassiaIIBinD="Grassia II Binomial Distribution")) %>%
-  align(i=1,part = "header",align = "center")
+  align(i=1,part = "header",align = "center") %>% 
+   fontsize(size = 7, part = "all")
 
 ```
 

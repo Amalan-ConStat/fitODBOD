@@ -1,6 +1,9 @@
 template:
-  package: preferably
   bootstrap: 5
+  bslib:
+    bg: "aliceblue"
+    fg: "royalblue"
+    primary: "royalblue"
 
 development:
   mode: release
@@ -229,3 +232,14 @@ reference:
         - NegLLLMBin
         - EstMLELMBin
         - fitLMBin
+
+home:
+  title: fitODBOD - An R package for fitting overdispersed binomial outcome data
+  description: Fitting overdispersed binomial outcome data through distributions.
+  sidebar:
+    structure: [links, license, community, citation, authors, dev]
+
+footer:
+  structure:
+    left: developed_by
+    right: built_with

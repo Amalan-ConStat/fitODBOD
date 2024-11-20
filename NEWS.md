@@ -64,3 +64,7 @@
 # Version 1.5.3
 
 - spelling issues resolved
+
+# Version 1.5.4
+
+- testthat functions upgraded and parallelism implemented for the code.

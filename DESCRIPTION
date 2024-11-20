@@ -1,7 +1,7 @@
 Type: Package
 Package: fitODBOD
 Title: Modeling Over Dispersed Binomial Outcome Data Using BMD and ABD
-Version: 1.5.3
+Version: 1.5.4
 Authors@R: c(
     person(given="Amalan",family="Mahendran", email="amalan0595@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-0643-9052")),

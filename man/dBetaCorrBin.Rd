@@ -41,8 +41,8 @@ The probability function and cumulative function can be constructed and are deno
 
 The cumulative probability function is the summation of probability function values.
 
-\if{html}{\figure{Capture.png}{options: width="50\%"}}
-\if{latex}{\figure{Capture.png}{options: width=11cm}}
+\if{html}{\figure{Capture.png}{options: style="width: 50\%;"}}
+\if{latex}{\figure{Capture.png}{options: width=7cm}}
 
 \deqn{x = 0,1,2,3,...n}
 \deqn{n = 1,2,3,...}

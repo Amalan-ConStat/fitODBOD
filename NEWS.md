@@ -68,3 +68,7 @@
 # Version 1.5.4
 
 - testthat functions upgraded and parallelism implemented for the code.
+
+# Version 1.5.5
+
+- Note for dBetaCorrBin and pBetaCorrBin are resolved and submitted to CRAN.

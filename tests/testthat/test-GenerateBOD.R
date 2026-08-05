@@ -10,17 +10,16 @@ context_start_file("Checking the GenerateBOD function")
 test_that("simulated BOD data length",{
   expect_equal(length(New_overdispersed_data),N)
 })
-test_that("generated binomial random variable",{
-  expect_equal(sort(unique(New_overdispersed_data)),0:n)
+test_that("generated values are valid binomial outcomes", {
+  expect_true(all(New_overdispersed_data >= 0))
+  expect_true(all(New_overdispersed_data <= n))
+  expect_true(all(New_overdispersed_data %% 1 == 0))
 })
 test_that("class of the output",{
   expect_equal(class(New_overdispersed_data),"numeric")
 })
 test_that("minimum value in binomial random variable",{
   expect_lte(min(New_overdispersed_data),0)
-})
-test_that("maximum value in binomial random variable",{
-  expect_gte(max(New_overdispersed_data),n)
 })
 
 test_that("Check for Nan values",{

@@ -72,3 +72,7 @@
 # Version 1.5.5
 
 - Note for dBetaCorrBin and pBetaCorrBin are resolved and submitted to CRAN.
+
+# Version 1.5.6
+
+- Fixed the issues of GenerateBOD function.

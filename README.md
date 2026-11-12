@@ -8,12 +8,8 @@
 checks](https://badges.cranchecks.info/summary/fitODBOD.svg)](https://cran.r-project.org/web/checks/check_results_fitODBOD.html)
 [![r-universe status
 badge](https://Amalan-ConStat.r-universe.dev/badges/fitODBOD)](https://Amalan-ConStat.r-universe.dev/fitODBOD)
-[![Project Status: Active - The project has reached a stable, usable
-state and is being actively
-developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
-[![GitHub
-issues](https://img.shields.io/github/issues/Amalan-ConStat/fitODBOD.svg?style=popout)](https://github.com/Amalan-ConStat/fitODBOD/issues)
+[![status](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4/status.svg)](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3265356.svg)](https://doi.org/10.5281/zenodo.3265356)
 
 [![](http://cranlogs.r-pkg.org/badges/grand-total/fitODBOD?color=green)](https://cran.r-project.org/package=fitODBOD)
 [![](http://cranlogs.r-pkg.org/badges/last-month/fitODBOD?color=green)](https://cran.r-project.org/package=fitODBOD)
@@ -25,8 +21,12 @@ license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit
 coverage](https://codecov.io/gh/Amalan-ConStat/fitODBOD/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Amalan-ConStat/fitODBOD?branch=main)
 [![CodeFactor](https://www.codefactor.io/repository/github/Amalan-ConStat/fitODBOD/badge)](https://www.codefactor.io/repository/github/Amalan-ConStat/fitODBOD)
 [![](https://img.shields.io/github/languages/code-size/Amalan-ConStat/fitODBOD.svg)](https://github.com/Amalan-ConStat/fitODBOD)
-[![status](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4/status.svg)](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3265356.svg)](https://doi.org/10.5281/zenodo.3265356)
+[![Project Status: Active - The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![GitHub
+issues](https://img.shields.io/github/issues/Amalan-ConStat/fitODBOD.svg?style=popout)](https://github.com/Amalan-ConStat/fitODBOD/issues)
 
 <!-- badges: end -->
 
@@ -124,20 +124,20 @@ to prepare the appropriate format as follows.
 ``` r
 datapoints <- sample(0:7, 340, replace = TRUE) ## creating a set of raw BOD 
 head(datapoints)  ## first few observations of datapoints dataset
-#> [1] 2 1 2 3 6 0
+#> [1] 5 0 3 6 0 1
 
 ## extracting and printing BOD in a usable way for the package
 new_data <- BODextract(datapoints)
 matrix(c(new_data$RV, new_data$Freq), ncol=2, byrow = FALSE)
 #>      [,1] [,2]
-#> [1,]    0   30
-#> [2,]    1   43
-#> [3,]    2   41
-#> [4,]    3   54
-#> [5,]    4   43
-#> [6,]    5   41
-#> [7,]    6   48
-#> [8,]    7   40
+#> [1,]    0   44
+#> [2,]    1   41
+#> [3,]    2   39
+#> [4,]    3   49
+#> [5,]    4   44
+#> [6,]    5   52
+#> [7,]    6   37
+#> [8,]    7   34
 ```
 
 ### Step 2

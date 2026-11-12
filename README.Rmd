@@ -15,9 +15,8 @@ library(badger)
 `r badge_cran_release("fitODBOD")`
 `r badge_cran_checks("fitODBOD")`
 `r badge_runiverse()`
-`r badge_repostatus("Active")`
-`r badge_lifecycle("stable")`
-[![GitHub issues](https://img.shields.io/github/issues/Amalan-ConStat/fitODBOD.svg?style=popout)](https://github.com/Amalan-ConStat/fitODBOD/issues)
+[![status](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4/status.svg)](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3265356.svg)](https://doi.org/10.5281/zenodo.3265356)
 
 `r badge_cran_download("fitODBOD", "grand-total", "green")`
 `r badge_cran_download("fitODBOD", "last-month", "green")`
@@ -27,8 +26,9 @@ library(badger)
 [![Codecov test coverage](https://codecov.io/gh/Amalan-ConStat/fitODBOD/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Amalan-ConStat/fitODBOD?branch=main)
 `r badge_codefactor("Amalan-ConStat/fitODBOD")`
 `r badge_code_size("Amalan-ConStat/fitODBOD")`
-[![status](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4/status.svg)](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3265356.svg)](https://doi.org/10.5281/zenodo.3265356)
+`r badge_repostatus("Active")`
+`r badge_lifecycle("stable")`
+[![GitHub issues](https://img.shields.io/github/issues/Amalan-ConStat/fitODBOD.svg?style=popout)](https://github.com/Amalan-ConStat/fitODBOD/issues)
 
 <!-- badges: end -->
 

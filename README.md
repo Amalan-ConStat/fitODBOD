@@ -5,14 +5,9 @@
 
 [![](https://www.r-pkg.org/badges/version/fitODBOD)](https://cran.r-project.org/package=fitODBOD)
 [![CRAN
-checks](https://badges.cranchecks.info/summary/fitODBOD.svg)](https://cran.r-project.org/web/checks/check_results_fitODBOD.html)\`
+checks](https://badges.cranchecks.info/summary/fitODBOD.svg)](https://cran.r-project.org/web/checks/check_results_fitODBOD.html)
 [![r-universe status
 badge](https://Amalan-ConStat.r-universe.dev/badges/fitODBOD)](https://Amalan-ConStat.r-universe.dev/fitODBOD)
-
-[![](http://cranlogs.r-pkg.org/badges/grand-total/fitODBOD?color=green)](https://cran.r-project.org/package=fitODBOD)
-[![](http://cranlogs.r-pkg.org/badges/last-month/fitODBOD?color=green)](https://cran.r-project.org/package=fitODBOD)
-[![](http://cranlogs.r-pkg.org/badges/last-week/fitODBOD?color=green)](https://cran.r-project.org/package=fitODBOD)
-
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -20,15 +15,19 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 [![GitHub
 issues](https://img.shields.io/github/issues/Amalan-ConStat/fitODBOD.svg?style=popout)](https://github.com/Amalan-ConStat/fitODBOD/issues)
 
+[![](http://cranlogs.r-pkg.org/badges/grand-total/fitODBOD?color=green)](https://cran.r-project.org/package=fitODBOD)
+[![](http://cranlogs.r-pkg.org/badges/last-month/fitODBOD?color=green)](https://cran.r-project.org/package=fitODBOD)
+[![](http://cranlogs.r-pkg.org/badges/last-week/fitODBOD?color=green)](https://cran.r-project.org/package=fitODBOD)
+[![MIT
+license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+
 [![Codecov test
 coverage](https://codecov.io/gh/Amalan-ConStat/fitODBOD/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Amalan-ConStat/fitODBOD?branch=main)
 [![CodeFactor](https://www.codefactor.io/repository/github/Amalan-ConStat/fitODBOD/badge)](https://www.codefactor.io/repository/github/Amalan-ConStat/fitODBOD)
 [![](https://img.shields.io/github/languages/code-size/Amalan-ConStat/fitODBOD.svg)](https://github.com/Amalan-ConStat/fitODBOD)
-
-[![MIT
-license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 [![status](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4/status.svg)](http://joss.theoj.org/papers/388fc2f4d7c1e0ae83cf0de13ac038a4)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3265356.svg)](https://doi.org/10.5281/zenodo.3265356)
+
 <!-- badges: end -->
 
 ## How to engage with “fitODBOD” the first time ?
@@ -102,9 +101,6 @@ table as follows.
 ``` r
 library("fitODBOD"); library("flextable",quietly = TRUE)    ## Loading packages
 #> Hello, This is Amalan. For more details refer --> https://amalan-constat.github.io/fitODBOD/index.html
-```
-
-``` r
 print(Alcohol_data)     ## print the alcohol consumption data set
 #>   Days week1 week2
 #> 1    0    47    42
@@ -115,14 +111,8 @@ print(Alcohol_data)     ## print the alcohol consumption data set
 #> 6    5    41    40
 #> 7    6    39    43
 #> 8    7    95    84
-```
-
-``` r
 sum(Alcohol_data$week1) ## No of respondents or N
 #> [1] 399
-```
-
-``` r
 Alcohol_data$Days       ## Binomial random variables or x 
 #> [1] 0 1 2 3 4 5 6 7
 ```
@@ -134,23 +124,20 @@ to prepare the appropriate format as follows.
 ``` r
 datapoints <- sample(0:7, 340, replace = TRUE) ## creating a set of raw BOD 
 head(datapoints)  ## first few observations of datapoints dataset
-#> [1] 3 5 2 5 4 7
-```
-
-``` r
+#> [1] 2 1 2 3 6 0
 
 ## extracting and printing BOD in a usable way for the package
 new_data <- BODextract(datapoints)
 matrix(c(new_data$RV, new_data$Freq), ncol=2, byrow = FALSE)
 #>      [,1] [,2]
-#> [1,]    0   40
-#> [2,]    1   46
-#> [3,]    2   47
-#> [4,]    3   36
-#> [5,]    4   42
-#> [6,]    5   38
+#> [1,]    0   30
+#> [2,]    1   43
+#> [3,]    2   41
+#> [4,]    3   54
+#> [5,]    4   43
+#> [6,]    5   41
 #> [7,]    6   48
-#> [8,]    7   43
+#> [8,]    7   40
 ```
 
 ### Step 2
@@ -170,9 +157,6 @@ similar to the results acquired from previous researchers work.
 ``` r
 BinFreq <- fitBin(x=Alcohol_data$Days,obs.fre=Alcohol_data$week1)
 #> Chi-squared approximation may be doubtful because expected frequency is less than 5
-```
-
-``` r
 print(BinFreq)
 #> Call: 
 #> fitBin(x = Alcohol_data$Days, obs.freq = Alcohol_data$week1)
@@ -198,9 +182,6 @@ compare the actual and the fitting Binomial variances.
 ## Actual variance of observed frequencies
 var(rep(Alcohol_data$Days, times = Alcohol_data$week1))
 #> [1] 6.253788
-```
-
-``` r
 ## Calculated variance for frequencies of  fitted Binomial distribution 
 var(rep(BinFreq$bin.ran.var, times = fitted(BinFreq)))
 #> [1] 1.696035
@@ -235,9 +216,6 @@ modeTB <- EstMLETriBin(x=Alcohol_data$Days,freq=Alcohol_data$week1)
 coef(modeTB)  ## printing the estimated mode
 #>  mode 
 #>  0.944444
-```
-
-``` r
 ## printing the Negative log likelihood value which is minimized
 NegLLTriBin(x=Alcohol_data$Days,freq=Alcohol_data$week1,mode=modeTB$mode)
 #> [1] 880.6167
@@ -270,14 +248,8 @@ print(fTB)
 #>       X-squared : 193.6159   ,df : 6   ,p-value : 0 
 #>  
 #>       over dispersion : 0.2308269
-```
-
-``` r
 AIC(fTB) 
 #> [1] 1763.233
-```
-
-``` r
 var(rep(fTB$bin.ran.var, times = fitted(fTB)))
 #> [1] 3.786005
 ```
@@ -303,9 +275,6 @@ the pair of estimates for initial values where `a=0.1` and `b=0.1`.
 estimate <- EstMLEBetaBin(x=Alcohol_data$Days,freq = Alcohol_data$week1,a=0.1,b=0.1)
 estimate@min ## extracting the minimized Negative log likelihood value 
 #> [1] 813.4571
-```
-
-``` r
 ## extracting the estimated shape parameter a, b
 a1 <- bbmle::coef(estimate)[1] ; b1 <- bbmle::coef(estimate)[2]  
 print(c(a1,b1))        ## printing the estimated shape parameters
@@ -341,14 +310,8 @@ print(fBB1)
 #>           X-squared : 9.5171   ,df : 5   ,p-value : 0.0901 
 #>  
 #>           over dispersion : 0.4340673
-```
-
-``` r
 AIC(fBB1) 
 #> [1] 1630.914
-```
-
-``` r
 var(rep(fBB1$bin.ran.var, times = fitted(fBB1)))
 #> [1] 6.24275
 ```
@@ -366,9 +329,6 @@ Function `EstMGFBetaBin` is used as below to estimate shape parameters
 estimate <- EstMGFBetaBin(Alcohol_data$Days, Alcohol_data$week1)
 print(c(estimate$a, estimate$b))  ## printing the estimated parameters a, b
 #> [1] 0.7161628 0.5963324
-```
-
-``` r
 ## finding the minimized negative log likelihood value 
 NegLLBetaBin(x=Alcohol_data$Days,freq=Alcohol_data$week1,a=estimate$a,b=estimate$b)
 #> [1] 813.5872
@@ -402,14 +362,8 @@ print(fBB2)
 #>           X-squared : 9.7362   ,df : 5   ,p-value : 0.0831 
 #>  
 #>           over dispersion : 0.4324333
-```
-
-``` r
 AIC(fBB2) 
 #> [1] 1631.174
-```
-
-``` r
 var(rep(fBB2$bin.ran.var, times = fitted(fBB2)))
 #> [1] 6.273084
 ```
@@ -430,9 +384,6 @@ the selected input parameters are `c=10.1` and `l=5.1`.
 estimate <- EstMLEGammaBin(x=Alcohol_data$Days,freq=Alcohol_data$week1,c=10.1,l=5.1)
 estimate@min ## extracting the minimized negative log likelihood value 
 #> [1] 814.0045
-```
-
-``` r
 ## extracting the shape parameter c and l
 c1 <- bbmle::coef(estimate)[1] ; l1 <- bbmle::coef(estimate)[2]  
 print(c(c1, l1))   ## print shape parameters
@@ -467,14 +418,8 @@ print(fGB)
 #>       X-squared : 10.6152   ,df : 5   ,p-value : 0.0596 
 #>  
 #>       over dispersion : 0.4308113
-```
-
-``` r
 AIC(fGB) 
 #> [1] 1632.009
-```
-
-``` r
 var(rep(fGB$bin.ran.var, times = fitted(fGB)))
 #> [1] 6.228652
 ```
@@ -494,9 +439,6 @@ the `EstMLEGammaBin` function. Suppose the selected input parameters are
 estimate <- EstMLEGrassiaIIBin(x=Alcohol_data$Days,freq=Alcohol_data$week1,a=1.1,b=5.1)
 estimate@min ## extracting the minimized negative log likelihood value 
 #> [1] 813.0395
-```
-
-``` r
 # extracting the shape parameter a and b
 a1 <- bbmle::coef(estimate)[1] ; b1 <- bbmle::coef(estimate)[2]  
 print(c(a1, b1))   #print shape parameters
@@ -531,14 +473,8 @@ print(fGB2)
 #>       X-squared : 8.6999   ,df : 5   ,p-value : 0.1216 
 #>  
 #>       over dispersion : 0.259004
-```
-
-``` r
 AIC(fGB2) 
 #> [1] 1630.079
-```
-
-``` r
 var(rep(fGB2$bin.ran.var, times = fitted(fGB2)))
 #> [1] 6.299827
 ```
@@ -558,9 +494,6 @@ the first set of randomly selected initial input shape parameters of
 estimate <- EstMLEGHGBB(x=Alcohol_data$Days,freq=Alcohol_data$week1,a=10.1,b=1.1,c=5)
 estimate@min #extracting the minimized negative log likelihood value
 #> [1] 809.2767
-```
-
-``` r
 #extracting the shape parameter a, b and c
 a1 <- bbmle::coef(estimate)[1] ; b1 <- bbmle::coef(estimate)[2] ; c1 <- bbmle::coef(estimate)[3]   
 print(c(a1, b1, c1))      #printing the shape parameters
@@ -598,14 +531,8 @@ print(fGG)
 #>       X-squared : 1.2835   ,df : 4   ,p-value : 0.8642 
 #>  
 #>       over dispersion : 0.4324875
-```
-
-``` r
 AIC(fGG) 
 #> [1] 1624.553
-```
-
-``` r
 var(rep(fGG$bin.ran.var, times = fitted(fGG)))
 #> [1] 6.249335
 ```
@@ -625,9 +552,6 @@ input parameters where `a=1.1`, `b=5` and `c=10`.
 estimate <- EstMLEMcGBB(x = Alcohol_data$Days,freq = Alcohol_data$week1,a = 1.1, b = 5, c = 10)
 estimate@min  #extracting the negative log likelihood value which is minimized
 #> [1] 809.7134
-```
-
-``` r
 #extracting the shape parameter a, b and c
 a1 <- bbmle::coef(estimate)[1] ; b1 <- bbmle::coef(estimate)[2] ; c1 <- bbmle::coef(estimate)[3] 
 print(c(a1, b1, c1))    #printing the shape parameters
@@ -665,14 +589,8 @@ print(fMB)
 #>       X-squared : 2.2222   ,df : 4   ,p-value : 0.695 
 #>  
 #>       over dispersion : 0.4359023
-```
-
-``` r
 AIC(fMB) 
 #> [1] 1625.427
-```
-
-``` r
 var(rep(fMB$bin.ran.var, times = fitted(fMB)))
 #> [1] 6.288273
 ```
@@ -775,7 +693,7 @@ flextable(data=BMD_flexed_Data,
 plot(Final_plot)
 ```
 
-<img src="man/figures/Table-1.png" width="100%" />
+<img src="man/figures/Table-1.png" alt="" width="100%" />
 
 ## Conclusion
 
@@ -791,7 +709,7 @@ procedure
 1.  The `p-value` $> 0.05$ from the hypothesis test.
 2.  The Negative Log Likelihood value.
 3.  The AIC value.
-4.  The number of difference values within the range of $+/-5$.  
+4.  The number of difference values within the range of $+/-5$.\
 5.  The absolute variance difference between expected and observed
     frequency.
 
